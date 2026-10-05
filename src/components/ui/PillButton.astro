@@ -1,0 +1,10 @@
+---
+interface Props { href: string; label: string; variant?: 'brand' | 'light'; }
+const { href, label, variant = 'brand' } = Astro.props;
+---
+<a href={href} class:list={['btn-pill', { 'is--light': variant === 'light' }]}>
+  <span>{label}</span>
+  <span class="btn-pill__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>
+</a>

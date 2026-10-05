@@ -1,0 +1,27 @@
+---
+// BYQ: offthegrid-value-features-4 (card grid variant)  ·  Osmo: Masked Text Reveal
+import { platforms } from '../../data/astro';
+import Logo from '../ui/Logo.astro';
+---
+<section class="services platforms" id="platforms">
+  <div class="container">
+    <div class="platforms__head">
+      <span class="pill-label">Migrate from</span>
+      <h2 class="services__title" data-split="heading" data-split-reveal="words">From any platform to a site that <span class="services__title-accent">works harder for you.</span></h2>
+    </div>
+    <ul class="platforms__grid">
+      {platforms.map((p) => (
+        <li class="service-card platform-card">
+          <div class="platform-card__top">
+            <span class="platform-card__name">{p.name}</span>
+            <span class="platform-card__arrow" aria-hidden="true">→ <Logo name="astro" /> Astro</span>
+          </div>
+          <div>
+            <h3 class="sr-only">{p.from}</h3>
+            <p class="service-card__desc platform-card__desc">{p.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

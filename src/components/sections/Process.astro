@@ -1,0 +1,26 @@
+---
+// BYQ: kelvin-process-1  ·  Osmo: Masked Text Reveal  ·  line fill on scroll (main.js)
+import { steps } from '../../data/astro';
+import Logo from '../ui/Logo.astro';
+---
+<section class="process" id="process">
+  <div class="container">
+    <div class="process__head">
+      <div class="process__eyebrow"><Logo name="astro" class="process__logo" />How a migration works</div>
+      <h2 class="process__title" data-split="heading" data-split-reveal="words"><span class="process__title-dim">Four steps,</span> zero surprises.</h2>
+    </div>
+    <div class="process__rail">
+      <div class="process__line" aria-hidden="true"><div class="process__line-fill" data-process-line></div></div>
+      <ol class="process__track">
+        {steps.map((s) => (
+          <li class="process__step">
+            <span class="process__node" aria-hidden="true"></span>
+            <span class="process__num" aria-hidden="true">{s.num}</span>
+            <h3 class="process__step-title">{s.title}</h3>
+            <p class="process__copy">{s.copy}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

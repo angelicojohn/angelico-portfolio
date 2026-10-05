@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import Platforms from '../components/sections/Platforms.astro';
+import Benefits from '../components/sections/Benefits.astro';
+import Process from '../components/sections/Process.astro';
+import Faq from '../components/sections/Faq.astro';
+import Stack from '../components/sections/Stack.astro';
+import AboutAstro from '../components/sections/AboutAstro.astro';
+import Cta from '../components/sections/Cta.astro';
+---
+<Base
+  title="Astro Development & Migrations — AJ"
+  description="Move your Webflow, Framer, WordPress or Wix site to Astro + Sanity: a faster site that is cheaper to run, easy for your team to update, and fully yours."
+>
+  <PageHero
+    words={['Move fast.', 'Pay less.', 'Own it.']}
+    label="Astro Development"
+    title="Move your Webflow, Framer, WordPress or Wix site to Astro — and get a faster site that’s cheaper to run and fully yours."
+    lede="Keep your content, design and search visibility, and gain a site that loads faster, costs less to run and belongs entirely to you."
+  />
+  <Platforms />
+  <Benefits />
+  <Stack />
+  <Process />
+  <AboutAstro />
+  <Faq />
+  <Cta
+    title="Let’s make your website faster, leaner and fully yours."
+    text="Tell me which platform you’re on and what you want your site to achieve. You’ll get a clear migration plan and an honest view on whether Astro is the right move."
+    label="Plan My Migration"
+  />
+</Base>

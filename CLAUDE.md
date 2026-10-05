@@ -1,0 +1,110 @@
+# AJ Portfolio
+
+Personal portfolio for AJ, a Webflow Developer. Built in **Astro** with plain CSS. Layouts come from **BYQ Supply** sections, motion comes from **Osmo Supply** resources, and everything is re-skinned to one **blue** brand.
+
+The markup and class naming are kept Webflow-friendly (flat BEM-style global classes, no scoped styles, no Tailwind) so sections can later be moved into the Webflow Designer.
+
+## Commands
+
+```bash
+npm run dev       # dev server (Astro 7 runs it in the background; first free port from 4321, currently :4323)
+npx astro dev status | logs | stop
+npm run build     # static build → dist/
+npm run preview   # serve the build
+```
+
+## Structure
+
+```
+src/
+  layouts/Base.astro          # <head>, fonts, Loader, Nav, Footer, main.js
+  pages/index.astro           # section order
+  components/
+    osmo/                     # Osmo markup (Loader, Nav)
+    sections/                 # one file per BYQ-based section
+    ui/                       # LinkArrow, PillButton
+  data/work.ts                # Selected Work entries (edit here)
+  styles/
+    tokens.css                # brand tokens, the single source of colour/type
+    global.css                # reset, layout primitives, buttons, imports
+    osmo.css                  # Osmo resource CSS, re-skinned to tokens
+    sections/*.css            # one stylesheet per section
+  scripts/
+    main.js                   # boot order: nav → loader → reveals
+    osmo/*.js                 # Osmo scripts as ES modules
+osmo/                         # RAW Osmo resources exactly as pasted (reference only, not imported)
+public/images/                # local images (BYQ decorative assets, your photos)
+```
+
+## Section → source map
+
+| Section | BYQ layout | Osmo motion |
+|---|---|---|
+| Loader | — | Welcoming Words Loader |
+| Nav | — | Bold Full Screen Navigation + Burger Menu Button |
+| Hero | seven-nine-hero-1 | Masked Text Reveal, Text Scramble (load) |
+| About | seven-nine-intro-text-1 | Highlight Marker Text Reveal, Highlight Text on Scroll |
+| What I Do | offthegrid-value-features-4 | Masked Text Reveal |
+| AI-Assisted | nextwell-intro-text-5 | Highlight Text on Scroll |
+| Selected Work | strobe-cms-grid-5 (2-col, 16:10 for site screenshots) | Masked Text Reveal + cursor follower |
+| Experience | consult-ai-hero-4 | Masked Text Reveal (chars) |
+| Final CTA | consult-ai-cta-section-1 | Masked Text Reveal + scroll zoom |
+
+### /astro — Astro Development & Migrations (Webflow, Framer, WordPress, Wix)
+Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approval; Jev-checked for invented claims and over-promises).
+
+| Section | BYQ layout | Motion |
+|---|---|---|
+| PageHero | seven-nine-hero-1 (no image) | Masked Text Reveal |
+| Platforms | offthegrid-value-features-4 cards, 2×2 | Masked Text Reveal |
+| Benefits | nextwell-intro-text-5 panel | Highlight Text on Scroll |
+| Stack (Astro + Sanity) | consult-ai-hero-4 layout, blue | Masked Text Reveal |
+| Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
+| AboutAstro | seven-nine-intro-text-1 | Highlight Marker |
+| Faq | babka-faq-1 layout as native `<details name="faq">` accordion (one open at a time) | Masked Text Reveal |
+| Cta | consult-ai-cta-section-1 (props: title/text/label) | scroll zoom |
+
+Copy is outcome-led: headings were chosen by Jev composite score (outcome 50%, positive 30%, minus over-promise penalty). Logos: `src/components/ui/Logo.astro` (Simple Icons SVGs in `public/images/logos/`, monochrome currentColor to stay on-brand).
+
+Nav links are root-relative (`/#work`) so they work from any page; `is--current` follows `Astro.url.pathname`.
+
+## Rules
+
+### Branding
+- **All colour comes from `src/styles/tokens.css`.** Never hardcode hex in components or section CSS; use `var(--*)`.
+- Core brand blue is `--blue-500` (`#2f54ff`). Vendor colours (Osmo's pink marker, lime accent, green nav; BYQ's mint, cream, Consult blue) are always replaced by tokens.
+- Fonts: `--font-display` (Inter Tight), `--font-body` (Inter), `--font-mono` (JetBrains Mono).
+
+### Osmo resources
+- Keep every `data-` attribute and the animation logic intact. Only colours, fonts and the module wrapper change.
+- Raw originals live in `/osmo/<resource>/` and are the reference. Ported modules live in `src/scripts/osmo/`.
+- Known deliberate deviations, and only these:
+  - Each script imports GSAP from npm and exports its `init*` function; `main.js` calls them, so there are no `DOMContentLoaded` listeners.
+  - `welcoming-words-loader.js` returns its timeline, so reveals start when the loader finishes.
+  - `burger-menu-button.js` returns `{ open, close }` and doesn't attach its own click handler. `main.js` syncs it to `[data-navigation-status]`, so ESC and link clicks close both.
+  - `masked-text-reveal.js` adds the FOUC `gsap.set(heading, { autoAlpha: 1 })` from Osmo's own notes, plus an optional `data-split-start` override. Above-the-fold headings use `"top bottom"`, because the clamped `top 80%` resolves to 0 and never fires at scroll 0.
+- Highlight Marker colour comes from the token: `data-marker-theme="--marker-color"`.
+- Reduced motion: loader hidden, reveals skipped, content visible.
+
+### BYQ sections
+- BYQ references are React/Tailwind. Port them to `.astro` + plain CSS, keep layout, spacing and interactions, and drop their colours and fonts.
+- Fetch with the BYQ MCP (`get_byq_component <id>`) when changing a section.
+
+### Layout
+- No horizontal scroll: `html, body { overflow-x: clip }`. Full-bleed `.divider` uses 100vw, which includes the scrollbar width. Don't switch it to `hidden`, because that breaks `position: sticky`.
+
+### Content
+- Copy comes from the user's brief and shouldn't be reworded without asking.
+- Selected Work entries live in `src/data/work.ts`. Images are **full-page screenshots** (1440px wide, any height) in `public/images/work/`. The card shows the top in a 16:10 frame and scrolls to the bottom on hover; `main.js` measures distance and duration per image.
+- AJ's photos replace `.media-placeholder` elements in Hero and About.
+
+## Jev (decisions) — "Jev decides, Claude writes"
+Use the `jev` skill (`~/.claude/skills/jev`) for any sort, classify, score or yes/no call in this project, e.g. checking copy against the brief, triaging QA feedback, or picking between candidate sections or effects. Claude writes the code and copy. When Jev's confidence is under about 0.7, Claude decides and says so. Ask the user before sending anything private (client names, emails, contracts). Public site copy is fine.
+
+## Open TODOs
+- [ ] Real Selected Work entries + full-page screenshots (`src/data/work.ts`)
+- [ ] Approve copy written by Claude (not in brief): hero words "Figma. Webflow. Shipped.", label "Hi, I'm AJ", What I Do intro line
+- [ ] AJ's photo (Hero) + secondary image (About)
+- [ ] Contact email + LinkedIn in `src/data/site.ts`
+- [ ] Remaining Osmo resources: Lenis, Curved Wipe transition, Magnetic Cursor, Marquee, Number Odometer, Footer Parallax
+- [ ] Decide deploy target: Astro on Webflow Cloud vs. convert into Webflow Designer

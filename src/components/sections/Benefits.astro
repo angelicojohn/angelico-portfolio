@@ -1,0 +1,24 @@
+---
+// BYQ: nextwell-intro-text-5 panel  ·  Osmo: Highlight Text on Scroll
+import { benefits } from '../../data/astro';
+import Logo from '../ui/Logo.astro';
+---
+<section class="ai" id="why-astro">
+  <div class="container">
+    <div class="ai__panel">
+      <Logo name="astro" class="benefits__mark" />
+      <div class="ai__content">
+        <span class="pill-label pill-label--logo ai__label"><Logo name="astro" />Why Astro</span>
+        <h2 class="ai__title" data-highlight-text data-highlight-fade="0.25">Faster pages, lower running costs, and a site that grows with your business.</h2>
+        <ul class="benefits__grid">
+          {benefits.map((b) => (
+            <li class="benefit">
+              <h3 class="benefit__title">{b.title}</h3>
+              <p class="benefit__text">{b.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

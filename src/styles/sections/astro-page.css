@@ -1,0 +1,424 @@
+/* /astro page — new sections (reuse hero, services, ai, cta styles where possible) */
+
+/* Page hero: no image, display words span the full width */
+.hero--page .hero__inner { min-height: min(100svh, 56rem); }
+.hero__display--wide { font-size: clamp(3rem, 13vw, 13rem); }
+
+/* Platforms — BYQ offthegrid card style in a 2×2 grid */
+.platforms__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.platforms__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.platform-card { min-height: 18rem; justify-content: space-between; }
+
+.platform-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.platform-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+
+.platform-card__arrow {
+  font-family: var(--font-mono);
+  font-size: .8125rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  transition: color .3s ease;
+}
+
+.service-card:hover .platform-card__arrow { color: var(--white); }
+.platform-card__desc { max-width: 26rem; }
+
+@media (max-width: 767px) {
+  .platforms__grid { grid-template-columns: 1fr; }
+  .platform-card { min-height: 0; }
+}
+
+/* Benefits inside the nextwell panel */
+.benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 0;
+  padding: 2rem 0 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+}
+
+.benefit__title {
+  margin-bottom: .5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.benefit__text {
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  font-size: .9875rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 991px) { .benefits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 479px) { .benefits__grid { grid-template-columns: 1fr; } }
+
+/* Process — BYQ kelvin-process-1 */
+.process {
+  padding: clamp(4rem, 11vw, 10rem) 0;
+  background-color: var(--color-bg);
+}
+
+.process__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.process__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.process__dot {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 2px;
+  background-color: var(--color-accent);
+}
+
+.process__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.125rem, 4.5vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.process__title-dim { color: color-mix(in srgb, var(--ink) 45%, transparent); }
+
+.process__rail { position: relative; }
+
+.process__line {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.process__line-fill {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-accent);
+  transform-origin: 0 0;
+  transform: scaleX(0);
+}
+
+.process__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 2.5rem;
+}
+
+.process__node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  background-color: var(--color-bg);
+}
+
+.process__num {
+  font-family: var(--font-mono);
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: color-mix(in srgb, var(--blue-500) 45%, transparent);
+}
+
+.process__step-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 2.6vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+
+.process__copy {
+  max-width: 30ch;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .process__line, .process__node { display: none; }
+  .process__track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 2.5rem; }
+  .process__step { padding-top: 2rem; border-top: 1px solid var(--color-border); }
+}
+
+@media (max-width: 479px) { .process__track { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) { .process__line-fill { transform: scaleX(1); } }
+
+/* FAQ — BYQ babka-faq-1 */
+.faq {
+  padding: clamp(3.5rem, 9vw, 7.5rem) 0;
+  background-color: var(--white);
+}
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.faq__aside {
+  position: sticky;
+  top: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+}
+
+.faq__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Accordion (native <details name="faq">) */
+.faq__list { gap: 0; }
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__item:first-child { border-top: 1px solid var(--color-border); }
+
+.faq__q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  list-style: none;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { color: var(--color-accent); }
+
+/* Plus → minus */
+.faq__icon {
+  position: relative;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--paper);
+  transition: background-color .3s ease, transform .5s var(--ease-osmo);
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: .875rem;
+  height: 2px;
+  background-color: var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: transform .5s var(--ease-osmo), background-color .3s ease;
+}
+
+.faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.faq__item[open] .faq__icon { background-color: var(--color-accent); transform: rotate(180deg); }
+.faq__item[open] .faq__icon::before,
+.faq__item[open] .faq__icon::after { background-color: var(--white); }
+.faq__item[open] .faq__icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+
+/* Smooth open/close where supported (Chromium 131+); instant elsewhere */
+.faq__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size .5s var(--ease-osmo), content-visibility .5s allow-discrete;
+}
+
+.faq__item[open]::details-content { block-size: auto; }
+
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+}
+
+.faq__a-wrap { padding-bottom: 1.75rem; }
+
+.faq__a {
+  max-width: 65ch;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 991px) {
+  .faq__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .faq__aside { position: static; }
+}
+
+/* ------------------------------- Logos ------------------------------------- */
+.logo { width: 1em; height: 1em; flex: none; }
+
+.pill-label--logo { gap: .4em; }
+.pill-label--logo .logo { width: 1.05em; height: 1.05em; }
+
+.platform-card__arrow { display: inline-flex; align-items: center; gap: .35em; }
+.platform-card__arrow .logo { width: 1.1em; height: 1.1em; }
+
+.process__logo { width: 1rem; height: 1rem; color: var(--color-accent); }
+
+/* Big decorative Astro mark in the Why Astro panel */
+.benefits__mark {
+  position: absolute;
+  top: -6%;
+  right: -4%;
+  width: clamp(14rem, 34vw, 30rem);
+  height: auto;
+  color: var(--white);
+  opacity: .07;
+  pointer-events: none;
+}
+
+/* --------------------------- Astro + Sanity -------------------------------- */
+.stack__lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+}
+
+.stack__logo { width: clamp(2.75rem, 4vw, 3.5rem); height: auto; }
+
+.stack__plus {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 300;
+  line-height: 1;
+  opacity: .6;
+}
+
+.stack__title { font-size: clamp(2.5rem, 5vw, 4.75rem); }
+
+.stack__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack__item {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 2rem;
+  border: 1px solid color-mix(in srgb, var(--white) 22%, transparent);
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--white) 8%, transparent);
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.stack__item:hover { background-color: var(--white); color: var(--blue-500); }
+
+.stack__num {
+  font-family: var(--font-mono);
+  font-size: .8125rem;
+  letter-spacing: .04em;
+  opacity: .7;
+}
+
+.stack__item-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+
+.stack__item-text {
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  opacity: .85;
+}
+
+/* About on the Astro page sits on white to separate it from Process */
+.intro--astro { background-color: var(--white); }

@@ -1,0 +1,12 @@
+---
+// Tech logos (Simple Icons, CC0), monochrome in currentColor so they sit in the blue brand.
+import astro from '../../../public/images/logos/astro.svg?raw';
+import sanity from '../../../public/images/logos/sanity.svg?raw';
+interface Props { name: 'astro' | 'sanity'; class?: string; label?: boolean; }
+const { name, class: cls = '', label = false } = Astro.props;
+const raw = { astro, sanity }[name];
+const svg = raw
+  .replace(/<title>.*?<\/title>/, '')
+  .replace('<svg ', `<svg class="logo ${cls}" fill="currentColor" ${label ? `aria-label="${name === 'astro' ? 'Astro' : 'Sanity'}"` : 'aria-hidden="true"'} `);
+---
+<Fragment set:html={svg} />

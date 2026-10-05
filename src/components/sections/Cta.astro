@@ -1,0 +1,25 @@
+---
+// BYQ: consult-ai-cta-section-1  ·  Osmo: Masked Text Reveal
+import PillButton from '../ui/PillButton.astro';
+import { site } from '../../data/site';
+interface Props { title?: string; text?: string; label?: string; }
+const {
+  title = 'Need someone who can take the Figma and own the build?',
+  text = "Whether it's a new Webflow build, an existing site that needs support, or something that requires custom development beyond the visual builder, I'd love to hear about it.",
+  label = "Let's Work Together",
+} = Astro.props;
+---
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta__stage">
+      <img class="cta__ball" data-cta-ball src="/images/byq/master-ball-white.webp" alt="" loading="lazy" />
+      <div class="cta__content">
+        <h2 class="cta__title" data-split="heading" data-split-reveal="words">{title}</h2>
+        <p class="cta__text">{text}</p>
+        <div class="cta__actions">
+          <PillButton href={`mailto:${site.email}`} label={label} variant="light" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

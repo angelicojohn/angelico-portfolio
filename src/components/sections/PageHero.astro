@@ -1,0 +1,36 @@
+---
+// Inner-page hero — BYQ seven-nine-hero-1 structure without the image  ·  Osmo: Masked Text Reveal
+import PillButton from '../ui/PillButton.astro';
+import LinkArrow from '../ui/LinkArrow.astro';
+import Logo from '../ui/Logo.astro';
+interface Props { words: string[]; label: string; title: string; lede: string; }
+const { words, label, title, lede } = Astro.props;
+const align = ['is--center', '', 'is--end'];
+---
+<section class="hero hero--page" id="top">
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__display hero__display--wide" aria-hidden="true">
+        {words.map((w, i) => (
+          <span class:list={['hero__word', align[i % 3]]} data-split="heading" data-split-start="top bottom">{w}</span>
+        ))}
+      </div>
+      <div class="hero__bottom">
+        <div class="divider"></div>
+        <div class="hero__bottom-grid">
+          <div class="hero__copy">
+            <span class="pill-label pill-label--logo"><Logo name="astro" />{label}</span>
+            <h1 class="hero__title">{title}</h1>
+          </div>
+          <div class="hero__aside">
+            <p class="hero__lede">{lede}</p>
+            <div class="hero__ctas">
+              <PillButton href="#contact" label="Start a Migration" />
+              <LinkArrow href="#process" label="See the Process" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

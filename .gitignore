@@ -1,0 +1,17 @@
+# dependencies & build
+node_modules/
+dist/
+.astro/
+
+# system
+.DS_Store
+
+# env / secrets (keys live in macOS Keychain, never in the repo)
+.env
+.env.*
+
+# licensed vendor source — raw Osmo Supply vault code (reference only, not redistributed)
+/osmo/
+
+# raw client screenshots & mockups (139 MB) — optimised copies go in public/images/work/
+/Full Page Screenshots/

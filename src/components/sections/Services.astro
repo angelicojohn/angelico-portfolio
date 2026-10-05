@@ -1,0 +1,67 @@
+---
+// BYQ: offthegrid-value-features-4  ·  Osmo: Masked Text Reveal
+import PillButton from '../ui/PillButton.astro';
+import LinkArrow from '../ui/LinkArrow.astro';
+
+const services = [
+  {
+    title: 'Figma → Webflow',
+    description: 'Pixel-accurate, responsive implementation across desktop, tablet and mobile with reusable components and maintainable structure.',
+    icon: '<rect x="4" y="4" width="22" height="22" rx="3"/><rect x="34" y="34" width="22" height="22" rx="11"/><path d="M26 15h8a4 4 0 0 1 4 4v15" fill="none" stroke="currentColor" stroke-width="5"/>',
+  },
+  {
+    title: 'CMS & Scalable Systems',
+    description: 'CMS architecture, dynamic pages, references, conditional content, filtering and structures designed for teams to maintain after launch.',
+    icon: '<rect x="4" y="6" width="52" height="12" rx="3"/><rect x="4" y="24" width="52" height="12" rx="3" opacity=".6"/><rect x="4" y="42" width="52" height="12" rx="3" opacity=".3"/>',
+  },
+  {
+    title: 'Custom Development',
+    description: "HTML, CSS, JavaScript, jQuery, GSAP and third-party libraries for functionality that goes beyond Webflow's native capabilities.",
+    icon: '<path d="M22 12 6 30l16 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M38 12l16 18-16 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>',
+  },
+  {
+    title: 'Motion & Interactions',
+    description: 'Webflow interactions, GSAP animation, scroll effects, sliders and micro-interactions built with performance and usability in mind.',
+    icon: '<circle cx="14" cy="30" r="10"/><circle cx="34" cy="30" r="7" opacity=".6"/><circle cx="50" cy="30" r="5" opacity=".3"/>',
+  },
+  {
+    title: 'SEO, Accessibility & Performance',
+    description: 'Semantic structure, metadata, schema, redirects, alt text, responsive QA, accessibility improvements and technical performance optimization.',
+    icon: '<path d="M30 4a26 26 0 1 0 26 26H30Z"/><path d="M36 4v20h20A20 20 0 0 0 36 4Z" opacity=".5"/>',
+  },
+  {
+    title: 'Integrations & Maintenance',
+    description: 'Forms, GTM, analytics, third-party tools, custom embeds, ongoing improvements, troubleshooting and support for existing Webflow projects.',
+    icon: '<rect x="4" y="18" width="24" height="24" rx="12"/><rect x="32" y="18" width="24" height="24" rx="12" opacity=".5"/><rect x="20" y="26" width="20" height="8" rx="4"/>',
+  },
+];
+---
+<section class="services" id="services">
+  <div class="container">
+    <div class="services__grid">
+      <div class="services__aside">
+        <div class="services__head">
+          <h2 class="services__title" data-split="heading" data-split-reveal="words">What <span class="services__title-accent">I Do</span></h2>
+          <p class="services__intro">From an approved Figma file to a site that's ready for production, and supported after launch.</p>
+          <LinkArrow href="/astro" label="Astro Development & Migrations" />
+        </div>
+        <div class="services__aside-bottom">
+          <svg class="services__mark" viewBox="0 0 60 60" fill="currentColor" aria-hidden="true"><rect x="0" y="0" width="60" height="16" rx="8"/><rect x="0" y="22" width="60" height="16" rx="8" opacity=".6"/><rect x="0" y="44" width="60" height="16" rx="8" opacity=".3"/></svg>
+          <PillButton href="#contact" label="Get In Touch" />
+        </div>
+      </div>
+
+      <ul class="services__list">
+        {services.map((s) => (
+          <li class="service-card">
+            <div class="service-card__top">
+              <svg class="service-card__icon" viewBox="0 0 60 60" fill="currentColor" aria-hidden="true" set:html={s.icon} />
+              <h3 class="service-card__title">{s.title}</h3>
+            </div>
+            <p class="service-card__desc">{s.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

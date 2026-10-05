@@ -1,0 +1,42 @@
+---
+// Osmo: Bold Full Screen Navigation + Burger Menu Button (burger replaces the built-in hamburger)
+import { site } from '../../data/site';
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/#work', label: 'Work' },
+  { href: '/#services', label: 'Services' },
+  { href: '/astro', label: 'Astro' },
+  { href: '#contact', label: 'Contact' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => href === path;
+---
+<nav data-navigation-status="not-active" class="bold-nav-full" aria-label="Main">
+  <div class="bold-nav-full__bar">
+    <a href="/" class="bold-nav-full__logo" aria-label={`${site.name}, ${site.role}, home`}>
+      <span>{site.name}</span>
+      <span class="bold-nav-full__logo-dot" aria-hidden="true"></span>
+      <span class="bold-nav-full__logo-role">{site.role}</span>
+    </a>
+    <button data-navigation-toggle="toggle" data-menu-button="burger" class="menu-button" aria-label="Open menu" aria-expanded="false">
+      <div class="menu-button-line"></div>
+      <div class="menu-button-line"></div>
+      <div class="menu-button-line"></div>
+    </button>
+  </div>
+  <div class="bold-nav-full__tile">
+    <ul class="bold-nav-full__ul">
+      {links.map((link) => (
+        <li class="bold-nav-full__li">
+          <a href={link.href} data-nav-link class:list={['bold-nav-full__link', { 'is--current': isCurrent(link.href) }]}>
+            <span class="bold-nav-full__link-text">{link.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="bold-nav__bottom">
+      <p class="bold-nav__word">{site.role}</p>
+      <a href={`mailto:${site.email}`} class="bold-nav__word">{site.email}</a>
+    </div>
+  </div>
+</nav>

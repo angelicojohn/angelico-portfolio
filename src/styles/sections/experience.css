@@ -1,0 +1,121 @@
+/* Experience — BYQ consult-ai-hero-4 */
+.experience {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-pad) 0;
+  background-color: var(--color-bg-brand);
+  color: var(--white);
+}
+
+.experience__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 6.25rem;
+}
+
+.experience__sticky {
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 41.5rem;
+}
+
+.experience__tag {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  height: 2.375rem;
+  padding: 0 .75rem;
+  border-left: 6px solid var(--paper);
+  border-right: 6px solid var(--paper);
+  border-radius: 5px;
+  background-color: var(--blue-400);
+  font-weight: 500;
+}
+
+.experience__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6.4vw, 6.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.experience__title span { display: block; }
+
+.experience__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-list li {
+  padding: .4rem .8rem;
+  border: 1px solid color-mix(in srgb, var(--white) 40%, transparent);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.experience__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 11vw, 10.125rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+.stat__label {
+  max-width: 20ch;
+  font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.experience__ball {
+  position: absolute;
+  left: 0;
+  bottom: 6rem;
+  width: 50vw;
+  max-width: 37rem;
+  opacity: .3;
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .experience__grid { grid-template-columns: 1fr; gap: 5rem; }
+  .experience__sticky { position: static; }
+  .experience__stats { gap: 4rem; }
+  .experience__ball { width: 80vw; top: 0; bottom: 0; margin: auto 0; }
+}

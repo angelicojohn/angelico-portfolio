@@ -1,0 +1,14 @@
+---
+interface Props { href: string; label: string; }
+const { href, label } = Astro.props;
+---
+<a href={href} class="link-arrow">
+  <span class="link-arrow__mask">
+    <span class="link-arrow__text">{label}</span>
+    <span class="link-arrow__line"></span>
+  </span>
+  <span class="link-arrow__icon" aria-hidden="true">
+    <svg viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H8M16 4V12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+    <svg viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H8M16 4V12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+  </span>
+</a>

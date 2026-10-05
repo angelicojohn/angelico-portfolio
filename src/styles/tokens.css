@@ -1,0 +1,71 @@
+/* ==========================================================================
+   AJ Portfolio — Brand Tokens (single source of truth)
+   Every BYQ section and Osmo resource is re-skinned to these variables.
+   No hardcoded hex values in components — always var(--*).
+   ========================================================================== */
+
+:root {
+  /* ---- Primitive: Blue scale ---- */
+  --blue-50:  #eef2ff;
+  --blue-100: #dbe3ff;
+  --blue-200: #b6c6ff;
+  --blue-300: #8aa3ff;
+  --blue-400: #5b7cff;
+  --blue-500: #2f54ff;   /* core brand blue */
+  --blue-600: #1f3fe0;
+  --blue-700: #1730b3;
+  --blue-800: #10227f;
+  --blue-900: #0a1550;
+  --blue-950: #050b2b;
+
+  /* ---- Primitive: Neutrals (cool-tinted to sit with blue) ---- */
+  --ink:      #0b0d14;
+  --ink-soft: #1a1d29;
+  --paper:    #f4f5f8;
+  --white:    #ffffff;
+
+  /* ---- Semantic ---- */
+  --color-bg:          var(--paper);
+  --color-bg-inverse:  var(--ink);
+  --color-bg-brand:    var(--blue-500);
+  --color-text:        var(--ink);
+  --color-text-muted:  color-mix(in srgb, var(--ink) 60%, transparent);
+  --color-text-inverse:var(--paper);
+  --color-accent:      var(--blue-500);
+  --color-accent-hover:var(--blue-600);
+  --color-accent-soft: var(--blue-100);
+  --color-border:      color-mix(in srgb, var(--ink) 12%, transparent);
+
+  /* ---- Osmo resource mappings (replace their hardcoded colours) ---- */
+  --loader-bg:          var(--blue-500);   /* Welcoming Words Loader: was #000 */
+  --loader-fg:          var(--white);      /* was #fff */
+  --nav-tile-bg:        var(--blue-500);   /* Bold Full Screen Nav: was #1b372e */
+  --nav-fg:             var(--paper);      /* was #f4f4f4 */
+  --nav-current:        var(--blue-950);   /* was #d0ff00 */
+  --burger-line:        currentColor;      /* Burger Menu: was #e7dddb */
+  --marker-color:       var(--blue-500);   /* Highlight Marker: was pink #C700EF */
+  --scramble-surface:   var(--blue-50);    /* Text Scramble: was #efeeec */
+
+  /* ---- Type ---- */
+  --font-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* ---- Radius / motion ---- */
+  --radius-sm: .375rem;
+  --radius-md: .75rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+  --ease-osmo: cubic-bezier(.7, 0, .3, 1);
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+
+  /* ---- Layout ---- */
+  --container-max: 1600px;
+  --gutter: 2rem;
+  --section-pad: clamp(5rem, 9vw, 7.5rem);
+  --nav-height: 6.5rem;
+}
+
+@media (max-width: 767px) {
+  :root { --gutter: 1rem; }
+}

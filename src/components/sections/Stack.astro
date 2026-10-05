@@ -1,0 +1,33 @@
+---
+// Astro + Sanity — layout after BYQ consult-ai-hero-4 (blue, sticky left / items right)  ·  Osmo: Masked Text Reveal
+import Logo from '../ui/Logo.astro';
+import { stack } from '../../data/astro';
+---
+<section class="experience stack" id="sanity">
+  <div class="container">
+    <div class="experience__grid">
+      <div>
+        <div class="experience__sticky">
+          <div class="stack__lockup" aria-label="Astro plus Sanity">
+            <Logo name="astro" class="stack__logo" />
+            <span class="stack__plus" aria-hidden="true">+</span>
+            <Logo name="sanity" class="stack__logo" />
+          </div>
+          <h2 class="experience__title stack__title" data-split="heading" data-split-reveal="words">{stack.title}</h2>
+          <div class="experience__text">
+            {stack.intro.map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+      </div>
+      <ul class="stack__list">
+        {stack.items.map((item, i) => (
+          <li class="stack__item">
+            <span class="stack__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="stack__item-title">{item.title}</h3>
+            <p class="stack__item-text">{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

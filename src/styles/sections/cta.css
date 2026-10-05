@@ -1,0 +1,54 @@
+/* Final CTA — BYQ consult-ai-cta-section-1 */
+.cta {
+  padding: 5rem 0;
+  overflow: hidden;
+  background-color: var(--color-bg-inverse);
+  background-image: radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--blue-800) 80%, transparent), transparent 70%);
+  color: var(--white);
+}
+
+.cta__stage {
+  position: relative;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 14vw, 14.4rem) 0;
+}
+
+.cta__ball {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: .45;
+  pointer-events: none;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.cta__title {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw, 6.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.cta__text {
+  max-width: 39rem;
+  color: color-mix(in srgb, var(--white) 80%, transparent);
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cta__actions { margin-top: 1rem; }

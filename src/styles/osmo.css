@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Osmo Supply resources — CSS re-skinned to brand tokens.
+   Originals: /osmo/<resource>/style.css
+   ========================================================================== */
+
+/* ------------------------- Welcoming Words Loader -------------------------- */
+.loading-container {
+  z-index: 500;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.loading-screen {
+  pointer-events: auto;
+  color: var(--loader-fg);
+  background-color: var(--loader-bg);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.loading-words {
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  align-items: center;
+  display: flex;
+  opacity: 0;
+}
+
+.loading-words__dot {
+  background-color: var(--loader-fg);
+  border-radius: 50%;
+  width: .75em;
+  height: .75em;
+}
+
+.loading-words__word {
+  font-family: var(--font-display);
+  font-size: 4.5em;
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .loading-words {
+    font-size: 2.75vw;
+  }
+}
+
+/* ----------------------- Bold Full Screen Navigation ----------------------- */
+.bold-nav-full {
+  z-index: 100;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+}
+
+.bold-nav-full__bar {
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem var(--gutter);
+  display: flex;
+  position: absolute;
+}
+
+/* Brand: logo + burger sit on white pills so they read over every section */
+.bold-nav-full__logo {
+  pointer-events: auto;
+  color: var(--ink);
+  background-color: var(--white);
+  border-radius: var(--radius-pill);
+  justify-content: center;
+  align-items: center;
+  gap: .35em;
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  text-decoration: none;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 8%, transparent);
+  transition: background-color .5s var(--ease-osmo), color .5s var(--ease-osmo), box-shadow .5s var(--ease-osmo);
+}
+
+.bold-nav-full__logo-dot {
+  width: .45em;
+  height: .45em;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  transition: background-color .5s var(--ease-osmo);
+}
+
+.bold-nav-full__logo-role {
+  font-weight: 500;
+  opacity: .55;
+}
+
+[data-navigation-status="active"] .bold-nav-full__logo,
+[data-navigation-status="active"] .menu-button {
+  background-color: transparent;
+  color: var(--nav-fg);
+  box-shadow: none;
+}
+
+[data-navigation-status="active"] .bold-nav-full__logo-dot { background-color: var(--nav-fg); }
+
+/* --------------------------------- Tile --------------------------------- */
+
+.bold-nav-full__tile {
+  pointer-events: auto;
+  background-color: var(--nav-tile-bg);
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: clip-path 1s cubic-bezier(.9, 0, .1, 1);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+/* Tile (Navigation Open) */
+[data-navigation-status="active"] .bold-nav-full__tile {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Closed nav must not catch clicks */
+[data-navigation-status="not-active"] .bold-nav-full__tile { pointer-events: none; }
+
+.bold-nav-full__ul {
+  flex-flow: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+.bold-nav-full__li {
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.bold-nav-full__link {
+  color: var(--nav-fg);
+  letter-spacing: -.04em;
+  padding-left: .075em;
+  padding-right: .075em;
+  font-family: var(--font-display);
+  font-size: calc(4vw + 4vh);
+  font-weight: 500;
+  line-height: 1.1;
+  text-decoration: none;
+  transform: translateY(100%) rotate(5deg);
+  transition: transform 0.75s cubic-bezier(.7, 0, .3, 1);
+}
+
+.bold-nav-full__link.is--current {
+  color: var(--nav-current);
+}
+
+.bold-nav-full__li:nth-child(1) .bold-nav-full__link {transition-delay: 0.2s;}
+.bold-nav-full__li:nth-child(2) .bold-nav-full__link {transition-delay: 0.15s;}
+.bold-nav-full__li:nth-child(3) .bold-nav-full__link {transition-delay: 0.1s;}
+.bold-nav-full__li:nth-child(4) .bold-nav-full__link {transition-delay: 0.05s;}
+.bold-nav-full__li:nth-child(5) .bold-nav-full__link {transition-delay: 0s;}
+
+/* Tile - Links (Navigation Open) */
+[data-navigation-status="active"] .bold-nav-full__link {
+  transform: translateY(0%) rotate(0.001deg);
+  transition-delay: 0.3s;
+}
+
+[data-navigation-status="active"] .bold-nav-full__li:nth-child(1) .bold-nav-full__link {transition-delay: 0.3s;}
+[data-navigation-status="active"] .bold-nav-full__li:nth-child(2) .bold-nav-full__link {transition-delay: 0.35s;}
+[data-navigation-status="active"] .bold-nav-full__li:nth-child(3) .bold-nav-full__link {transition-delay: 0.4s;}
+[data-navigation-status="active"] .bold-nav-full__li:nth-child(4) .bold-nav-full__link {transition-delay: 0.45s;}
+[data-navigation-status="active"] .bold-nav-full__li:nth-child(5) .bold-nav-full__link {transition-delay: 0.5s;}
+
+.bold-nav-full__link-text {
+  text-shadow: 0 1.1em 0;
+  display: block;
+  position: relative;
+}
+
+/* Tile - Links (Hover) */
+.bold-nav-full__li {
+  transition: opacity 0.5s cubic-bezier(.7, 0, .3, 1);
+}
+
+.bold-nav-full__ul:has(.bold-nav-full__li:hover) .bold-nav-full__li {
+  opacity: 0.15;
+}
+
+.bold-nav-full__ul:has(.bold-nav-full__li:hover) .bold-nav-full__li:hover {
+  opacity: 1;
+}
+
+/* Tile - Links (Hover) */
+.bold-nav-full__link .bold-nav-full__link-text {
+  transition: transform 0.5s cubic-bezier(.7, 0, .3, 1);
+  transform: translateY(0%) rotate(0.001deg);
+}
+
+.bold-nav-full__link:hover .bold-nav-full__link-text {
+  transform: translateY(-100%) rotate(0.001deg);
+}
+
+/* Bottom */
+.bold-nav__bottom {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2.25em var(--gutter);
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: var(--nav-fg);
+}
+
+.bold-nav__word {
+  opacity: .6;
+  margin-bottom: 0;
+  font-size: 1.125em;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------------------------- Burger Menu Button --------------------------- */
+.menu-button {
+  grid-column-gap: .1875em;
+  grid-row-gap: .1875em;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 1em;
+  font-size: 1em;
+  display: flex;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: 50%;
+  -webkit-appearance: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 8%, transparent);
+  transition: background-color .5s var(--ease-osmo), color .5s var(--ease-osmo), box-shadow .5s var(--ease-osmo);
+}
+
+.menu-button-line {
+  background-color: var(--burger-line);
+  width: 1.5em;
+  height: .125em;
+  flex: none;
+}
+
+/* ------------------------- Masked Text Reveal (FOUC) ----------------------- */
+[data-split="heading"] {
+  visibility: hidden;
+}
+
+/* --------------------- Highlight Marker Text Reveal ------------------------ */
+[data-highlight-marker-reveal] {
+  visibility: hidden;
+}
+
+[data-highlight-marker-reveal] .highlight-marker-line {
+  width: auto;
+  display: inline-block !important;
+  margin: -0.055em 0px;
+}
+
+.highlight-marker-bar {
+  position: absolute;
+  inset: -0.055em 0px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ------------------------------ Reduced motion ----------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .loading-container { display: none; }
+  [data-split="heading"],
+  [data-highlight-marker-reveal] { visibility: visible; }
+}
