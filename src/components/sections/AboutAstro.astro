@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 // About (Astro page) — BYQ seven-nine-intro-text-1  ·  Osmo: Highlight Marker Text Reveal
 import LinkArrow from '../ui/LinkArrow.astro';
 import Logo from '../ui/Logo.astro';
@@ -21,7 +22,7 @@ import { about } from '../../data/astro';
           <div class="intro__text">
             {about.paragraphs.map((p) => <p>{p}</p>)}
           </div>
-          <LinkArrow href="/#work" label="See My Work" />
+          <LinkArrow href={url('/#work')} label="See My Work" />
         </div>
       </div>
     </div>

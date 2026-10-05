@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 // BYQ: strobe-cms-grid-5  ·  Osmo: Masked Text Reveal  ·  Strobe cursor follower
 import { work } from '../../data/work';
 ---
@@ -21,7 +22,7 @@ import { work } from '../../data/work';
           <a href={item.url ?? '#'} class="work-card" data-work-card target={item.url ? '_blank' : undefined} rel={item.url ? 'noopener' : undefined}>
             <div class="work-card__media" data-work-shot>
               {item.image
-                ? <img class="work-card__shot" src={item.image} alt={`Full-page screenshot of the ${item.title} website`} loading="lazy" />
+                ? <img class="work-card__shot" src={url(item.image)} alt={`Full-page screenshot of the ${item.title} website`} loading="lazy" />
                 : <div class="media-placeholder">Full-page screenshot</div>}
             </div>
             <div class="work-card__body">

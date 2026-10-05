@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 // BYQ: consult-ai-cta-section-1  ·  Osmo: Masked Text Reveal
 import PillButton from '../ui/PillButton.astro';
 import { site } from '../../data/site';
@@ -12,7 +13,7 @@ const {
 <section class="cta" id="contact">
   <div class="container">
     <div class="cta__stage">
-      <img class="cta__ball" data-cta-ball src="/images/byq/master-ball-white.webp" alt="" loading="lazy" />
+      <img class="cta__ball" data-cta-ball src={url('/images/byq/master-ball-white.webp')} alt="" loading="lazy" />
       <div class="cta__content">
         <h2 class="cta__title" data-split="heading" data-split-reveal="words">{title}</h2>
         <p class="cta__text">{text}</p>
