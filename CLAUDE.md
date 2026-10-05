@@ -11,7 +11,14 @@ npm run dev       # dev server (Astro 7 runs it in the background; first free po
 npx astro dev status | logs | stop
 npm run build     # static build → dist/
 npm run preview   # serve the build
+npm run deploy    # build + publish dist/ to the gh-pages branch → https://angelicojohn.github.io/angelico-portfolio/
 ```
+
+## Deploy (GitHub Pages)
+- Repo: https://github.com/angelicojohn/angelico-portfolio (**public**, chosen by AJ). Pages serves the `gh-pages` branch.
+- The site lives under the base `/angelico-portfolio` (`astro.config.mjs`). **Every internal link and image must go through `url()` from `src/lib/url.ts`.** A bare `"/images/…"` or `"/astro"` 404s on Pages. In dev the site is also served under `/angelico-portfolio/`.
+- Deploy is `npm run deploy` (`scripts/deploy.sh`), not GitHub Actions: the gh login token has no `workflow` scope. `.nojekyll` keeps `_astro/` visible.
+- `/osmo` (raw vendor vault code) and `/Full Page Screenshots` (raw client files) are git-ignored. Keep it that way, because the repo is public.
 
 ## Structure
 
