@@ -30,7 +30,7 @@ export const benefits = [
 ];
 
 export const steps = [
-  { num: '01', title: 'Audit', copy: 'You get a clear picture of everything on your current site — pages, CMS, forms, integrations and URLs — so nothing is missed.' },
+  { num: '01', title: 'Audit', copy: 'You get a clear picture of everything on your current site (pages, CMS, forms, integrations and URLs) so nothing is missed.' },
   { num: '02', title: 'Plan', copy: 'You approve the structure, content model and redirect map up front, so there are no surprises later.' },
   { num: '03', title: 'Build', copy: 'You review your new site on a private staging link while your content and interactions are brought across.' },
   { num: '04', title: 'Launch', copy: 'Your new site goes live after full QA, with redirects in place and your old site kept as a safety net.' },
@@ -77,7 +77,7 @@ export const about = {
   paragraphs: [
     'I’m AJ, a developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses.',
     'Whether your site lives in Webflow or Astro, I think about how it will scale, how your team will manage it, and what needs to happen before it’s ready for production.',
-    'With a strong design background, I make sure your new site keeps the polish of the original — and comes out of the migration easier to grow.',
+    'With a strong design background, I make sure your new site keeps the polish of the original, and comes out of the migration easier to grow.',
   ],
 };
 
@@ -100,7 +100,8 @@ export const whyNow = {
   title: 'Why businesses are moving to Astro now.',
   points: [
     { stat: 'Cloudflare', text: 'Astro joined Cloudflare in January 2026 and remains open source under the MIT licence, so it has long-term backing and stays free to use.', source: 'https://astro.build/blog/joining-cloudflare/' },
-    { stat: '2× a year', text: 'Cloudflare reports that Astro adoption doubles every year — a fast-growing community of developers and tools behind your site.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
+    { stat: '2× a year', text: 'Cloudflare reports that Astro adoption doubles every year, a fast-growing community of developers and tools behind your site.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
+    { stat: 'Built for AI', text: 'Astro runs an official docs server for AI coding agents like Claude Code, Cursor and GitHub Copilot, so AI-assisted work on your site follows current Astro practice, not outdated examples.', source: 'https://docs.astro.build/en/guides/build-with-ai/' },
     { stat: 'Big brands', text: 'Your site gets the same fast foundation that Unilever, Visa and NBC News use for their content-driven websites.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
   ],
 };
@@ -116,7 +117,7 @@ export const webApp = {
     { image: 'assistant', title: 'AI assistants', text: 'Answer common questions with an assistant grounded in your own content, around the clock.' },
   ],
   automations: [
-    { title: 'Leads straight into your CRM', text: 'Every form submission lands in HubSpot, Pipedrive or Airtable — tagged and ready to follow up.' },
+    { title: 'Leads straight into your CRM', text: 'Every form submission lands in HubSpot, Pipedrive or Airtable, tagged and ready to follow up.' },
     { title: 'Instant notifications', text: 'New leads, bookings and payments ping your team in Slack or email the moment they happen.' },
     { title: 'AI lead triage', text: 'Incoming enquiries are scored and sorted automatically, so the best opportunities reach you first.' },
     { title: 'Content that publishes itself', text: 'Publish in Sanity and your site rebuilds and goes live, with no developer in the loop.' },
@@ -126,7 +127,7 @@ export const webApp = {
 
 // -------------------------------------------------------- AI-assisted speed
 export const aiSpeed = {
-  title: 'Marketing pages, shipped fast — without the AI look.',
+  title: 'Marketing pages, shipped fast, without the AI look.',
   intro: 'AI-assisted development speeds up the repetitive work, so new landing pages, campaigns and content can go live sooner. Every page is still designed, refined and quality-checked by hand.',
   ai: [
     'Scaffolding pages and components',
@@ -144,7 +145,7 @@ export const aiSpeed = {
 
 // --------------------------------------------------------------- SEO + AEO
 export const seo = {
-  title: 'Found on Google. Cited by AI.',
+  title: ['Found on Google.', 'Cited by AI.'],
   intro: 'More people now get answers from Google’s AI Overviews, ChatGPT and Perplexity before they ever click a link. Every build includes the setup that helps your business show up in classic search results and in AI answers.',
   seo: ['Titles, meta descriptions and Open Graph', 'Clean URLs, canonicals and 301 redirect map', 'XML sitemap and robots.txt', 'Fast pages and strong Core Web Vitals', 'Semantic HTML, headings and alt text'],
   aeo: ['Structured data: Organization, Service, FAQ, Breadcrumbs', 'Question-led content with clear, direct answers', 'llms.txt so AI tools can read your key pages', 'Consistent business details across your site', 'Content structured for AI Overviews, ChatGPT and Perplexity'],

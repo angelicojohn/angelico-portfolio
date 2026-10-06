@@ -1,4 +1,4 @@
-# AJ — Webflow & Astro Developer
+# AJ: Webflow & Astro Developer
 
 > AJ is a Webflow Developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds polished, production-ready websites in Webflow, Framer and Astro, and migrates sites from Webflow, Framer, WordPress and Wix to Astro + Sanity.
 

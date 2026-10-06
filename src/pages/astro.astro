@@ -17,17 +17,18 @@ const schema = [
   { '@type': 'Service', name: 'Astro Development & Migrations', serviceType: 'Website migration to Astro + Sanity', description: 'Move a Webflow, Framer, WordPress or Wix site to Astro + Sanity: faster pages, lower running costs, full ownership, with SEO and AEO carried over.', areaServed: 'Worldwide' },
   { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
 ];
+import Testimonials from '../components/sections/Testimonials.astro';
 import Cta from '../components/sections/Cta.astro';
 ---
 <Base
   schema={schema}
-  title="Astro Development & Migrations — AJ"
+  title="Astro Development & Migrations | AJ"
   description="Move your Webflow, Framer, WordPress or Wix site to Astro + Sanity: a faster site that is cheaper to run, easy for your team to update, and fully yours."
 >
   <PageHero
     words={['Move fast.', 'Pay less.', 'Own it.']}
     label="Astro Development"
-    title="Move your Webflow, Framer, WordPress or Wix site to Astro — and get a faster site that’s cheaper to run and fully yours."
+    title="Move your Webflow, Framer, WordPress or Wix site to Astro and get a faster site that’s cheaper to run and fully yours."
     lede="Keep your content, design and search visibility, and gain a site that loads faster, costs less to run and belongs entirely to you."
   />
   <Platforms />
@@ -42,9 +43,10 @@ import Cta from '../components/sections/Cta.astro';
   <Work
     id="projects"
     heading={['Recent', 'Projects']}
-    eyebrow="Webflow & Framer builds"
+    eyebrow="Astro, Webflow & Framer builds"
     lede="A selection of websites I've built, developed or maintained professionally."
   />
+  <Testimonials limit={4} />
   <Faq />
   <Cta
     title="Let’s make your website faster, leaner and fully yours."

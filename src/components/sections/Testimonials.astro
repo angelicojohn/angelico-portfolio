@@ -1,0 +1,50 @@
+---
+// BYQ: featured-quote + grid testimonials (layout picked by Claude; Jev split D 0.56 / marquee 0.44)
+// Osmo: Masked Text Reveal on the heading
+import fs from 'node:fs';
+import { featuredTestimonial as featured, testimonials, type Testimonial } from '../../data/testimonials';
+import { url } from '../../lib/url';
+const photoOf = (t: Testimonial) => {
+  const ext = ['webp', 'jpg', 'png'].find((e) => fs.existsSync(`public/images/testimonials/${t.photo}.${e}`));
+  return ext ? url(`/images/testimonials/${t.photo}.${ext}`) : null;
+};
+const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 2);
+interface Props { limit?: number; heading?: string[] }
+const { limit = testimonials.length, heading = ['Teams and clients', 'on working with me.'] } = Astro.props;
+const items = testimonials.slice(0, limit);
+---
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+    <h2 class="testimonials__title" id="testimonials-title">
+      {heading.map((line) => <span data-split="heading">{line}</span>)}
+    </h2>
+    <div class="testimonials__grid">
+      <figure class="testimonial testimonial--featured">
+        <blockquote class="testimonial__quote">“{featured.quote}”</blockquote>
+        <figcaption class="testimonial__by">
+          <span class="testimonial__avatar" aria-hidden="true">{photoOf(featured) ? <img src={photoOf(featured)} alt="" width="48" height="48" loading="lazy" /> : initials(featured.name)}</span>
+          <span class="testimonial__who">
+            <span class="testimonial__name">{featured.name}</span>
+            <span class="testimonial__role">{featured.role}</span>
+          </span>
+        </figcaption>
+      </figure>
+      <ul class="testimonials__list" role="list">
+        {items.map((t) => (
+          <li>
+            <figure class="testimonial">
+              <blockquote class="testimonial__quote">“{t.quote}”</blockquote>
+              <figcaption class="testimonial__by">
+                <span class="testimonial__avatar" aria-hidden="true">{photoOf(t) ? <img src={photoOf(t)} alt="" width="48" height="48" loading="lazy" /> : initials(t.name)}</span>
+                <span class="testimonial__who">
+                  <span class="testimonial__name">{t.name}</span>
+                  <span class="testimonial__role">{t.role} <span class="testimonial__relation">{t.relation}</span></span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

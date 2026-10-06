@@ -8,14 +8,14 @@ import { site as siteData } from '../data/site';
 
 interface Props { title?: string; description?: string; schema?: Record<string, unknown>[]; }
 const {
-  title = 'AJ — Webflow Developer',
+  title = 'AJ | Webflow Developer',
   description = 'Webflow Developer building polished, production-ready websites: Figma → Webflow, CMS architecture, custom code, motion and integrations.',
   schema = [],
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const siteSchema = {
   '@type': 'ProfessionalService',
-  name: `${siteData.name} — ${siteData.role}`,
+  name: `${siteData.name}, ${siteData.role}`,
   url: new URL(import.meta.env.BASE_URL, Astro.site).href,
   description: 'Webflow, Framer and Astro development: Figma → Webflow builds, CMS architecture, custom code, migrations to Astro + Sanity, and SEO/AEO setup.',
   founder: { '@type': 'Person', name: siteData.name, jobTitle: siteData.role },
