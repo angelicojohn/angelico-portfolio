@@ -1,6 +1,7 @@
 ---
 // Web app features + automations — card grid after BYQ offthegrid-value-features-4  ·  Osmo: Masked Text Reveal
 import { webApp } from '../../data/astro';
+import { url } from '../../lib/url';
 ---
 <section class="webapp" id="web-apps">
   <div class="container">
@@ -16,6 +17,9 @@ import { webApp } from '../../data/astro';
         {webApp.features.map((f, i) => (
           <li class="service-card webapp__card">
             <span class="webapp__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="webapp__media">
+              <img src={url(`/images/webapp/${f.image}.svg`)} alt="" width="1290" height="1090" loading="lazy" />
+            </div>
             <h4 class="webapp__title">{f.title}</h4>
             <p class="webapp__text">{f.text}</p>
           </li>

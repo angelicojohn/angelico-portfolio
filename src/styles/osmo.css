@@ -260,8 +260,8 @@
   align-items: center;
   width: 3.25rem;
   height: 3.25rem;
-  padding: 1em;
-  font-size: 1em;
+  padding: 0;
+  font-size: .75rem; /* scale the whole button; line geometry below must stay Osmo's */
   display: flex;
   background: var(--white);
   color: var(--ink);
@@ -276,14 +276,22 @@
 
 .menu-button-line {
   background-color: var(--burger-line);
-  width: 1.5em;
-  height: .125em;
+  width: 2em;      /* Osmo original: the open-state transforms (x ±1.3em, y .5em / -.25em) */
+  height: .1875em; /* assume exactly this width, height and .1875em gap to form a centred X */
   flex: none;
 }
 
 /* ------------------------- Masked Text Reveal (FOUC) ----------------------- */
 [data-split="heading"] {
   visibility: hidden;
+}
+
+/* SplitText wraps each line in .line-mask (overflow: clip). With tight line-heights
+   the mask is exactly one line tall and clips descenders (g, y, p) and accents.
+   Extend the clip box and cancel it with negative margins so layout is unchanged. */
+[data-split="heading"] .line-mask {
+  padding-block: .12em .18em;
+  margin-block: -.12em -.18em;
 }
 
 /* --------------------- Highlight Marker Text Reveal ------------------------ */
@@ -310,3 +318,17 @@
   [data-split="heading"],
   [data-highlight-marker-reveal] { visibility: visible; }
 }
+
+/* Astro logo inside the full-screen menu link */
+.bold-nav-full__link-text:has(.bold-nav-full__link-logo) {
+  display: inline-flex;
+  align-items: center;
+  gap: .12em;
+}
+
+.bold-nav-full__link-logo {
+  width: .68em;   /* ≈ cap height: taller and its hover-roll copy peeks below the link */
+  height: .68em;
+  flex: none;
+}
+.bold-nav-full__link-logo { filter: drop-shadow(0 1.1em 0 currentColor); }

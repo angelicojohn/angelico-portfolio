@@ -855,3 +855,33 @@
 
 .compare__swipe { display: none; margin-left: auto; color: var(--color-accent); }
 @media (max-width: 900px) { .compare__swipe { display: inline; } }
+
+/* Why Astro panel: continue the Compare section's surface so the panel floats on it
+   (a white strip behind it created a hard seam at the panel's top edge). */
+.ai--on-bg { background-color: var(--color-bg); }
+
+/* Web app feature graphics (Recraft, brand palette, SVG) — white panel keeps contrast on the blue hover */
+.webapp__card { min-height: 0; }
+
+.webapp__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: .25rem 0 .5rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+/* Absolutely positioned so the (taller) SVG fits inside the 16:10 panel instead of overflowing it */
+.webapp__media img {
+  position: absolute;
+  inset: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  max-width: none;
+  object-fit: contain;
+  transition: transform .8s var(--ease-out-expo);
+}
+
+.webapp__card:hover .webapp__media img { transform: scale(1.05) rotate(-1deg); }
+.webapp__card .webapp__title { margin-top: 0; }

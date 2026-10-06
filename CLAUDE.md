@@ -67,7 +67,7 @@ Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approv
 | Benefits | nextwell-intro-text-5 panel | Highlight Text on Scroll |
 | Stack (Astro + Sanity) | consult-ai-hero-4 layout, blue | Masked Text Reveal |
 | Compare + Why now | kelvin-value-features-6 table (light), sticky first column, swipe on mobile; facts only from Astro/Cloudflare official sources, with links | Masked Text Reveal |
-| WebApp | offthegrid card grid + automation list | Masked Text Reveal |
+| WebApp | offthegrid card grid + automation list; card graphics are Recraft SVGs (`public/images/webapp/*.svg`, private Recraft style `d1c43333-7aee-4562-8eab-beb7403423e4`, white bg stripped, viewBox cropped) | Masked Text Reveal |
 | AiSpeed | split: AI speeds up / AJ makes sure of | Highlight Text on Scroll |
 | SeoAeo | consult-ai blue, SEO + AEO checklists | Masked Text Reveal |
 | Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
@@ -112,6 +112,12 @@ Nav links are root-relative (`/#work`) so they work from any page; `is--current`
 - `@astrojs/sitemap` → `sitemap-index.xml`; `public/robots.txt`, `public/llms.txt`; canonical + og:url in `Base.astro`.
 - JSON-LD via `src/components/SchemaOrg.astro`: site-wide `ProfessionalService` (Base), plus `Service` + `FAQPage` on /astro (built from `faqs`). Pages pass extra schema with `<Base schema={[…]}>`.
 - robots.txt/llms.txt only take full effect at a domain root (not under the GitHub Pages sub-path), so move to a custom domain to get the full benefit.
+
+### Gotchas fixed (don't regress)
+- Masked headings: `.line-mask` gets extra padding-block with matching negative margins (osmo.css) so tight line-heights don't clip descenders.
+- Burger: keep Osmo's line geometry (2em × .1875em, .1875em gap); scale the button with font-size. The open-state transforms assume those exact sizes.
+- Menu logo: the Astro logo in the nav is .68em (cap height) with a drop-shadow copy for the hover roll.
+- `.ai--on-bg`: the Why Astro panel sits on the Compare section's surface (no seam).
 
 ### Layout
 - No horizontal scroll: `html, body { overflow-x: clip }`. Full-bleed `.divider` uses 100vw, which includes the scrollbar width. Don't switch it to `hidden`, because that breaks `position: sticky`.

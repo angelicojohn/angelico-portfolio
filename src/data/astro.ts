@@ -108,12 +108,12 @@ export const whyNow = {
 // ------------------------------------------------- Web app + automations
 export const webApp = {
   features: [
-    { title: 'Client portals & logins', text: 'Give customers a private area for documents, orders or project updates, reducing back-and-forth emails.' },
-    { title: 'Booking & scheduling', text: 'Let visitors book calls, appointments or demos straight from the page they’re reading.' },
-    { title: 'Quote calculators & smart forms', text: 'Turn pricing questions into qualified leads with forms that adapt to each answer.' },
-    { title: 'Payments & checkout', text: 'Take deposits, sell products or run subscriptions with Stripe built into your site.' },
-    { title: 'Search & filtering', text: 'Help visitors find the right product, service or article in seconds.' },
-    { title: 'AI assistants', text: 'Answer common questions with an assistant grounded in your own content, around the clock.' },
+    { image: 'portal', title: 'Client portals & logins', text: 'Give customers a private area for documents, orders or project updates, reducing back-and-forth emails.' },
+    { image: 'booking', title: 'Booking & scheduling', text: 'Let visitors book calls, appointments or demos straight from the page they’re reading.' },
+    { image: 'calculator', title: 'Quote calculators & smart forms', text: 'Turn pricing questions into qualified leads with forms that adapt to each answer.' },
+    { image: 'payments', title: 'Payments & checkout', text: 'Take deposits, sell products or run subscriptions with Stripe built into your site.' },
+    { image: 'search', title: 'Search & filtering', text: 'Help visitors find the right product, service or article in seconds.' },
+    { image: 'assistant', title: 'AI assistants', text: 'Answer common questions with an assistant grounded in your own content, around the clock.' },
   ],
   automations: [
     { title: 'Leads straight into your CRM', text: 'Every form submission lands in HubSpot, Pipedrive or Airtable — tagged and ready to follow up.' },

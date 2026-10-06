@@ -4,21 +4,33 @@ import ProjectCard from '../ui/ProjectCard.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
 import { featured, projects } from '../../data/projects';
 import { url } from '../../lib/url';
-interface Props { all?: boolean; }
-const { all = false } = Astro.props;
+interface Props {
+  all?: boolean;
+  heading?: [string, string];
+  eyebrow?: string;
+  lede?: string;
+  id?: string;
+}
+const {
+  all = false,
+  heading = ['Selected', 'Work'],
+  eyebrow = 'Production Webflow work',
+  lede = "A selection of websites I've built, developed or maintained professionally.",
+  id = 'work',
+} = Astro.props;
 const list = all ? projects : featured;
 ---
-<section class:list={['work', { 'work--all': all }]} id="work">
+<section class:list={['work', { 'work--all': all }]} id={id}>
   <div class="container">
     {!all && (
       <div class="work__head">
         <h2 class="work__title">
-          <span data-split="heading">Selected</span>
-          <span data-split="heading">Work</span>
+          <span data-split="heading">{heading[0]}</span>
+          <span data-split="heading">{heading[1]}</span>
         </h2>
         <div class="work__intro">
-          <h3 class="work__eyebrow">Production Webflow work</h3>
-          <p class="work__lede">A selection of websites I've built, developed or maintained professionally.</p>
+          <h3 class="work__eyebrow">{eyebrow}</h3>
+          <p class="work__lede">{lede}</p>
         </div>
       </div>
     )}

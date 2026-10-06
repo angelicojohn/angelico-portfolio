@@ -2,6 +2,7 @@
 // Osmo: Bold Full Screen Navigation + Burger Menu Button (burger replaces the built-in hamburger)
 import { site } from '../../data/site';
 import { url, stripBase } from '../../lib/url';
+import Logo from '../ui/Logo.astro';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
@@ -30,7 +31,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path === href
       {links.map((link) => (
         <li class="bold-nav-full__li">
           <a href={link.href.startsWith('/') ? url(link.href) : link.href} data-nav-link class:list={['bold-nav-full__link', { 'is--current': isCurrent(link.href) }]}>
-            <span class="bold-nav-full__link-text">{link.label}</span>
+            <span class="bold-nav-full__link-text">{link.label === 'Astro' && <Logo name="astro" class="bold-nav-full__link-logo" />}{link.label}</span>
           </a>
         </li>
       ))}
