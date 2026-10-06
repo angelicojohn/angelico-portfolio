@@ -78,6 +78,9 @@ const host = new URL(p.url).host.replace(/^www\./, '');
       <div class="project-mockups__grid">
         <div class="project-mockups__item"><img class="media-cover" src={url(img(p, 'desktop.webp'))} alt={`${p.name} on a desktop screen`} loading="lazy" /></div>
         <div class="project-mockups__item"><img class="media-cover" src={url(img(p, 'mobile.webp'))} alt={`${p.name} on mobile`} loading="lazy" /></div>
+        {p.mockups?.map((alt, n) => (
+          <div class:list={['project-mockups__item', { 'project-mockups__item--wide': n === 0 }]}><img class="media-cover" src={url(img(p, `mockup-${n + 1}.webp`))} alt={`${p.name} website ${alt}`} loading="lazy" /></div>
+        ))}
       </div>
     </div>
   </section>

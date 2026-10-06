@@ -320,3 +320,67 @@
   .project-next__img { grid-column: 1; grid-row: auto; }
   .viewer--mobile .viewer__screen { width: min(20rem, 80vw); }
 }
+
+/* ---------- /astro: Astro projects bento (Recraft mockup variations) ---------- */
+.astro-projects { padding-block: var(--section-pad); background: var(--white); }
+
+.astro-projects__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.05;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.astro-projects__title > span { display: block; }
+
+.astro-project + .astro-project { margin-top: clamp(3.5rem, 7vw, 6rem); }
+
+/* Large 16:9 shot (2fr) beside two stacked 16:9 shots (1fr): the heights line up. */
+.astro-project__bento {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.astro-project__shot {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--blue-50);
+}
+.astro-project__shot--main { grid-row: span 2; aspect-ratio: auto; }
+.astro-project__shot img { transition: transform .8s var(--ease-out-expo); }
+@media (hover: hover) {
+  .astro-project__shot:hover img { transform: scale(1.04); }
+}
+.astro-project--flip .astro-project__bento { grid-template-columns: 1fr 2fr; }
+.astro-project--flip .astro-project__shot--main { grid-column: 2; grid-row: 1 / span 2; }
+
+.astro-project__info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem 2rem;
+  margin-top: 1.5rem;
+}
+.astro-project__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -.03em;
+}
+.astro-project__meta { grid-column: 1; color: var(--color-text-muted); font-size: .9375rem; }
+.astro-project__links { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 1.75rem; flex-wrap: wrap; }
+
+@media (max-width: 767px) {
+  .astro-project__bento,
+  .astro-project--flip .astro-project__bento { grid-template-columns: 1fr 1fr; }
+  .astro-project__shot--main,
+  .astro-project--flip .astro-project__shot--main { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
+  .astro-project__info { grid-template-columns: 1fr; }
+  .astro-project__links { grid-column: 1; grid-row: auto; }
+}
+.project-mockups__item--wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }

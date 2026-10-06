@@ -11,7 +11,7 @@ import Compare from '../components/sections/Compare.astro';
 import WebApp from '../components/sections/WebApp.astro';
 import AiSpeed from '../components/sections/AiSpeed.astro';
 import SeoAeo from '../components/sections/SeoAeo.astro';
-import Work from '../components/sections/Work.astro';
+import AstroProjects from '../components/sections/AstroProjects.astro';
 import { faqs } from '../data/astro';
 const schema = [
   { '@type': 'Service', name: 'Astro Development & Migrations', serviceType: 'Website migration to Astro + Sanity', description: 'Move a Webflow, Framer, WordPress or Wix site to Astro + Sanity: faster pages, lower running costs, full ownership, with SEO and AEO carried over.', areaServed: 'Worldwide' },
@@ -40,12 +40,7 @@ import Cta from '../components/sections/Cta.astro';
   <SeoAeo />
   <Process />
   <AboutAstro />
-  <Work
-    id="projects"
-    heading={['Recent', 'Projects']}
-    eyebrow="Astro, Webflow & Framer builds"
-    lede="A selection of websites I've built, developed or maintained professionally."
-  />
+  <AstroProjects />
   <Testimonials limit={4} />
   <Faq />
   <Cta

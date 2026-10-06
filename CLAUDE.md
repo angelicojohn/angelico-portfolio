@@ -72,6 +72,8 @@ Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approv
 | SeoAeo | consult-ai blue, SEO + AEO checklists | Masked Text Reveal |
 | Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
 | AboutAstro | seven-nine-intro-text-1 | Highlight Marker |
+| AstroProjects | Astro builds only (`platform: 'Astro'`), bento of 3 Recraft mockup variations per project (`mockup-1..3.webp`, nano_banana_pro from live 2x screenshots, on-brand blue scenes), sides alternate | Masked Text Reveal |
+| Testimonials | featured quote + 2-col grid (`src/data/testimonials.ts`, shared with home; `limit={4}` here) | Masked Text Reveal |
 | Faq | babka-faq-1 layout as native `<details name="faq">` accordion (one open at a time) | Masked Text Reveal |
 | Cta | consult-ai-cta-section-1 (props: title/text/label) | scroll zoom |
 
@@ -80,7 +82,7 @@ Copy is outcome-led: headings were chosen by Jev composite score (outcome 50%, p
 Nav links are root-relative (`/#work`) so they work from any page; `is--current` follows `Astro.url.pathname`.
 
 ### /projects — Projects
-- Data: `src/data/projects.ts` is the single source for the homepage Selected Work (the 4 `featured` projects), `/projects` (all 7, filterable by Webflow or Framer) and `/projects/[slug]` (detail pages).
+- Data: `src/data/projects.ts` is the single source for the homepage Selected Work (the `featured` projects), `/projects` (all, filterable by Astro, Webflow or Framer) and `/projects/[slug]` (detail pages).
 - Images: `node scripts/optimize-projects.mjs` turns the git-ignored `Full Page Screenshots/<Name> — <Platform>/` into `public/images/work/<slug>/` (`cover|desktop|mobile.webp` 1600w, `fullpage-desktop.jpg` 1440w, `fullpage-mobile.jpg` 390w). Full pages are JPEG because WebP caps at 16383px tall. Chilliwack Connect uses its homepage shots, not the tallest inner page.
 - Card: `src/components/ui/ProjectCard.astro`. Full-page scroll on hover, falling back to the cover when there's no desktop full page (Winston Moore).
 - Detail: hero, cover mockup, scrollable desktop + phone viewers, desktop/mobile mockups, next project, CTA.

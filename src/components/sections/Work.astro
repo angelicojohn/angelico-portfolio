@@ -2,7 +2,7 @@
 // BYQ: strobe-cms-grid-5  ·  Osmo: Masked Text Reveal  ·  Strobe cursor follower
 import ProjectCard from '../ui/ProjectCard.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
-import { featured, projects } from '../../data/projects';
+import { featured, projects, platforms } from '../../data/projects';
 import { url } from '../../lib/url';
 interface Props {
   all?: boolean;
@@ -38,7 +38,7 @@ const list = all ? projects : featured;
     {all && (
       <div class="work__filters" role="group" aria-label="Filter projects by platform" data-work-filters>
         <button type="button" class="work__filter is--active" data-filter="all" aria-pressed="true">All <span>{projects.length}</span></button>
-        {['Webflow', 'Framer'].map((pl) => (
+        {platforms.map((pl) => (
           <button type="button" class="work__filter" data-filter={pl} aria-pressed="false">{pl} <span>{projects.filter((p) => p.platform === pl).length}</span></button>
         ))}
       </div>

@@ -11,6 +11,8 @@ export interface Project {
   role: string;
   contribution: string[];
   description?: string;
+  /** Extra on-brand Recraft mockup variations: public/images/work/<slug>/mockup-<n>.webp, with alt text */
+  mockups?: string[];
   featured?: boolean;
   hasDesktopFullpage: boolean;
 }
@@ -21,8 +23,10 @@ const framerContribution = ['Figma → Framer', 'Responsive Development', 'CMS',
 
 export const projects: Project[] = [
   // Mockups generated with Recraft (nano_banana_pro) from live 2x screenshots; full pages captured at 1440 / 390.
-  { slug: 'haide-and-roger-fitness', name: 'Haide & Roger Fitness', platform: 'Astro', url: 'https://angelicojohn.github.io/haide-and-roger-fitness-site/', role: 'Astro Development', contribution: astroContribution, featured: true, hasDesktopFullpage: true },
-  { slug: 'cebu-marathon', name: 'Cebu Marathon 2027', platform: 'Astro', url: 'https://cebumarathon.netlify.app/', role: 'Astro Development', contribution: astroContribution, featured: true, hasDesktopFullpage: true },
+  { slug: 'haide-and-roger-fitness', name: 'Haide & Roger Fitness', platform: 'Astro', url: 'https://angelicojohn.github.io/haide-and-roger-fitness-site/', role: 'Astro Development', contribution: astroContribution, featured: true, hasDesktopFullpage: true,
+    mockups: ['on a floating laptop and phone', 'in a browser window', 'on three phones'] },
+  { slug: 'cebu-marathon', name: 'Cebu Marathon 2027', platform: 'Astro', url: 'https://cebumarathon.netlify.app/', role: 'Astro Development', contribution: astroContribution, featured: true, hasDesktopFullpage: true,
+    mockups: ['on a laptop and phone over glass panels', 'in a browser window', 'on three phones'] },
   { slug: 'arx-crates', name: 'Arx Crates', platform: 'Webflow', url: 'https://arxcrates.webflow.io', role: 'Webflow Development', contribution, featured: true, hasDesktopFullpage: true },
   { slug: 'allard-studio', name: 'Allard Studio', platform: 'Framer', url: 'https://www.allardstudio.com', role: 'Framer Development', contribution: framerContribution, featured: true, hasDesktopFullpage: true },
   { slug: 'chilliwack-connect', name: 'Chilliwack Connect', platform: 'Webflow', url: 'https://chilliwackconnect.ca', role: 'Webflow Development', contribution, featured: true, hasDesktopFullpage: true },
@@ -32,7 +36,7 @@ export const projects: Project[] = [
   { slug: 'kw-building', name: 'KW Building', platform: 'Framer', url: 'https://www.kwbuildingdesign.com', role: 'Framer Development', contribution: framerContribution, hasDesktopFullpage: true },
 ];
 
-export const img = (p: Project, file: 'cover.webp' | 'desktop.webp' | 'mobile.webp' | 'fullpage-desktop.jpg' | 'fullpage-mobile.jpg') =>
+export const img = (p: Project, file: 'cover.webp' | 'desktop.webp' | 'mobile.webp' | 'fullpage-desktop.jpg' | 'fullpage-mobile.jpg' | `mockup-${number}.webp`) =>
   `/images/work/${p.slug}/${file}`;
 
 export const featured = projects.filter((p) => p.featured);

@@ -1,0 +1,36 @@
+---
+// /astro projects: Astro builds only, each as a bento of Recraft mockup variations
+// (one large + two stacked; sides alternate per project). Osmo: Masked Text Reveal.
+import LinkArrow from '../ui/LinkArrow.astro';
+import { projects, img } from '../../data/projects';
+import { url } from '../../lib/url';
+const list = projects.filter((p) => p.platform === 'Astro' && p.mockups?.length);
+---
+<section class="astro-projects" id="projects">
+  <div class="container">
+    <h2 class="astro-projects__title">
+      <span data-split="heading">Built with Astro.</span>
+      <span data-split="heading">Live and fast.</span>
+    </h2>
+
+    {list.map((p, i) => (
+      <article class:list={['astro-project', { 'astro-project--flip': i % 2 === 1 }]}>
+        <div class="astro-project__bento">
+          {p.mockups!.slice(0, 3).map((alt, n) => (
+            <a href={url(`/projects/${p.slug}`)} class:list={['astro-project__shot', { 'astro-project__shot--main': n === 0 }]}>
+              <img class="media-cover" src={url(img(p, `mockup-${n + 1}.webp`))} alt={`${p.name} website ${alt}`} loading="lazy" width="1600" height="893" />
+            </a>
+          ))}
+        </div>
+        <div class="astro-project__info">
+          <h3 class="astro-project__name">{p.name}</h3>
+          <p class="astro-project__meta">{p.role} · {p.contribution.slice(0, 4).join(', ')}</p>
+          <div class="astro-project__links">
+            <LinkArrow href={url(`/projects/${p.slug}`)} label="View project" />
+            <LinkArrow href={p.url} label="Visit live site" />
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
