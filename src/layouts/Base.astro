@@ -3,12 +3,25 @@ import '../styles/global.css';
 import Loader from '../components/osmo/Loader.astro';
 import Nav from '../components/osmo/Nav.astro';
 import Footer from '../components/sections/Footer.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { site as siteData } from '../data/site';
 
-interface Props { title?: string; description?: string; }
+interface Props { title?: string; description?: string; schema?: Record<string, unknown>[]; }
 const {
   title = 'AJ — Webflow Developer',
   description = 'Webflow Developer building polished, production-ready websites: Figma → Webflow, CMS architecture, custom code, motion and integrations.',
+  schema = [],
 } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const siteSchema = {
+  '@type': 'ProfessionalService',
+  name: `${siteData.name} — ${siteData.role}`,
+  url: new URL(import.meta.env.BASE_URL, Astro.site).href,
+  description: 'Webflow, Framer and Astro development: Figma → Webflow builds, CMS architecture, custom code, migrations to Astro + Sanity, and SEO/AEO setup.',
+  founder: { '@type': 'Person', name: siteData.name, jobTitle: siteData.role },
+  areaServed: 'Worldwide',
+  knowsAbout: ['Webflow', 'Framer', 'Astro', 'Sanity', 'GSAP', 'Technical SEO', 'Answer Engine Optimization'],
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -19,6 +32,11 @@ const {
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/sitemap-index.xml`} />
+    <SchemaOrg schema={[siteSchema, ...schema]} />
     <meta name="theme-color" content="#2f54ff" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232f54ff'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

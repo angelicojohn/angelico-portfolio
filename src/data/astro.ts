@@ -50,6 +50,10 @@ export const faqs = [
     answer: 'In whatever way suits your team best: simple Markdown files, Astro content collections, or a headless CMS with a visual editor. We’ll choose together during planning.',
   },
   {
+    question: 'What is AEO, and do I need it?',
+    answer: 'Answer Engine Optimisation helps AI tools like ChatGPT, Perplexity and Google’s AI Overviews understand and cite your business. It builds on good SEO, and it’s included in every Astro build.',
+  },
+  {
     question: 'Do you still build in Webflow?',
     answer: 'Yes. If Webflow is the better fit for your goals, I’ll tell you and build it there. The aim is the right site for your business, not a particular tool.',
   },
@@ -75,4 +79,74 @@ export const about = {
     'Whether your site lives in Webflow or Astro, I think about how it will scale, how your team will manage it, and what needs to happen before it’s ready for production.',
     'With a strong design background, I make sure your new site keeps the polish of the original — and comes out of the migration easier to grow.',
   ],
+};
+
+// ------------------------------------------------------------ Comparison
+// Cell: [mark, note]. mark: 'yes' | 'part' | 'no'. Keep claims fair — include rows Astro loses.
+type Mark = 'yes' | 'part' | 'no';
+export const compareCols = ['Astro + Sanity', 'Webflow', 'Framer', 'WordPress', 'Wix'] as const;
+export const compareRows: { label: string; cells: [Mark, string][] }[] = [
+  { label: 'Fast by default', cells: [['yes', 'Ships HTML, minimal JS'], ['part', 'Good, platform-tuned'], ['part', 'Heavier JS runtime'], ['part', 'Depends on theme & plugins'], ['no', 'Heavier pages']] },
+  { label: 'You own the code and can switch hosts', cells: [['yes', 'Yours, host anywhere'], ['no', 'Locked to platform'], ['no', 'Locked to platform'], ['yes', 'Open source'], ['no', 'Locked to platform']] },
+  { label: 'No per-site builder plan', cells: [['yes', 'Free framework'], ['no', 'Site plan required'], ['no', 'Site plan required'], ['part', 'Hosting + paid plugins'], ['no', 'Plan required']] },
+  { label: 'Your team edits content visually', cells: [['yes', 'With Sanity Studio'], ['yes', 'Editor'], ['yes', 'CMS'], ['yes', 'Admin'], ['yes', 'Editor']] },
+  { label: 'Custom web app features', cells: [['yes', 'APIs, logins, payments'], ['part', 'Via embeds & apps'], ['part', 'Limited'], ['part', 'Via plugins'], ['part', 'Via Velo & apps']] },
+  { label: 'Low security maintenance', cells: [['yes', 'Static by default'], ['yes', 'Managed'], ['yes', 'Managed'], ['no', 'Core & plugin updates'], ['yes', 'Managed']] },
+  { label: 'Full control of SEO & AEO markup', cells: [['yes', 'Every tag & schema'], ['part', 'Mostly'], ['part', 'Limited'], ['yes', 'Via plugins'], ['part', 'Limited']] },
+  { label: 'Design without writing code', cells: [['no', 'Developer-built'], ['yes', 'Visual builder'], ['yes', 'Visual builder'], ['part', 'Page builders'], ['yes', 'Visual builder']] },
+];
+
+export const whyNow = {
+  title: 'Why businesses are moving to Astro now.',
+  points: [
+    { stat: 'Cloudflare', text: 'Astro joined Cloudflare in January 2026 and remains open source under the MIT licence, so it has long-term backing and stays free to use.', source: 'https://astro.build/blog/joining-cloudflare/' },
+    { stat: '2× a year', text: 'Cloudflare reports that Astro adoption doubles every year — a fast-growing community of developers and tools behind your site.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
+    { stat: 'Big brands', text: 'Your site gets the same fast foundation that Unilever, Visa and NBC News use for their content-driven websites.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
+  ],
+};
+
+// ------------------------------------------------- Web app + automations
+export const webApp = {
+  features: [
+    { title: 'Client portals & logins', text: 'Give customers a private area for documents, orders or project updates, reducing back-and-forth emails.' },
+    { title: 'Booking & scheduling', text: 'Let visitors book calls, appointments or demos straight from the page they’re reading.' },
+    { title: 'Quote calculators & smart forms', text: 'Turn pricing questions into qualified leads with forms that adapt to each answer.' },
+    { title: 'Payments & checkout', text: 'Take deposits, sell products or run subscriptions with Stripe built into your site.' },
+    { title: 'Search & filtering', text: 'Help visitors find the right product, service or article in seconds.' },
+    { title: 'AI assistants', text: 'Answer common questions with an assistant grounded in your own content, around the clock.' },
+  ],
+  automations: [
+    { title: 'Leads straight into your CRM', text: 'Every form submission lands in HubSpot, Pipedrive or Airtable — tagged and ready to follow up.' },
+    { title: 'Instant notifications', text: 'New leads, bookings and payments ping your team in Slack or email the moment they happen.' },
+    { title: 'AI lead triage', text: 'Incoming enquiries are scored and sorted automatically, so the best opportunities reach you first.' },
+    { title: 'Content that publishes itself', text: 'Publish in Sanity and your site rebuilds and goes live, with no developer in the loop.' },
+    { title: 'Workflows with n8n, Zapier or Make', text: 'Connect your site to the tools you already use and remove repetitive admin.' },
+  ],
+};
+
+// -------------------------------------------------------- AI-assisted speed
+export const aiSpeed = {
+  title: 'Marketing pages, shipped fast — without the AI look.',
+  intro: 'AI-assisted development speeds up the repetitive work, so new landing pages, campaigns and content can go live sooner. Every page is still designed, refined and quality-checked by hand.',
+  ai: [
+    'Scaffolding pages and components',
+    'Migrating and restructuring content',
+    'Repetitive code and data tasks',
+    'Drafting tests and catching bugs early',
+  ],
+  me: [
+    'Typography, spacing and visual hierarchy',
+    'Motion that feels considered, not generic',
+    'Consistency with your brand and design system',
+    'QA on every breakpoint before anything ships',
+  ],
+};
+
+// --------------------------------------------------------------- SEO + AEO
+export const seo = {
+  title: 'Found on Google. Cited by AI.',
+  intro: 'More people now get answers from Google’s AI Overviews, ChatGPT and Perplexity before they ever click a link. Every build includes the setup that helps your business show up in classic search results and in AI answers.',
+  seo: ['Titles, meta descriptions and Open Graph', 'Clean URLs, canonicals and 301 redirect map', 'XML sitemap and robots.txt', 'Fast pages and strong Core Web Vitals', 'Semantic HTML, headings and alt text'],
+  aeo: ['Structured data: Organization, Service, FAQ, Breadcrumbs', 'Question-led content with clear, direct answers', 'llms.txt so AI tools can read your key pages', 'Consistent business details across your site', 'Content structured for AI Overviews, ChatGPT and Perplexity'],
+  note: 'This site uses the same setup.',
 };

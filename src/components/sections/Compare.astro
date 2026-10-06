@@ -1,0 +1,57 @@
+---
+// BYQ: kelvin-value-features-6 (comparison table) on light bg + "why now" facts  ·  Osmo: Masked Text Reveal
+import Logo from '../ui/Logo.astro';
+import { compareCols, compareRows, whyNow } from '../../data/astro';
+const markLabel = { yes: 'Yes', part: 'Partly', no: 'No' } as const;
+---
+<section class="compare" id="compare">
+  <div class="container">
+    <div class="process__head">
+      <div class="process__eyebrow"><Logo name="astro" class="process__logo" />How it compares</div>
+      <h2 class="process__title" data-split="heading" data-split-reveal="words"><span class="process__title-dim">Same great design.</span> A better foundation.</h2>
+    </div>
+
+    <div class="compare__scroll" tabindex="0" role="region" aria-label="Platform comparison table, scrolls sideways on small screens">
+      <table class="compare__table">
+        <thead>
+          <tr>
+            <th scope="col" class="compare__corner"><span class="sr-only">Feature</span></th>
+            {compareCols.map((c, i) => (
+              <th scope="col" class:list={['compare__col', { 'is--astro': i === 0 }]}>
+                {i === 0 ? <span class="compare__astro-head"><Logo name="astro" />{c}</span> : c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {compareRows.map((row) => (
+            <tr>
+              <th scope="row" class="compare__label">{row.label}</th>
+              {row.cells.map(([mark, note], i) => (
+                <td class:list={['compare__cell', `is--${mark}`, { 'is--astro': i === 0 }]}>
+                  <span class="compare__mark" aria-hidden="true">{mark === 'yes' ? '✓' : mark === 'part' ? '◐' : '✕'}</span>
+                  <span class="sr-only">{markLabel[mark]}: </span>
+                  <span class="compare__note">{note}</span>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="compare__legend"><span>✓ Yes</span><span>◐ Partly</span><span>✕ No</span><span class="compare__swipe" aria-hidden="true">Swipe to compare →</span></p>
+
+    <div class="why-now">
+      <h3 class="why-now__title">{whyNow.title}</h3>
+      <ul class="why-now__grid">
+        {whyNow.points.map((p) => (
+          <li class="why-now__item">
+            <span class="why-now__stat">{p.stat}</span>
+            <p class="why-now__text">{p.text}</p>
+            <a class="why-now__source" href={p.source} target="_blank" rel="noopener">Source ↗</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

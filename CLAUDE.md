@@ -66,6 +66,10 @@ Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approv
 | Platforms | offthegrid-value-features-4 cards, 2×2 | Masked Text Reveal |
 | Benefits | nextwell-intro-text-5 panel | Highlight Text on Scroll |
 | Stack (Astro + Sanity) | consult-ai-hero-4 layout, blue | Masked Text Reveal |
+| Compare + Why now | kelvin-value-features-6 table (light), sticky first column, swipe on mobile; facts only from Astro/Cloudflare official sources, with links | Masked Text Reveal |
+| WebApp | offthegrid card grid + automation list | Masked Text Reveal |
+| AiSpeed | split: AI speeds up / AJ makes sure of | Highlight Text on Scroll |
+| SeoAeo | consult-ai blue, SEO + AEO checklists | Masked Text Reveal |
 | Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
 | AboutAstro | seven-nine-intro-text-1 | Highlight Marker |
 | Faq | babka-faq-1 layout as native `<details name="faq">` accordion (one open at a time) | Masked Text Reveal |
@@ -103,6 +107,11 @@ Nav links are root-relative (`/#work`) so they work from any page; `is--current`
 ### BYQ sections
 - BYQ references are React/Tailwind. Port them to `.astro` + plain CSS, keep layout, spacing and interactions, and drop their colours and fonts.
 - Fetch with the BYQ MCP (`get_byq_component <id>`) when changing a section.
+
+### SEO / AEO on this site
+- `@astrojs/sitemap` → `sitemap-index.xml`; `public/robots.txt`, `public/llms.txt`; canonical + og:url in `Base.astro`.
+- JSON-LD via `src/components/SchemaOrg.astro`: site-wide `ProfessionalService` (Base), plus `Service` + `FAQPage` on /astro (built from `faqs`). Pages pass extra schema with `<Base schema={[…]}>`.
+- robots.txt/llms.txt only take full effect at a domain root (not under the GitHub Pages sub-path), so move to a custom domain to get the full benefit.
 
 ### Layout
 - No horizontal scroll: `html, body { overflow-x: clip }`. Full-bleed `.divider` uses 100vw, which includes the scrollbar width. Don't switch it to `hidden`, because that breaks `position: sticky`.

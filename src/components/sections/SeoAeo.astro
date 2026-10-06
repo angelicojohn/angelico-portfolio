@@ -1,0 +1,24 @@
+---
+// SEO + AEO included — two checklists in the blue Consult AI style  ·  Osmo: Masked Text Reveal
+import { seo } from '../../data/astro';
+---
+<section class="experience seoaeo" id="seo">
+  <div class="container">
+    <div class="seoaeo__head">
+      <span class="experience__tag">Included in every build</span>
+      <h2 class="experience__title seoaeo__title" data-split="heading" data-split-reveal="words">{seo.title}</h2>
+      <p class="seoaeo__intro">{seo.intro}</p>
+    </div>
+    <div class="seoaeo__grid">
+      <div class="seoaeo__card">
+        <h3 class="seoaeo__card-title">SEO <span>Search engines</span></h3>
+        <ul class="seoaeo__list">{seo.seo.map((t) => <li>{t}</li>)}</ul>
+      </div>
+      <div class="seoaeo__card">
+        <h3 class="seoaeo__card-title">AEO <span>AI answer engines</span></h3>
+        <ul class="seoaeo__list">{seo.aeo.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    </div>
+    <p class="seoaeo__note">{seo.note}</p>
+  </div>
+</section>

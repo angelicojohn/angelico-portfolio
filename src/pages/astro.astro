@@ -7,9 +7,19 @@ import Process from '../components/sections/Process.astro';
 import Faq from '../components/sections/Faq.astro';
 import Stack from '../components/sections/Stack.astro';
 import AboutAstro from '../components/sections/AboutAstro.astro';
+import Compare from '../components/sections/Compare.astro';
+import WebApp from '../components/sections/WebApp.astro';
+import AiSpeed from '../components/sections/AiSpeed.astro';
+import SeoAeo from '../components/sections/SeoAeo.astro';
+import { faqs } from '../data/astro';
+const schema = [
+  { '@type': 'Service', name: 'Astro Development & Migrations', serviceType: 'Website migration to Astro + Sanity', description: 'Move a Webflow, Framer, WordPress or Wix site to Astro + Sanity: faster pages, lower running costs, full ownership, with SEO and AEO carried over.', areaServed: 'Worldwide' },
+  { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
+];
 import Cta from '../components/sections/Cta.astro';
 ---
 <Base
+  schema={schema}
   title="Astro Development & Migrations — AJ"
   description="Move your Webflow, Framer, WordPress or Wix site to Astro + Sanity: a faster site that is cheaper to run, easy for your team to update, and fully yours."
 >
@@ -20,8 +30,12 @@ import Cta from '../components/sections/Cta.astro';
     lede="Keep your content, design and search visibility, and gain a site that loads faster, costs less to run and belongs entirely to you."
   />
   <Platforms />
+  <Compare />
   <Benefits />
   <Stack />
+  <WebApp />
+  <AiSpeed />
+  <SeoAeo />
   <Process />
   <AboutAstro />
   <Faq />

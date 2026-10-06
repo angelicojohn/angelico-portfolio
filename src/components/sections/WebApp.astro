@@ -1,0 +1,43 @@
+---
+// Web app features + automations — card grid after BYQ offthegrid-value-features-4  ·  Osmo: Masked Text Reveal
+import { webApp } from '../../data/astro';
+---
+<section class="webapp" id="web-apps">
+  <div class="container">
+    <div class="platforms__head">
+      <span class="pill-label">Beyond a website</span>
+      <h2 class="services__title" data-split="heading" data-split-reveal="words">A site that <span class="services__title-accent">does the work for you.</span></h2>
+      <p class="services__intro">Astro isn’t limited to static pages. Add the features and automations that save your team time and turn visitors into customers.</p>
+    </div>
+
+    <div class="webapp__group">
+      <h3 class="webapp__label">Web app features</h3>
+      <ul class="webapp__grid">
+        {webApp.features.map((f, i) => (
+          <li class="service-card webapp__card">
+            <span class="webapp__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h4 class="webapp__title">{f.title}</h4>
+            <p class="webapp__text">{f.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="webapp__group">
+      <h3 class="webapp__label">Automations</h3>
+      <ul class="webapp__flow">
+        {webApp.automations.map((a) => (
+          <li class="webapp__flow-item">
+            <span class="webapp__bolt" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+            </span>
+            <div>
+              <h4 class="webapp__title">{a.title}</h4>
+              <p class="webapp__text">{a.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
