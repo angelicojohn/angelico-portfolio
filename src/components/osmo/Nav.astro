@@ -4,13 +4,13 @@ import { site } from '../../data/site';
 import { url, stripBase } from '../../lib/url';
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/#work', label: 'Work' },
+  { href: '/projects', label: 'Projects' },
   { href: '/#services', label: 'Services' },
   { href: '/astro', label: 'Astro' },
   { href: '#contact', label: 'Contact' },
 ];
 const path = stripBase(Astro.url.pathname);
-const isCurrent = (href: string) => href === path;
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`));
 ---
 <nav data-navigation-status="not-active" class="bold-nav-full" aria-label="Main">
   <div class="bold-nav-full__bar">

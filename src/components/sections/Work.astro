@@ -1,44 +1,46 @@
 ---
-import { url } from '../../lib/url';
 // BYQ: strobe-cms-grid-5  ·  Osmo: Masked Text Reveal  ·  Strobe cursor follower
-import { work } from '../../data/work';
+import ProjectCard from '../ui/ProjectCard.astro';
+import LinkArrow from '../ui/LinkArrow.astro';
+import { featured, projects } from '../../data/projects';
+import { url } from '../../lib/url';
+interface Props { all?: boolean; }
+const { all = false } = Astro.props;
+const list = all ? projects : featured;
 ---
-<section class="work" id="work">
+<section class:list={['work', { 'work--all': all }]} id="work">
   <div class="container">
-    <div class="work__head">
-      <h2 class="work__title">
-        <span data-split="heading">Selected</span>
-        <span data-split="heading">Work</span>
-      </h2>
-      <div class="work__intro">
-        <h3 class="work__eyebrow">Production Webflow work</h3>
-        <p class="work__lede">A selection of websites I've built, developed or maintained professionally.</p>
+    {!all && (
+      <div class="work__head">
+        <h2 class="work__title">
+          <span data-split="heading">Selected</span>
+          <span data-split="heading">Work</span>
+        </h2>
+        <div class="work__intro">
+          <h3 class="work__eyebrow">Production Webflow work</h3>
+          <p class="work__lede">A selection of websites I've built, developed or maintained professionally.</p>
+        </div>
       </div>
-    </div>
+    )}
+
+    {all && (
+      <div class="work__filters" role="group" aria-label="Filter projects by platform" data-work-filters>
+        <button type="button" class="work__filter is--active" data-filter="all" aria-pressed="true">All <span>{projects.length}</span></button>
+        {['Webflow', 'Framer'].map((pl) => (
+          <button type="button" class="work__filter" data-filter={pl} aria-pressed="false">{pl} <span>{projects.filter((p) => p.platform === pl).length}</span></button>
+        ))}
+      </div>
+    )}
 
     <ul class="work__grid">
-      {work.map((item) => (
-        <li>
-          <a href={item.url ?? '#'} class="work-card" data-work-card target={item.url ? '_blank' : undefined} rel={item.url ? 'noopener' : undefined}>
-            <div class="work-card__media" data-work-shot>
-              {item.image
-                ? <img class="work-card__shot" src={url(item.image)} alt={`Full-page screenshot of the ${item.title} website`} loading="lazy" />
-                : <div class="media-placeholder">Full-page screenshot</div>}
-            </div>
-            <div class="work-card__body">
-              <h3 class="work-card__title">{item.title}</h3>
-              <dl class="work-card__meta">
-                <dt>My Role</dt>
-                <dd>{item.role}</dd>
-                <dt>Contribution</dt>
-                <dd>{item.contribution.join(' · ')}</dd>
-              </dl>
-              <p class="work-card__desc">{item.description}</p>
-            </div>
-          </a>
-        </li>
-      ))}
+      {list.map((p) => <li data-platform={p.platform}><ProjectCard project={p} /></li>)}
     </ul>
+
+    {!all && (
+      <div class="work__more">
+        <LinkArrow href={url('/projects')} label={`View all ${projects.length} projects`} />
+      </div>
+    )}
   </div>
 
   <div class="work-cursor" data-work-cursor aria-hidden="true">

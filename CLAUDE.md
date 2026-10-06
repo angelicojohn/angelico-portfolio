@@ -75,6 +75,13 @@ Copy is outcome-led: headings were chosen by Jev composite score (outcome 50%, p
 
 Nav links are root-relative (`/#work`) so they work from any page; `is--current` follows `Astro.url.pathname`.
 
+### /projects — Projects
+- Data: `src/data/projects.ts` is the single source for the homepage Selected Work (the 4 `featured` projects), `/projects` (all 7, filterable by Webflow or Framer) and `/projects/[slug]` (detail pages).
+- Images: `node scripts/optimize-projects.mjs` turns the git-ignored `Full Page Screenshots/<Name> — <Platform>/` into `public/images/work/<slug>/` (`cover|desktop|mobile.webp` 1600w, `fullpage-desktop.jpg` 1440w, `fullpage-mobile.jpg` 390w). Full pages are JPEG because WebP caps at 16383px tall. Chilliwack Connect uses its homepage shots, not the tallest inner page.
+- Card: `src/components/ui/ProjectCard.astro`. Full-page scroll on hover, falling back to the cover when there's no desktop full page (Winston Moore).
+- Detail: hero, cover mockup, scrollable desktop + phone viewers, desktop/mobile mockups, next project, CTA.
+- Project `description` is empty until AJ writes what they were responsible for. Framer projects use "Figma → Framer" in Contribution.
+
 ## Rules
 
 ### Branding
@@ -102,14 +109,15 @@ Nav links are root-relative (`/#work`) so they work from any page; `is--current`
 
 ### Content
 - Copy comes from the user's brief and shouldn't be reworded without asking.
-- Selected Work entries live in `src/data/work.ts`. Images are **full-page screenshots** (1440px wide, any height) in `public/images/work/`. The card shows the top in a 16:10 frame and scrolls to the bottom on hover; `main.js` measures distance and duration per image.
+- Projects live in `src/data/projects.ts` (see /projects above). Images are **full-page screenshots** (1440px wide, any height) in `public/images/work/`. The card shows the top in a 16:10 frame and scrolls to the bottom on hover; `main.js` measures distance and duration per image.
 - AJ's photos replace `.media-placeholder` elements in Hero and About.
 
 ## Jev (decisions) — "Jev decides, Claude writes"
 Use the `jev` skill (`~/.claude/skills/jev`) for any sort, classify, score or yes/no call in this project, e.g. checking copy against the brief, triaging QA feedback, or picking between candidate sections or effects. Claude writes the code and copy. When Jev's confidence is under about 0.7, Claude decides and says so. Ask the user before sending anything private (client names, emails, contracts). Public site copy is fine.
 
 ## Open TODOs
-- [ ] Real Selected Work entries + full-page screenshots (`src/data/work.ts`)
+- [x] Real projects + full-page screenshots (`src/data/projects.ts`)
+- [ ] AJ: 1–2 sentences per project on what they were responsible for
 - [ ] Approve copy written by Claude (not in brief): hero words "Figma. Webflow. Shipped.", label "Hi, I'm AJ", What I Do intro line
 - [ ] AJ's photo (Hero) + secondary image (About)
 - [ ] Contact email + LinkedIn in `src/data/site.ts`

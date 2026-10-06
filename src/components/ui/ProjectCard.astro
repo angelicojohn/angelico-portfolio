@@ -1,0 +1,25 @@
+---
+// Project card — BYQ strobe-cms-grid-5 card + full-page screenshot scroll on hover (main.js measures it).
+import { url } from '../../lib/url';
+import { img, type Project } from '../../data/projects';
+interface Props { project: Project; }
+const { project: p } = Astro.props;
+---
+<a href={url(`/projects/${p.slug}`)} class="work-card" data-work-card data-platform={p.platform}>
+  <div class="work-card__media" data-work-shot={p.hasDesktopFullpage ? '' : undefined}>
+    {p.hasDesktopFullpage
+      ? <img class="work-card__shot" src={url(img(p, 'fullpage-desktop.jpg'))} alt={`Full-page screenshot of the ${p.name} website`} loading="lazy" width="1440" />
+      : <img class="media-cover" src={url(img(p, 'cover.webp'))} alt={`${p.name} website`} loading="lazy" />}
+    <span class="work-card__platform">{p.platform}</span>
+  </div>
+  <div class="work-card__body">
+    <h3 class="work-card__title">{p.name}</h3>
+    <dl class="work-card__meta">
+      <dt>My Role</dt>
+      <dd>{p.role}</dd>
+      <dt>Contribution</dt>
+      <dd>{p.contribution.join(' · ')}</dd>
+    </dl>
+    {p.description && <p class="work-card__desc">{p.description}</p>}
+  </div>
+</a>

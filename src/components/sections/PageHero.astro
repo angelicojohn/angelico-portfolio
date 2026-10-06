@@ -3,8 +3,22 @@
 import PillButton from '../ui/PillButton.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
 import Logo from '../ui/Logo.astro';
-interface Props { words: string[]; label: string; title: string; lede: string; }
-const { words, label, title, lede } = Astro.props;
+interface Link { href: string; label: string; }
+interface Props {
+  words: string[];
+  label: string;
+  title: string;
+  lede: string;
+  logo?: boolean;
+  primary?: Link;
+  secondary?: Link;
+}
+const {
+  words, label, title, lede,
+  logo = true,
+  primary = { href: '#contact', label: 'Start a Migration' },
+  secondary = { href: '#process', label: 'See the Process' },
+} = Astro.props;
 const align = ['is--center', '', 'is--end'];
 ---
 <section class="hero hero--page" id="top">
@@ -19,14 +33,14 @@ const align = ['is--center', '', 'is--end'];
         <div class="divider"></div>
         <div class="hero__bottom-grid">
           <div class="hero__copy">
-            <span class="pill-label pill-label--logo"><Logo name="astro" />{label}</span>
+            <span class:list={['pill-label', { 'pill-label--logo': logo }]}>{logo && <Logo name="astro" />}{label}</span>
             <h1 class="hero__title">{title}</h1>
           </div>
           <div class="hero__aside">
             <p class="hero__lede">{lede}</p>
             <div class="hero__ctas">
-              <PillButton href="#contact" label="Start a Migration" />
-              <LinkArrow href="#process" label="See the Process" />
+              <PillButton href={primary.href} label={primary.label} />
+              <LinkArrow href={secondary.href} label={secondary.label} />
             </div>
           </div>
         </div>

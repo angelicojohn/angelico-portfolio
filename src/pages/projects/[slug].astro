@@ -1,0 +1,97 @@
+---
+// Project detail — hero (seven-nine), mockup showcase, full-page desktop + mobile viewers, next project.
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/sections/Cta.astro';
+import LinkArrow from '../../components/ui/LinkArrow.astro';
+import PillButton from '../../components/ui/PillButton.astro';
+import { projects, img, type Project } from '../../data/projects';
+import { url } from '../../lib/url';
+
+export function getStaticPaths() {
+  return projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+interface Props { project: Project; next: Project; }
+const { project: p, next } = Astro.props;
+const host = new URL(p.url).host.replace(/^www\./, '');
+---
+<Base title={`${p.name} — ${p.role} by AJ`} description={`${p.name}: ${p.role}. ${p.contribution.join(', ')}.`}>
+  <section class="project-hero" id="top">
+    <div class="container">
+      <a href={url('/projects')} class="project-hero__back">← All projects</a>
+      <h1 class="project-hero__title" data-split="heading" data-split-start="top bottom">{p.name}</h1>
+      <div class="divider"></div>
+      <div class="project-hero__meta">
+        <dl class="project-hero__facts">
+          <div><dt>Platform</dt><dd>{p.platform}</dd></div>
+          <div><dt>My Role</dt><dd>{p.role}</dd></div>
+          <div class="is--wide"><dt>Contribution</dt><dd>{p.contribution.join(' · ')}</dd></div>
+        </dl>
+        <div class="project-hero__aside">
+          {p.description && <p class="project-hero__desc">{p.description}</p>}
+          <PillButton href={p.url} label={`Visit ${host}`} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-showcase">
+    <div class="container">
+      <div class="project-showcase__cover">
+        <img class="media-cover" src={url(img(p, 'cover.webp'))} alt={`${p.name} website shown in a browser mockup`} />
+      </div>
+    </div>
+  </section>
+
+  <section class="project-pages" aria-labelledby="pages-title">
+    <div class="container">
+      <div class="project-pages__head">
+        <span class="pill-label">Full page</span>
+        <h2 id="pages-title" class="project-pages__title" data-split="heading" data-split-reveal="words">Every section, every breakpoint.</h2>
+        <p class="project-pages__hint">Scroll inside each frame to see the whole page.</p>
+      </div>
+      <div class:list={['project-pages__grid', { 'is--mobile-only': !p.hasDesktopFullpage }]}>
+        {p.hasDesktopFullpage && (
+          <figure class="viewer viewer--desktop">
+            <div class="viewer__bar" aria-hidden="true"><span></span><span></span><span></span><em>{host}</em></div>
+            <div class="viewer__screen" tabindex="0" aria-label={`${p.name} desktop full page, scrollable`}>
+              <img src={url(img(p, 'fullpage-desktop.jpg'))} alt={`Full desktop page of the ${p.name} website`} loading="lazy" width="1440" />
+            </div>
+            <figcaption>Desktop · 1440px</figcaption>
+          </figure>
+        )}
+        <figure class="viewer viewer--mobile">
+          <div class="viewer__screen" tabindex="0" aria-label={`${p.name} mobile full page, scrollable`}>
+            <img src={url(img(p, 'fullpage-mobile.jpg'))} alt={`Full mobile page of the ${p.name} website`} loading="lazy" width="390" />
+          </div>
+          <figcaption>Mobile · 390px</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-mockups">
+    <div class="container">
+      <div class="project-mockups__grid">
+        <div class="project-mockups__item"><img class="media-cover" src={url(img(p, 'desktop.webp'))} alt={`${p.name} on a desktop screen`} loading="lazy" /></div>
+        <div class="project-mockups__item"><img class="media-cover" src={url(img(p, 'mobile.webp'))} alt={`${p.name} on mobile`} loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-next">
+    <div class="container">
+      <a href={url(`/projects/${next.slug}`)} class="project-next__link">
+        <span class="project-next__label">Next project</span>
+        <span class="project-next__name">{next.name}</span>
+        <span class="project-next__img"><img class="media-cover" src={url(img(next, 'cover.webp'))} alt="" loading="lazy" /></span>
+      </a>
+      <div class="project-next__all"><LinkArrow href={url('/projects')} label="All projects" /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

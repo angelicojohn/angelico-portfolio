@@ -54,6 +54,24 @@ function initWorkScreenshots() {
   measure();
 }
 
+// ------------------------------------------------ Projects: platform filter
+function initWorkFilters() {
+  const group = document.querySelector('[data-work-filters]');
+  if (!group) return;
+  const buttons = group.querySelectorAll('[data-filter]');
+  const items = document.querySelectorAll('.work__grid > li[data-platform]');
+  buttons.forEach((btn) => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    buttons.forEach((b) => {
+      const on = b === btn;
+      b.classList.toggle('is--active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    items.forEach((li) => { li.hidden = f !== 'all' && li.dataset.platform !== f; });
+    ScrollTrigger.refresh();
+  }));
+}
+
 // --------------------------------------------- Work: cursor follower (Strobe)
 function initWorkCursor() {
   const cursor = document.querySelector('[data-work-cursor]');
@@ -107,6 +125,7 @@ function startReveals() {
 // ------------------------------------------------------------------ Boot
 initNavigation();
 initWorkScreenshots();
+initWorkFilters();
 initWorkCursor();
 initCtaBall();
 initProcessLine();
