@@ -111,91 +111,13 @@ function initTestimonials() {
   });
 }
 
-// ------------------------------- Showcase: curved 3D carousel (weichie.com reference)
-// Outward-facing cylinder: the front card is nearest and largest, side cards turn away.
-// Each card is split into slices placed along the arc, so the card itself curves.
-// The radius is capped to half the stage width so nothing leaves the screen.
+// ------------------------------- Showcase: curved 3D carousel (three.js, loaded on demand)
 function initShowcase() {
   const stage = document.querySelector('[data-showcase]');
   if (!stage) return;
-  const cards = [...stage.querySelectorAll('[data-showcase-card]')];
-  const n = cards.length;
-  if (!n) return;
-  const slicesPer = Number(stage.dataset.slices) || 9;
-  const slices = cards.map((c) => [...c.querySelectorAll('.showcase__slice')]);
-  const step = 360 / n;
-  const cardArc = step * 0.86;            // card width as an angle; the rest is the gap
-  const sliceArc = cardArc / slicesPer;
-  let radius = 0;
-  let theta = 0;                          // a card sits front and centre, like the reference
-  let velocity = 0;
-  const autoSpeed = reduceMotion ? 0 : -0.045; // degrees per frame
-  let dragging = false, lastX = 0, moved = 0;
-
-  const layout = () => {
-    const width = stage.clientWidth;
-    radius = width * (width < 768 ? 0.47 : 0.42); // edge cards (90°) project at ~±radius: inside the stage
-    const sliceW = Math.round(2 * radius * Math.tan((sliceArc * Math.PI) / 360) * 100) / 100;
-    const cardW = sliceW * slicesPer;
-    stage.style.setProperty('--slices', slicesPer);
-    stage.style.setProperty('--slice-w', `${sliceW}px`);
-    stage.style.setProperty('--card-w', `${cardW}px`);
-    stage.style.setProperty('--card-h', `${cardW * 1.02}px`);
-    stage.style.setProperty('--showcase-perspective', `${radius * 4}px`);
-  };
-
-  const render = () => {
-    cards.forEach((card, i) => {
-      const a = ((i * step + theta) % 360 + 540) % 360 - 180; // -180..180, 0 = front
-      const front = Math.abs(a) < 100;
-      card.style.visibility = front ? 'visible' : 'hidden';
-      if (!card.hasAttribute('data-clone')) card.tabIndex = front ? 0 : -1; else card.tabIndex = -1;
-      if (!front) return;
-      slices[i].forEach((slice, k) => {
-        const sa = a + (k - (slicesPer - 1) / 2) * sliceArc;
-        slice.style.transform = `rotateY(${sa}deg) translateZ(${radius}px)`;
-      });
-    });
-  };
-
-  layout();
-  render();
-  window.addEventListener('resize', () => { layout(); render(); });
-
-  stage.addEventListener('pointerdown', (e) => {
-    dragging = true; moved = 0; lastX = e.clientX; velocity = 0;
-    stage.classList.add('is--dragging');
-    stage.setPointerCapture(e.pointerId);
-  });
-  stage.addEventListener('pointermove', (e) => {
-    if (!dragging) return;
-    const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
-    const delta = (dx / radius) * (180 / Math.PI) * 0.8; // follow the finger along the arc
-    theta += delta; velocity = delta;
-  });
-  const end = (e) => {
-    if (!dragging) return;
-    dragging = false; stage.classList.remove('is--dragging');
-    // pointer capture retargets the click to the stage, so open the card under the pointer ourselves
-    if (moved <= 6 && e.type === 'pointerup') {
-      stage.releasePointerCapture?.(e.pointerId);
-      const hit = document.elementFromPoint(e.clientX, e.clientY)?.closest('[data-showcase-card]');
-      if (hit) window.location.href = hit.href;
-    }
-  };
-  stage.addEventListener('pointerup', end);
-  stage.addEventListener('pointercancel', end);
-  stage.addEventListener('click', (e) => e.preventDefault(), true); // navigation handled above / via keyboard Enter
-  cards.forEach((card) => card.addEventListener('keydown', (e) => { if (e.key === 'Enter') window.location.href = card.href; }));
-
-  if (reduceMotion) return;
-  gsap.ticker.add(() => {
-    if (!dragging) {
-      velocity *= 0.94;                   // inertia
-      theta += velocity + autoSpeed;
-    }
-    render();
-  });
+  import('./showcase-three.js')
+    .then(({ initShowcaseThree }) => initShowcaseThree(stage, { reduceMotion }))
+    .catch(() => stage.classList.add('is--fallback'));
 }
 
 // ------------------------------------------------ CTA: sphere zoom on scroll

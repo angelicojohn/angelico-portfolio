@@ -203,52 +203,34 @@
 .tools .service-card:hover { background-color: var(--color-accent); }
 .tools .platform-card__desc { margin-left: 0; }
 
-/* ---------- Showcase: curved 3D carousel inside the hero (CSS 3D + GSAP ticker in main.js) ---------- */
-.showcase { position: relative; margin-block: clamp(1rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem); }
+/* ---------- Showcase: curved 3D carousel inside the hero (three.js, src/scripts/showcase-three.js) ---------- */
+.showcase { position: relative; margin-block: clamp(.5rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem); }
 
 .showcase__stage {
-  /* --card-w / --card-h / --slice-w / --showcase-perspective are set by main.js from the stage width */
-  --card-w: 20rem;
-  --card-h: 21rem;
-  --slice-w: calc(var(--card-w) / var(--slices, 9));
   position: relative;
-  height: calc(var(--card-h) * 1.68);
-  perspective: var(--showcase-perspective, 3000px);
-  perspective-origin: 50% 30%;
+  aspect-ratio: 2.55;
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
 }
 .showcase__stage.is--dragging { cursor: grabbing; }
+.showcase__stage.is--hover:not(.is--dragging) { cursor: pointer; }
 
-.showcase__card {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  pointer-events: none;            /* slices take the pointer, so the visible curve is the hit area */
-}
-.showcase__card:focus-visible { outline: none; }
-.showcase__card:focus-visible .showcase__slice { outline: 2px solid var(--color-accent); }
+.showcase__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .8s var(--ease-out-expo); }
+.showcase__stage.is--ready .showcase__canvas { opacity: 1; }
 
-.showcase__slice {
-  position: absolute;
-  top: calc(var(--card-h) * .12);
-  left: 50%;
-  width: calc(var(--slice-w) + 1px);           /* 1px overlap hides seams */
-  height: var(--card-h);
-  margin-left: calc(var(--slice-w) / -2);
-  background-color: var(--blue-100);
-  background-image: var(--img);
-  background-size: var(--card-w) var(--card-h);
-  background-position: calc(var(--k) * var(--slice-w) * -1) 50%;
-  backface-visibility: hidden;
-  pointer-events: auto;
-  will-change: transform;
-  -webkit-box-reflect: below .5rem linear-gradient(transparent 84%, color-mix(in srgb, var(--white) 9%, transparent));
+/* Accessible links. Visible as a simple row only when WebGL isn't available. */
+.showcase__links { margin: 0; padding: 0; list-style: none; }
+.showcase__stage.is--ready .showcase__links,
+.showcase__stage:not(.is--fallback) .showcase__links {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
 }
-.showcase__slice:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
-.showcase__slice:last-child { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.showcase__stage.is--fallback .showcase__links { display: flex; gap: 1rem; height: 100%; overflow-x: auto; }
+.showcase__stage.is--fallback .showcase__links li { flex: 0 0 auto; height: 100%; aspect-ratio: 1; }
+.showcase__stage.is--fallback .showcase__links img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+.showcase__links a:focus-visible { position: fixed; }
+@media (max-width: 767px) { .showcase__stage { aspect-ratio: 1.75; } }
 
 .showcase__labels {
   display: flex;
