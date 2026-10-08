@@ -28,6 +28,6 @@ const slots = n >= SLOTS
     </ul>
   </div>
   <ul class="showcase__labels" role="list">
-    {showcaseLabels.map((l) => <li>{l}</li>)}
+    {showcaseLabels.map((l) => <li><img src={url(l.icon)} alt="" width="22" height="22" loading="lazy" />{l.label}</li>)}
   </ul>
 </div>

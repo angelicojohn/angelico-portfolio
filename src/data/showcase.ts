@@ -9,4 +9,11 @@ export const showcase = projects.map((p) => ({
   href: `/projects/${p.slug}`,
 }));
 
-export const showcaseLabels = ['Astro websites', 'Migrations', 'Sanity CMS', 'Integrations & automation', 'SEO & AEO'];
+// Icons: Recraft vector (private brand style d1c43333-…), white background stripped, viewBox cropped.
+export const showcaseLabels = [
+  { label: 'Astro websites', icon: '/images/icons/astro.svg' },
+  { label: 'Migrations', icon: '/images/icons/migrations.svg' },
+  { label: 'Sanity CMS', icon: '/images/icons/cms.svg' },
+  { label: 'Integrations & automation', icon: '/images/icons/integrations.svg' },
+  { label: 'SEO & AEO', icon: '/images/icons/seo.svg' },
+];
