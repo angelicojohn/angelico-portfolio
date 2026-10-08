@@ -3,6 +3,7 @@
 import PillButton from '../ui/PillButton.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
 import { hero } from '../../data/home';
+import Showcase from './Showcase.astro';
 ---
 <section class="hero" id="top">
   <div class="container">
@@ -13,12 +14,9 @@ import { hero } from '../../data/home';
           <span class="hero__word" data-split="heading" data-split-start="top bottom">{hero.words[1]}</span>
           <span class="hero__word is--end" data-split="heading" data-split-start="top bottom">{hero.words[2]}</span>
         </div>
-        <div class="hero__media">
-          <!-- TODO(AJ): replace with <img class="media-cover" src="/images/aj.webp" alt="AJ, web designer and developer" /> -->
-          <div class="media-placeholder">Your photo here</div>
-          <div class="hero__media-overlay" aria-hidden="true"></div>
-        </div>
       </div>
+
+      <Showcase />
 
       <div class="hero__bottom">
         <div class="divider"></div>

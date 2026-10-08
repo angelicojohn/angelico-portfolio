@@ -52,7 +52,7 @@ Positioning (Oct 2026): client benefits first ("Custom websites. Faster delivery
 | Loader | — | Welcoming Words Loader |
 | Nav | — | Bold Full Screen Navigation + Burger Menu Button |
 | Hero | seven-nine-hero-1 | Masked Text Reveal, Text Scramble (load) |
-| Showcase | curved 3D carousel after weichie.com (CSS 3D cylinder, camera inside; `src/data/showcase.ts`, placeholder project mockups) | GSAP ticker auto-spin + drag inertia |
+| Showcase (inside Hero, under the display heading) | curved 3D carousel after weichie.com: outward cylinder, cards cut into slices along the arc, radius capped to the stage width (`src/data/showcase.ts`, placeholder project mockups) | GSAP ticker auto-spin + drag inertia |
 | Value (4 benefits) | open 4-col list | Masked Text Reveal |
 | Intro / About (philosophy) | seven-nine-intro-text-1 | Highlight Marker, Highlight Text on Scroll |
 | Custom | 7/5 split + blue checklist | Highlight Marker |

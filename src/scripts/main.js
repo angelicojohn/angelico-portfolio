@@ -112,43 +112,49 @@ function initTestimonials() {
 }
 
 // ------------------------------- Showcase: curved 3D carousel (weichie.com reference)
-// Cards sit on the inside of a cylinder (camera inside the ring), so side cards look closest.
-// GSAP ticker drives rotation: slow auto-spin + pointer drag with inertia. Cards past ~90° fade out.
+// Outward-facing cylinder: the front card is nearest and largest, side cards turn away.
+// Each card is split into slices placed along the arc, so the card itself curves.
+// The radius is capped to half the stage width so nothing leaves the screen.
 function initShowcase() {
   const stage = document.querySelector('[data-showcase]');
   if (!stage) return;
   const cards = [...stage.querySelectorAll('[data-showcase-card]')];
   const n = cards.length;
   if (!n) return;
+  const slicesPer = Number(stage.dataset.slices) || 9;
+  const slices = cards.map((c) => [...c.querySelectorAll('.showcase__slice')]);
   const step = 360 / n;
-  let radius = 0, cardH = 0;
-  let theta = step / 2;            // half-step offset leaves a gap in the centre, like the reference
+  const cardArc = step * 0.86;            // card width as an angle; the rest is the gap
+  const sliceArc = cardArc / slicesPer;
+  let radius = 0;
+  let theta = 0;                          // a card sits front and centre, like the reference
   let velocity = 0;
-  const autoSpeed = reduceMotion ? 0 : -0.05; // degrees per frame
+  const autoSpeed = reduceMotion ? 0 : -0.045; // degrees per frame
   let dragging = false, lastX = 0, moved = 0;
 
-  // Size everything from the stage width: camera sits at the ring's centre (perspective = radius),
-  // so centre cards read at ~half size and side cards come forward without distorting.
   const layout = () => {
     const width = stage.clientWidth;
-    radius = width * (width < 768 ? 1.05 : 0.6);
-    const cardW = 2 * radius * Math.sin((step * Math.PI) / 360) * 0.9;
-    cardH = cardW * 1.16;
+    radius = width * (width < 768 ? 0.47 : 0.42); // edge cards (90°) project at ~±radius: inside the stage
+    const sliceW = Math.round(2 * radius * Math.tan((sliceArc * Math.PI) / 360) * 100) / 100;
+    const cardW = sliceW * slicesPer;
+    stage.style.setProperty('--slices', slicesPer);
+    stage.style.setProperty('--slice-w', `${sliceW}px`);
     stage.style.setProperty('--card-w', `${cardW}px`);
-    stage.style.setProperty('--card-h', `${cardH}px`);
-    stage.style.setProperty('--showcase-perspective', `${radius}px`);
-    stage.classList.add('is--ready');
+    stage.style.setProperty('--card-h', `${cardW * 1.02}px`);
+    stage.style.setProperty('--showcase-perspective', `${radius * 4}px`);
   };
 
   const render = () => {
     cards.forEach((card, i) => {
-      const a = ((i * step + theta) % 360 + 540) % 360 - 180; // -180..180, 0 = straight ahead
-      const abs = Math.abs(a);
-      const visible = abs < 84;
-      card.style.visibility = visible ? 'visible' : 'hidden';
-      card.style.opacity = visible ? String(Math.min(1, (84 - abs) / 14)) : '0';
-      if (!card.hasAttribute('data-clone')) card.tabIndex = visible ? 0 : -1; else card.tabIndex = -1;
-      card.style.transform = `rotateY(${a}deg) translateZ(${-radius}px)`;
+      const a = ((i * step + theta) % 360 + 540) % 360 - 180; // -180..180, 0 = front
+      const front = Math.abs(a) < 100;
+      card.style.visibility = front ? 'visible' : 'hidden';
+      if (!card.hasAttribute('data-clone')) card.tabIndex = front ? 0 : -1; else card.tabIndex = -1;
+      if (!front) return;
+      slices[i].forEach((slice, k) => {
+        const sa = a + (k - (slicesPer - 1) / 2) * sliceArc;
+        slice.style.transform = `rotateY(${sa}deg) translateZ(${radius}px)`;
+      });
     });
   };
 
@@ -164,19 +170,28 @@ function initShowcase() {
   stage.addEventListener('pointermove', (e) => {
     if (!dragging) return;
     const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
-    const delta = dx * (step / cards[0].offsetWidth) * 0.6;
+    const delta = (dx / radius) * (180 / Math.PI) * 0.8; // follow the finger along the arc
     theta += delta; velocity = delta;
   });
-  const end = () => { dragging = false; stage.classList.remove('is--dragging'); };
+  const end = (e) => {
+    if (!dragging) return;
+    dragging = false; stage.classList.remove('is--dragging');
+    // pointer capture retargets the click to the stage, so open the card under the pointer ourselves
+    if (moved <= 6 && e.type === 'pointerup') {
+      stage.releasePointerCapture?.(e.pointerId);
+      const hit = document.elementFromPoint(e.clientX, e.clientY)?.closest('[data-showcase-card]');
+      if (hit) window.location.href = hit.href;
+    }
+  };
   stage.addEventListener('pointerup', end);
   stage.addEventListener('pointercancel', end);
-  // a drag shouldn't open a project
-  stage.addEventListener('click', (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+  stage.addEventListener('click', (e) => e.preventDefault(), true); // navigation handled above / via keyboard Enter
+  cards.forEach((card) => card.addEventListener('keydown', (e) => { if (e.key === 'Enter') window.location.href = card.href; }));
 
   if (reduceMotion) return;
   gsap.ticker.add(() => {
     if (!dragging) {
-      velocity *= 0.94;                       // inertia
+      velocity *= 0.94;                   // inertia
       theta += velocity + autoSpeed;
     }
     render();

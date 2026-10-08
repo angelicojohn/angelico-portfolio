@@ -1,30 +1,40 @@
 ---
-// Curved 3D project carousel (reference: weichie.com hero). CSS 3D cylinder viewed from the inside,
-// driven by GSAP's ticker in main.js: slow auto-rotate, drag with inertia, links to projects.
-// Reduced motion: static, no auto-rotate.
+// Curved 3D project carousel (reference: weichie.com hero). Rendered inside the Hero, under the display heading.
+// An outward-facing cylinder: the front card is nearest and largest, side cards turn away.
+// Each card is cut into vertical slices placed on the cylinder, so cards curve with the ring.
+// Driven by GSAP's ticker in main.js (auto-rotate + drag with inertia). Reduced motion: static.
 import { showcase, showcaseLabels } from '../../data/showcase';
 import { url } from '../../lib/url';
-// Fill 12 slots so ~6 cards are in view. Repeats sit half a ring (6 slots) from their original,
-// so the same project is never on screen twice. Repeats are hidden from assistive tech.
+const SLOTS = 10;   // cards around the ring (~5 in view)
+const SLICES = 9;   // slices per card (more = smoother curve)
+// Repeats sit half a ring away from their original, so a project is never on screen twice.
 const n = showcase.length;
+const half = SLOTS / 2;
 const mark = (i: number, clone = false) => ({ ...showcase[i % n], clone });
-const slots = n >= 12
-  ? showcase.map((_, i) => mark(i))
-  : n >= 6
-    ? [...Array.from({ length: 6 }, (_, i) => mark(i)), ...Array.from({ length: 12 - n }, (_, i) => mark(i, true)), ...Array.from({ length: n - 6 }, (_, i) => mark(6 + i))]
-    : Array.from({ length: 12 }, (_, i) => mark(i, i >= n));
+const slots = n >= SLOTS
+  ? showcase.slice(0, SLOTS).map((_, i) => mark(i))
+  : n >= half
+    ? [...Array.from({ length: half }, (_, i) => mark(i)), ...Array.from({ length: SLOTS - n }, (_, i) => mark(i, true)), ...Array.from({ length: n - half }, (_, i) => mark(half + i))]
+    : Array.from({ length: SLOTS }, (_, i) => mark(i, i >= n));
 ---
-<section class="showcase" id="showcase" aria-label="Recent projects">
-  <div class="showcase__stage" data-showcase>
-    <div class="showcase__ring">
-      {slots.map((item) => (
-        <a class="showcase__card" href={url(item.href)} data-showcase-card draggable="false" aria-hidden={item.clone ? 'true' : undefined} data-clone={item.clone ? '' : undefined}>
-          <img src={url(item.src)} alt={item.clone ? '' : item.alt} loading="lazy" draggable="false" />
-        </a>
-      ))}
-    </div>
+<div class="showcase" id="showcase">
+  <div class="showcase__stage" data-showcase data-slices={SLICES}>
+    {slots.map((item) => (
+      <a
+        class="showcase__card"
+        href={url(item.href)}
+        data-showcase-card
+        draggable="false"
+        aria-label={item.clone ? undefined : item.alt}
+        aria-hidden={item.clone ? 'true' : undefined}
+        data-clone={item.clone ? '' : undefined}
+        style={`--img: url('${url(item.src)}')`}
+      >
+        {Array.from({ length: SLICES }, (_, k) => <span class="showcase__slice" style={`--k:${k}`} aria-hidden="true"></span>)}
+      </a>
+    ))}
   </div>
   <ul class="showcase__labels" role="list">
     {showcaseLabels.map((l) => <li>{l}</li>)}
   </ul>
-</section>
+</div>
