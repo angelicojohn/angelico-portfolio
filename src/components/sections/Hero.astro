@@ -4,15 +4,18 @@ import PillButton from '../ui/PillButton.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
 import { hero } from '../../data/home';
 import Showcase from './Showcase.astro';
+import { url } from '../../lib/url';
+// Recraft icons (private brand style) shown before each display word
+const icons = ['/images/icons/hero-custom.svg', '/images/icons/hero-faster.svg', '/images/icons/hero-smarter.svg'];
 ---
 <section class="hero" id="top">
   <div class="container">
     <div class="hero__inner">
       <div class="hero__top">
         <div class="hero__display" aria-hidden="true">
-          <span class="hero__word is--center" data-split="heading" data-split-start="top bottom">{hero.words[0]}</span>
-          <span class="hero__word" data-split="heading" data-split-start="top bottom">{hero.words[1]}</span>
-          <span class="hero__word is--end" data-split="heading" data-split-start="top bottom">{hero.words[2]}</span>
+          <span class="hero__word is--center"><img class="hero__icon" src={url(icons[0])} alt="" width="96" height="96" style="--i:0" /><span data-split="heading" data-split-start="top bottom">{hero.words[0]}</span></span>
+          <span class="hero__word"><img class="hero__icon" src={url(icons[1])} alt="" width="96" height="96" style="--i:1" /><span data-split="heading" data-split-start="top bottom">{hero.words[1]}</span></span>
+          <span class="hero__word is--end"><img class="hero__icon" src={url(icons[2])} alt="" width="96" height="96" style="--i:2" /><span data-split="heading" data-split-start="top bottom">{hero.words[2]}</span></span>
         </div>
       </div>
 

@@ -302,3 +302,18 @@
 .custom__title-accent { color: var(--color-accent); }
 .cost .aispeed__head { max-width: none; }
 .cost .aispeed__intro { max-width: 40rem; }
+
+/* Hero display words: branded icon before each word, sized to the cap height */
+.hero__display { font-size: clamp(2.5rem, 5.5vw, 6.5rem); }
+.hero__word { display: inline-flex; align-items: center; gap: .14em; }
+.hero__icon { width: .8em; height: .8em; flex: none; transform: translateY(-.02em); }
+@media (max-width: 767px) {
+  .hero__display { font-size: clamp(2.25rem, 12.5vw, 4.5rem); }
+  .hero__word { display: flex; }
+  .hero__word.is--center { justify-content: center; }
+  .hero__word.is--end { justify-content: flex-end; }
+}
+/* Icons pop in as the words reveal (html.is-loaded is set when the loader finishes) */
+.hero__icon { opacity: 0; transform: translateY(.15em) scale(.6) rotate(-8deg); transition: opacity .6s var(--ease-out-expo), transform .9s var(--ease-out-expo); transition-delay: calc(.15s + var(--i, 0) * .1s); }
+.is-loaded .hero__icon { opacity: 1; transform: translateY(-.02em) scale(1) rotate(0); }
+@media (prefers-reduced-motion: reduce) { .hero__icon { opacity: 1; transform: none; transition: none; } }
