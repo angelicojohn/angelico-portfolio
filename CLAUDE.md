@@ -109,6 +109,9 @@ Logos: `src/components/ui/Logo.astro` (Simple Icons, currentColor). Nav links ar
 - JSON-LD via `src/components/SchemaOrg.astro`: site-wide `ProfessionalService` (Base), plus `Service` + `FAQPage` on /astro (built from `faqs`). Pages pass extra schema with `<Base schema={[…]}>`.
 - robots.txt/llms.txt only take full effect at a domain root (not under the GitHub Pages sub-path), so move to a custom domain to get the full benefit.
 
+### Section headings
+- Every section `<h2>` uses `class="… section-title"` plus a single `data-split="heading"` on the h2 (the main heading's Masked Text Reveal, lines). No per-line spans with their own `data-split`, no word reveals or highlight markers on headings. Size comes from `--h2-size` (home.css); keep them to one line where the layout allows.
+
 ### Gotchas fixed (don't regress)
 - Masked headings: `.line-mask` gets extra padding-block with matching negative margins (osmo.css) so tight line-heights don't clip descenders.
 - Burger: keep Osmo's line geometry (2em × .1875em, .1875em gap); scale the button with font-size. The open-state transforms assume those exact sizes.

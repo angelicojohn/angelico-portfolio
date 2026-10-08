@@ -288,3 +288,24 @@
   .agency-compare__row--head > :first-child { display: none; }
   .agency-compare__row > * { padding: .875rem 1rem; font-size: .9375rem; }
 }
+
+/* ==========================================================================
+   Section headings: one shared style, kept to one line where the layout allows,
+   all with the same entrance as the main heading (Masked Text Reveal, lines).
+   Doubled class beats the per-section title rules above without !important.
+   ========================================================================== */
+:root { --h2-size: clamp(1.875rem, 3.3vw, 3.25rem); }
+.section-title.section-title {
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--h2-size);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  text-transform: none;
+  text-wrap: balance;
+}
+.section-title.section-title > span { display: inline; white-space: normal; }
+.custom__title-accent { color: var(--color-accent); }
+.cost .aispeed__head { max-width: none; }
+.cost .aispeed__intro { max-width: 40rem; }

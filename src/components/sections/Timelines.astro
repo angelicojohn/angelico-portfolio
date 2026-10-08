@@ -6,8 +6,8 @@ import { timelines } from '../../data/home';
 <section class="timelines" id="turnaround">
   <div class="container">
     <div class="timelines__head">
-      <h2 class="timelines__title">
-        {timelines.title.map((line) => <span data-split="heading">{line}</span>)}
+      <h2 class="timelines__title section-title" data-split="heading">
+        {timelines.title.map((line) => <span>{line} </span>)}
       </h2>
       <p class="timelines__intro">{timelines.intro}</p>
     </div>

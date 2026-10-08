@@ -6,9 +6,8 @@ import { custom } from '../../data/home';
   <div class="container">
     <div class="custom__grid">
       <div class="custom__copy">
-        <h2 class="custom__title">
-          <span>{custom.title[0]}</span>
-          <span data-highlight-marker-reveal data-marker-theme="--marker-color" data-marker-direction="right">{custom.title[1]}</span>
+        <h2 class="custom__title section-title" data-split="heading">
+          <span>{custom.title[0]} </span><span class="custom__title-accent">{custom.title[1]}</span>
         </h2>
         {custom.paragraphs.map((p) => <p class="custom__text">{p}</p>)}
       </div>

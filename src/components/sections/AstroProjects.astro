@@ -8,9 +8,8 @@ const list = projects.filter((p) => p.platform === 'Astro' && p.mockups?.length)
 ---
 <section class="astro-projects" id="projects">
   <div class="container">
-    <h2 class="astro-projects__title">
-      <span data-split="heading">Built with Astro.</span>
-      <span data-split="heading">Live and fast.</span>
+    <h2 class="astro-projects__title section-title" data-split="heading">
+      <span>Built with Astro. </span><span>Live and fast.</span>
     </h2>
 
     {list.map((p, i) => (

@@ -12,7 +12,7 @@ const { title = cta.title, text = cta.text, label = cta.label } = Astro.props;
     <div class="cta__stage">
       <img class="cta__ball" data-cta-ball src={url('/images/byq/master-ball-white.webp')} alt="" loading="lazy" />
       <div class="cta__content">
-        <h2 class="cta__title" data-split="heading" data-split-reveal="words">{title}</h2>
+        <h2 class="cta__title section-title" data-split="heading">{title}</h2>
         <p class="cta__text">{text}</p>
         <div class="cta__actions">
           <PillButton href={`mailto:${site.email}`} label={label} variant="light" />
