@@ -202,3 +202,76 @@
 .tools .service-card { background-color: var(--white); }
 .tools .service-card:hover { background-color: var(--color-accent); }
 .tools .platform-card__desc { margin-left: 0; }
+
+/* ---------- Showcase: curved 3D carousel (CSS 3D + GSAP ticker in main.js) ---------- */
+.showcase {
+  position: relative;
+  padding-block: clamp(2rem, 5vw, 4rem) var(--section-pad);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.showcase__stage {
+  position: relative;
+  --card-w: clamp(12rem, 24vw, 26rem);
+  --card-h: calc(var(--card-w) * 1.16);
+  height: calc(var(--card-h) * 1.02);
+  perspective: var(--showcase-perspective, 1100px);
+  perspective-origin: 50% calc(var(--card-h) * .42);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.showcase__stage.is--dragging { cursor: grabbing; }
+
+.showcase__ring {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.showcase__card {
+  position: absolute;
+  top: calc(var(--card-h) * -.08);
+  left: 50%;
+  width: var(--card-w);
+  height: var(--card-h);
+  margin-left: calc(var(--card-w) / -2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--blue-100);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  -webkit-box-reflect: below .75rem linear-gradient(transparent 72%, color-mix(in srgb, var(--white) 22%, transparent));
+}
+.showcase__card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.showcase__card:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; }
+
+/* Before JS runs (and with reduced motion before layout), lay cards out as a simple row */
+.showcase__stage:not(.is--ready) .showcase__ring { display: flex; gap: 1rem; justify-content: center; }
+.showcase__stage:not(.is--ready) .showcase__card { position: relative; left: auto; margin: 0; flex: none; }
+
+.showcase__labels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem 2.25rem;
+  margin: 0;
+  padding: 0 var(--gutter);
+  list-style: none;
+  font-size: 1.0625rem;
+  color: var(--color-text);
+}
+.showcase__labels li { display: inline-flex; align-items: center; gap: .5rem; }
+.showcase__labels li::before {
+  content: '';
+  width: .5rem;
+  height: .5rem;
+  border-radius: 2px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 767px) {
+  .showcase__labels { gap: .5rem 1.25rem; font-size: .9375rem; }
+}

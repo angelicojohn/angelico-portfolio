@@ -111,6 +111,78 @@ function initTestimonials() {
   });
 }
 
+// ------------------------------- Showcase: curved 3D carousel (weichie.com reference)
+// Cards sit on the inside of a cylinder (camera inside the ring), so side cards look closest.
+// GSAP ticker drives rotation: slow auto-spin + pointer drag with inertia. Cards past ~90° fade out.
+function initShowcase() {
+  const stage = document.querySelector('[data-showcase]');
+  if (!stage) return;
+  const cards = [...stage.querySelectorAll('[data-showcase-card]')];
+  const n = cards.length;
+  if (!n) return;
+  const step = 360 / n;
+  let radius = 0, cardH = 0;
+  let theta = step / 2;            // half-step offset leaves a gap in the centre, like the reference
+  let velocity = 0;
+  const autoSpeed = reduceMotion ? 0 : -0.05; // degrees per frame
+  let dragging = false, lastX = 0, moved = 0;
+
+  // Size everything from the stage width: camera sits at the ring's centre (perspective = radius),
+  // so centre cards read at ~half size and side cards come forward without distorting.
+  const layout = () => {
+    const width = stage.clientWidth;
+    radius = width * (width < 768 ? 1.05 : 0.6);
+    const cardW = 2 * radius * Math.sin((step * Math.PI) / 360) * 0.9;
+    cardH = cardW * 1.16;
+    stage.style.setProperty('--card-w', `${cardW}px`);
+    stage.style.setProperty('--card-h', `${cardH}px`);
+    stage.style.setProperty('--showcase-perspective', `${radius}px`);
+    stage.classList.add('is--ready');
+  };
+
+  const render = () => {
+    cards.forEach((card, i) => {
+      const a = ((i * step + theta) % 360 + 540) % 360 - 180; // -180..180, 0 = straight ahead
+      const abs = Math.abs(a);
+      const visible = abs < 84;
+      card.style.visibility = visible ? 'visible' : 'hidden';
+      card.style.opacity = visible ? String(Math.min(1, (84 - abs) / 14)) : '0';
+      if (!card.hasAttribute('data-clone')) card.tabIndex = visible ? 0 : -1; else card.tabIndex = -1;
+      card.style.transform = `rotateY(${a}deg) translateZ(${-radius}px)`;
+    });
+  };
+
+  layout();
+  render();
+  window.addEventListener('resize', () => { layout(); render(); });
+
+  stage.addEventListener('pointerdown', (e) => {
+    dragging = true; moved = 0; lastX = e.clientX; velocity = 0;
+    stage.classList.add('is--dragging');
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
+    const delta = dx * (step / cards[0].offsetWidth) * 0.6;
+    theta += delta; velocity = delta;
+  });
+  const end = () => { dragging = false; stage.classList.remove('is--dragging'); };
+  stage.addEventListener('pointerup', end);
+  stage.addEventListener('pointercancel', end);
+  // a drag shouldn't open a project
+  stage.addEventListener('click', (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+  if (reduceMotion) return;
+  gsap.ticker.add(() => {
+    if (!dragging) {
+      velocity *= 0.94;                       // inertia
+      theta += velocity + autoSpeed;
+    }
+    render();
+  });
+}
+
 // ------------------------------------------------ CTA: sphere zoom on scroll
 function initCtaBall() {
   const ball = document.querySelector('[data-cta-ball]');
@@ -152,6 +224,7 @@ initWorkScreenshots();
 initWorkFilters();
 initWorkCursor();
 initTestimonials();
+initShowcase();
 initCtaBall();
 initProcessLine();
 
