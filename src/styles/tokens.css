@@ -56,6 +56,7 @@
   --radius-md: .75rem;
   --radius-lg: 1.5rem;
   --radius-pill: 999px;
+  --radius-btn: 1rem;     /* CTAs: 16px, more rectangular than a pill */
   --ease-osmo: cubic-bezier(.7, 0, .3, 1);
   --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
 

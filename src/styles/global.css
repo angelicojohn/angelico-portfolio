@@ -176,13 +176,16 @@ button { font: inherit; color: inherit; }
 
 /* ---------------------- Pill button (BYQ Consult AI CTA) ------------------- */
 .btn-pill {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   gap: 2.5rem;
   height: 3.25rem;
   padding: 0 .375rem 0 1.5rem;
-  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-btn);
   background-color: var(--color-accent);
   color: var(--white);
   font-family: var(--font-body);
@@ -190,8 +193,25 @@ button { font: inherit; color: inherit; }
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color .3s var(--ease-osmo), color .3s var(--ease-osmo);
+  overflow: hidden;
+  transition: transform .2s ease;
 }
+
+/* The fill starts as the arrow tile and grows across the button on hover */
+.btn-pill::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: .25rem;
+  right: .25rem;
+  bottom: .25rem;
+  width: 2.5rem;
+  border-radius: calc(var(--radius-btn) - .3rem);
+  background-color: var(--white);
+  transition: width .55s var(--ease-osmo), top .55s var(--ease-osmo), right .55s var(--ease-osmo), bottom .55s var(--ease-osmo), border-radius .55s var(--ease-osmo);
+}
+
+.btn-pill__label { position: relative; transition: color .45s var(--ease-osmo); }
 
 .btn-pill__icon {
   flex: none;
@@ -199,8 +219,7 @@ button { font: inherit; color: inherit; }
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
-  background-color: var(--white);
+  margin-right: -.125rem;
   color: var(--color-accent);
   overflow: hidden;
 }
@@ -211,12 +230,22 @@ button { font: inherit; color: inherit; }
   transition: transform .5s var(--ease-osmo);
 }
 
-.btn-pill:hover { background-color: var(--color-accent-hover); }
-.btn-pill:hover .btn-pill__icon svg { animation: pill-arrow .6s var(--ease-osmo); }
+.btn-pill:hover::before,
+.btn-pill:focus-visible::before { top: 0; right: 0; bottom: 0; width: 100%; border-radius: calc(var(--radius-btn) - 2px); }
+.btn-pill:hover .btn-pill__label,
+.btn-pill:focus-visible .btn-pill__label { color: var(--color-accent); }
+.btn-pill:hover .btn-pill__icon svg,
+.btn-pill:focus-visible .btn-pill__icon svg { animation: pill-arrow .6s var(--ease-osmo); }
+.btn-pill:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.btn-pill:active { transform: translateY(1px); }
 
-.btn-pill.is--light { background-color: var(--white); color: var(--blue-500); }
-.btn-pill.is--light .btn-pill__icon { background-color: var(--blue-500); color: var(--white); }
-.btn-pill.is--light:hover { background-color: var(--blue-50); }
+/* Light variant (on dark/blue sections): white button, blue fill on hover */
+.btn-pill.is--light { border-color: var(--white); background-color: var(--white); color: var(--blue-500); }
+.btn-pill.is--light::before { background-color: var(--blue-500); }
+.btn-pill.is--light .btn-pill__icon { color: var(--white); }
+.btn-pill.is--light:hover .btn-pill__label,
+.btn-pill.is--light:focus-visible .btn-pill__label { color: var(--white); }
+.btn-pill.is--light:focus-visible { outline-color: var(--white); }
 
 @keyframes pill-arrow {
   0%   { transform: translateX(0); }
