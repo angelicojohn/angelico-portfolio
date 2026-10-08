@@ -10,14 +10,16 @@ import { gsap } from 'gsap';
 const SETTINGS = {
   arc: 0.86,          // card width as a share of its slot angle (rest is the gap)
   aspect: 1.02,       // card height / card arc length
-  distance: 4.6,      // camera distance in ring radii (front card ~1.3x the side cards)
-  camHeight: 0.08,    // camera height as a share of card height (low = looking up)
-  lookHeight: 0.5,    // where the camera aims, as a share of card height
-  fit: 1.06,          // visible half-width in ring radii at the z=0 plane (>1 = margin at the edges)
-  fitMobile: 0.72,    // phones: <1 lets the outer cards run off so the front ones stay readable
-  backOpacity: 0.28,  // inside faces seen through the gaps
+  backOpacity: 0.32,  // inside faces seen through the gaps
   autoSpeed: -0.0011, // radians per frame
   radius: 10,
+  // Camera per breakpoint. distance: in ring radii (smaller = stronger perspective).
+  // camHeight / lookHeight: share of card height (camHeight < 0 = just below the cards, looking up,
+  // so near tops arc upward and the back of the ring shows as faint strips under the front cards).
+  // fit: visible half-width in ring radii at the z=0 plane (>1 = margin, <1 = cards run off the sides).
+  // offset: start angle in slots (0.5 = gap in the centre, like the desktop reference).
+  desktop: { distance: 3.1, camHeight: -0.14, lookHeight: 0.62, fit: 1.22, offset: 0.5 },
+  mobile:  { distance: 2.6, camHeight: -0.1,  lookHeight: 0.6,  fit: 0.56, offset: 0.12 },
 };
 
 function roundedAlpha(aspect) {
@@ -102,25 +104,26 @@ export function initShowcaseThree(stage, { reduceMotion }) {
     meshes.push(front);
   });
 
+  let view = SETTINGS.desktop;
   const resize = () => {
     const w = stage.clientWidth;
     const h = stage.clientHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+    view = w < 768 ? SETTINGS.mobile : SETTINGS.desktop;
     // fixed distance for consistent perspective; the lens is narrowed until the ring fits the width
-    const dist = R * SETTINGS.distance;
-    const fit = w < 768 ? SETTINGS.fitMobile : SETTINGS.fit;
-    const halfW = (R * fit) / dist;
+    const dist = R * view.distance;
+    const halfW = (R * view.fit) / dist;
     camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(halfW / camera.aspect));
-    camera.position.set(0, cardH * SETTINGS.camHeight, dist);
-    camera.lookAt(0, cardH * SETTINGS.lookHeight, 0);
+    camera.position.set(0, cardH * view.camHeight, dist);
+    camera.lookAt(0, cardH * view.lookHeight, 0);
     camera.updateProjectionMatrix();
   };
   resize();
   window.addEventListener('resize', resize);
 
   // ---------- interaction
-  let theta = 0, velocity = 0, dragging = false, lastX = 0, moved = 0, visible = true;
+  let theta = -view.offset * slot, velocity = 0, dragging = false, lastX = 0, moved = 0, visible = true;
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const hit = (e) => {
