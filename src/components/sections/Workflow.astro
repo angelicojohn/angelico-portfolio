@@ -25,6 +25,23 @@ const rows = [
         </div>
       ))}
     </div>
+    <div class="agency-compare">
+      <h3 class="agency-compare__title">{workflow.compare.title}</h3>
+      <div class="agency-compare__table" role="table" aria-label={workflow.compare.title}>
+        <div class="agency-compare__row agency-compare__row--head" role="row">
+          <span role="columnheader"><span class="sr-only">Topic</span></span>
+          <span role="columnheader">{workflow.compare.oldLabel}</span>
+          <span role="columnheader">{workflow.compare.newLabel}</span>
+        </div>
+        {workflow.compare.rows.map((r) => (
+          <div class="agency-compare__row" role="row">
+            <span class="agency-compare__label" role="rowheader">{r.label}</span>
+            <span class="agency-compare__old" role="cell">{r.old}</span>
+            <span class="agency-compare__new" role="cell">{r.now}</span>
+          </div>
+        ))}
+      </div>
+    </div>
     <p class="workflow__footnote">{workflow.footnote}</p>
   </div>
 </section>

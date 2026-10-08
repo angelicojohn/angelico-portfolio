@@ -43,56 +43,37 @@ osmo/                         # RAW Osmo resources exactly as pasted (reference 
 public/images/                # local images (BYQ decorative assets, your photos)
 ```
 
-## Section → source map (homepage)
+## Homepage (Astro-first, merged from the old /astro page)
 
-Positioning (Oct 2026): client benefits first ("Custom websites. Faster delivery. Smarter costs."), tools second. All homepage copy lives in `src/data/home.ts` (DRAFT by Claude from AJ's repositioning brief; Jev-checked for over-promises). Timelines there are proposed **targets**, not guarantees.
+Positioning (Oct 2026): custom websites built with Astro, faster than the traditional agency process, human-led quality. Webflow/Framer are no longer offered as services (past Webflow/Framer work stays on /projects). `/astro` redirects to `/` (`astro.config.mjs` `redirects`).
+
+Copy: `src/data/home.ts` (benefits, workflow + agency comparison, target timelines, cost, process, AI, FAQs, CTA) and `src/data/astro.ts` (platforms, compare table + why now, Sanity stack, web app + automations, SEO/AEO). DRAFT copy by Claude, Jev-checked for over-promises and unfair agency claims. Timelines are proposed **targets**, not guarantees.
 
 | Section | Layout source | Motion |
 |---|---|---|
 | Loader | — | Welcoming Words Loader |
-| Nav | — | Bold Full Screen Navigation + Burger Menu Button |
-| Hero | seven-nine-hero-1 | Masked Text Reveal, Text Scramble (load) |
-| Showcase (inside Hero, under the display heading) | curved 3D carousel after weichie.com: outward cylinder, cards cut into slices along the arc, radius capped to the stage width (`src/data/showcase.ts`, placeholder project mockups) | GSAP ticker auto-spin + drag inertia |
+| Nav (Home, Projects, Process, FAQ, Contact) | — | Bold Full Screen Navigation + Burger Menu Button |
+| Hero + Showcase | seven-nine-hero-1; Showcase = three.js curved carousel (`src/scripts/showcase-three.js`, loaded on demand; camera low looking slightly up; one CylinderGeometry segment per card; `src/data/showcase.ts`, placeholder project mockups) | Masked Text Reveal, Text Scramble; GSAP ticker auto-spin + drag inertia |
 | Value (4 benefits) | open 4-col list | Masked Text Reveal |
 | Intro / About (philosophy) | seven-nine-intro-text-1 | Highlight Marker, Highlight Text on Scroll |
-| Custom | 7/5 split + blue checklist | Highlight Marker |
-| Workflow (traditional vs modern) | two flow rows | Masked Text Reveal |
+| Workflow + agency comparison | two flow rows + 3-col compare table | Masked Text Reveal |
 | Timelines (targets + stages) | 4 cards + 3-stage line | Masked Text Reveal |
-| Cost | reuses /astro AiSpeed split | Masked Text Reveal |
-| Process (5 steps) | kelvin-process-1 (`Process` props) | line fill |
+| Cost | AiSpeed split styles | Masked Text Reveal |
+| Platforms (migrate from) | offthegrid-value-features-4 cards, 2×2 | Masked Text Reveal |
+| Compare + Why now | kelvin-value-features-6 table; facts only from Astro/Cloudflare sources | Masked Text Reveal |
+| Custom | 7/5 split + blue checklist | Highlight Marker |
+| Stack (Astro + Sanity) | consult-ai-hero-4, blue | Masked Text Reveal |
+| WebApp | card grid + automations; Recraft SVGs (`public/images/webapp/*.svg`, style `d1c43333-7aee-4562-8eab-beb7403423e4`) | Masked Text Reveal |
 | AI-Assisted | nextwell-intro-text-5 + principles row | Highlight Text on Scroll |
-| Editing & ownership | reuses blue SeoAeo cards | Masked Text Reveal |
-| Services (4 outcome services) | offthegrid-value-features-4 | Masked Text Reveal |
-| Selected Work | strobe-cms-grid-5 | Masked Text Reveal + cursor follower |
-| Testimonials | BYQ nextwell-testimonials-3 slider (scroll-snap + buttons in main.js; photo or brand-colour fallback) | Masked Text Reveal |
-| Tools | Platforms card grid | Masked Text Reveal |
-| Experience | consult-ai-hero-4 | Masked Text Reveal (chars) |
+| SeoAeo | consult-ai blue checklists | Masked Text Reveal |
+| Process (5 steps) | kelvin-process-1 (`Process` props) | line fill |
+| AstroProjects | bento of Recraft mockup variations per Astro project | Masked Text Reveal |
+| Testimonials | BYQ nextwell-testimonials-3 slider (`src/data/testimonials.ts`) | Masked Text Reveal |
+| Experience | consult-ai-hero-4 (Astro-first tool list) | Masked Text Reveal (chars) |
 | FAQ | babka-faq-1 (`Faq` props) + FAQPage schema | — |
-| Final CTA | consult-ai-cta-section-1 (defaults from home.ts) | scroll zoom |
+| Final CTA | consult-ai-cta-section-1 | scroll zoom |
 
-### /astro — Astro Development & Migrations (Webflow, Framer, WordPress, Wix)
-Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approval; Jev-checked for invented claims and over-promises).
-
-| Section | BYQ layout | Motion |
-|---|---|---|
-| PageHero | seven-nine-hero-1 (no image) | Masked Text Reveal |
-| Platforms | offthegrid-value-features-4 cards, 2×2 | Masked Text Reveal |
-| Benefits | nextwell-intro-text-5 panel | Highlight Text on Scroll |
-| Stack (Astro + Sanity) | consult-ai-hero-4 layout, blue | Masked Text Reveal |
-| Compare + Why now | kelvin-value-features-6 table (light), sticky first column, swipe on mobile; facts only from Astro/Cloudflare official sources, with links | Masked Text Reveal |
-| WebApp | offthegrid card grid + automation list; card graphics are Recraft SVGs (`public/images/webapp/*.svg`, private Recraft style `d1c43333-7aee-4562-8eab-beb7403423e4`, white bg stripped, viewBox cropped) | Masked Text Reveal |
-| AiSpeed | split: AI speeds up / AJ makes sure of | Highlight Text on Scroll |
-| SeoAeo | consult-ai blue, SEO + AEO checklists | Masked Text Reveal |
-| Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
-| AboutAstro | seven-nine-intro-text-1 | Highlight Marker |
-| AstroProjects | Astro builds only (`platform: 'Astro'`), bento of 3 Recraft mockup variations per project (`mockup-1..3.webp`, nano_banana_pro from live 2x screenshots, on-brand blue scenes), sides alternate | Masked Text Reveal |
-| Testimonials | BYQ nextwell-testimonials-3 slider (`src/data/testimonials.ts`, shared with home) | Masked Text Reveal |
-| Faq | babka-faq-1 layout as native `<details name="faq">` accordion (one open at a time) | Masked Text Reveal |
-| Cta | consult-ai-cta-section-1 (props: title/text/label) | scroll zoom |
-
-Copy is outcome-led: headings were chosen by Jev composite score (outcome 50%, positive 30%, minus over-promise penalty). Logos: `src/components/ui/Logo.astro` (Simple Icons SVGs in `public/images/logos/`, monochrome currentColor to stay on-brand).
-
-Nav links are root-relative (`/#work`) so they work from any page; `is--current` follows `Astro.url.pathname`.
+Logos: `src/components/ui/Logo.astro` (Simple Icons, currentColor). Nav links are root-relative (`/#process`) so they work from any page.
 
 ### /projects — Projects
 - Data: `src/data/projects.ts` is the single source for the homepage Selected Work (the `featured` projects), `/projects` (all, filterable by Astro, Webflow or Framer) and `/projects/[slug]` (detail pages).

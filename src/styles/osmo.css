@@ -332,3 +332,8 @@
   flex: none;
 }
 .bold-nav-full__link-logo { filter: drop-shadow(0 1.1em 0 currentColor); }
+
+/* Longer role ("Web Designer & Astro Developer"): keep the logo pill on one line */
+.bold-nav-full__logo-role { white-space: nowrap; }
+@media (max-width: 479px) { .bold-nav-full__logo { font-size: .875rem; padding-inline: 1rem; } }
+@media (max-width: 359px) { .bold-nav-full__logo-role { display: none; } }

@@ -3,16 +3,16 @@
 // No em-dashes; no invented results, percentages or delivery records.
 
 export const hero = {
-  label: 'Custom web design & AI-assisted development',
+  label: 'Custom websites, built with Astro',
   words: ['Custom.', 'Faster.', 'Smarter.'],
   title: 'A custom website. Without the long wait.',
-  lede: 'Designed around your business, built faster with AI-assisted workflows and years of hands-on experience, and easy to manage after launch.',
+  lede: 'Designed around your business, built fast in Astro with AI-assisted workflows, and easy to update with Sanity after launch.',
   strip: 'Custom design · Faster turnaround · Cost-effective · Human-led',
 };
 
 export const value = {
   title: ['Custom websites.', 'Faster delivery.', 'Smarter costs.'],
-  intro: 'Your business deserves more than a generic template, or an AI-generated website that looks like everyone else’s.',
+  intro: 'The traditional agency model often means long proposals, slow handoffs and paying for overhead. A modern, AI-assisted workflow removes the waiting, without cutting the quality.',
   items: [
     { title: 'Custom by design', text: 'Every website is shaped around your brand, your audience and what you need it to do.' },
     { title: 'Faster delivery', text: 'AI-assisted workflows cut repetitive build work, so you see a working preview sooner and revisions move faster.' },
@@ -58,9 +58,22 @@ export const workflow = {
   modern: {
     label: 'My workflow',
     steps: ['Focused discovery', 'Early working preview', 'Refine together', 'QA', 'Launch'],
-    note: 'Designed to cut unnecessary waiting. Strategy, design, feedback and testing all stay in.',
+    note: 'Built to cut the waiting. Strategy, design, feedback and testing all stay in.',
   },
-  footnote: 'Plenty of agencies run excellent projects. The difference is a more streamlined workflow, not skipping the stages that protect quality.',
+  compare: {
+    title: 'The agency way vs. working with me',
+    oldLabel: 'Typical agency process',
+    newLabel: 'Working with me',
+    rows: [
+      { label: 'First look at your site', old: 'Often weeks in, after proposals and design rounds', now: 'An early working preview, often within days' },
+      { label: 'Who you work with', old: 'Account managers passing messages to a team', now: 'The person designing and building your site' },
+      { label: 'Handoffs', old: 'Strategy, design and development teams, one after another', now: 'One person from first call to launch' },
+      { label: 'What you pay for', old: 'Team overhead, meetings and time in a queue', now: 'Design, development and testing' },
+      { label: 'Revisions', old: 'Batched into rounds, then scheduled', now: 'Made quickly, while we review together' },
+      { label: 'Ownership', old: 'Often tied to a platform plan or retainer', now: 'Code, content and accounts set up in your name' },
+    ],
+  },
+  footnote: 'Good planning, design and testing still matter. The difference is everything that used to slow them down.',
 };
 
 export const timelines = {
@@ -117,37 +130,6 @@ export const ai = {
   tools: ['Claude Code', 'Codex'],
 };
 
-export const editing = {
-  title: ['Easy to update.', 'Built to last.'],
-  intro: 'Your website shouldn’t become a problem every time you need to change something. I set up content editing that fits your team’s comfort level and how your business works, rather than forcing every client onto one platform.',
-  you: { title: 'You', tag: 'Everyday updates', items: ['Services and pricing', 'Images and team details', 'Blog posts and news', 'Projects, products or listings', 'Contact details and FAQs'] },
-  me: { title: 'Me', tag: 'Bigger changes', items: ['New page layouts and sections', 'New features and integrations', 'Structural or design changes', 'Platform updates and troubleshooting'] },
-  note: 'Before launch you’ll know who owns what: your domain, hosting and platform accounts, plus any ongoing costs such as a site plan, hosting or CMS fees. You get handoff guidance for everyday edits, with optional support for anything bigger.',
-};
-
-// Outcome-led services. `newer: true` marks capabilities AJ is still building a track record in.
-export const services = {
-  title: ['What I can', 'help with'],
-  intro: 'Outcome-focused services for business owners, and dependable build support for agencies.',
-  items: [
-    { title: 'Custom Website Design & Development', text: 'Unique, professional websites built around your business goals and brand identity.' },
-    { title: 'Website Redesign & Modernisation', text: 'Give an outdated website a modern design, better usability and faster performance.' },
-    { title: 'Website Automation & Integrations', text: 'Connect forms, enquiries, bookings and other website processes to the tools your business already uses.', newer: true },
-    { title: 'Ongoing Optimisation & Support', text: 'Maintain, measure and keep improving your website after launch, from content updates to technical fixes.' },
-  ],
-};
-
-export const tools = {
-  title: ['The right tools', 'for the right project.'],
-  intro: 'Different businesses have different needs. Some want easy visual editing. Others need a lightweight, fast-loading site with flexible integrations and lower platform costs. I work across several modern platforms and recommend what makes the most sense for yours.',
-  items: [
-    { name: 'Webflow', text: 'Visual editing your team can pick up quickly, on a managed platform with hosting included.' },
-    { name: 'Framer', text: 'Design-led websites with smooth animation and a simple, visual CMS.' },
-    { name: 'Astro + Sanity', text: 'A lightweight, fast-loading site with flexible integrations, structured content editing and low hosting costs.', href: '/astro' },
-    { name: 'Code & integrations', text: 'HTML, CSS, JavaScript and GSAP, plus forms, CRMs, analytics and workflow tools like n8n.' },
-  ],
-};
-
 export const faqs = [
   {
     question: 'How long will my website take?',
@@ -158,24 +140,36 @@ export const faqs = [
     answer: 'Pricing is based on scope and deliverables: the number of pages, features, integrations and content work involved. Because AI-assisted workflows reduce repetitive build time, you’re not paying for hours that don’t add to the result. Tell me about your project and I’ll send a clear quote.',
   },
   {
+    question: 'Why do you build with Astro?',
+    answer: 'Astro sends plain HTML and only adds JavaScript where it’s needed, so pages load fast. The code is yours, it can be hosted almost anywhere without a per-site builder plan, and it connects easily to the tools your business uses.',
+  },
+  {
     question: 'Is my website built by AI?',
     answer: 'No. I use AI tools to speed up coding, debugging and repetitive tasks. The design decisions, implementation review, testing and final delivery are mine, and your feedback shapes the result.',
   },
   {
     question: 'Can I update the website myself?',
-    answer: 'Yes, for everyday content like text, images, services, pricing and blog posts. I set up editing that suits your team, and bigger structural changes are available as optional support.',
+    answer: 'Yes. Everyday content like text, images, services, pricing and blog posts is edited in Sanity Studio, a visual editor set up around your content. Bigger structural changes are available as optional support.',
+  },
+  {
+    question: 'Will my site look the same after a migration?',
+    answer: 'Exactly the same, or better: your choice. A migration is a good moment to fix design and structure issues, and nothing goes live until you’ve approved it on staging.',
+  },
+  {
+    question: 'What happens to my SEO?',
+    answer: 'It comes with you. URLs stay the same wherever possible, every changed URL gets a 301 redirect, and titles, descriptions, alt text and structured data are checked before launch.',
+  },
+  {
+    question: 'What is AEO, and do I need it?',
+    answer: 'Answer Engine Optimisation helps AI tools like ChatGPT, Perplexity and Google’s AI Overviews understand and cite your business. It builds on good SEO, and it’s included in every build.',
   },
   {
     question: 'Who owns the website?',
-    answer: 'Before launch we agree where your site is hosted and set up the domain, platform and hosting accounts so you know exactly what you own, and what any ongoing costs are.',
-  },
-  {
-    question: 'Which platform will you use?',
-    answer: 'The one that fits your business. Webflow and Framer suit teams that want visual editing. Astro with Sanity suits sites that need speed, flexible integrations and lower platform costs. I’ll recommend an option and explain why.',
+    answer: 'You do. The code, content, domain and hosting accounts are set up in your name, so you know exactly what you own and what any ongoing costs are.',
   },
   {
     question: 'Do you work with agencies?',
-    answer: 'Yes. Much of my experience is with agencies: building from approved designs, handling responsive development, CMS and QA independently, and supporting websites after launch.',
+    answer: 'Yes. I’ve spent years building with agencies: working from approved designs, handling responsive development, CMS and QA independently, and supporting websites after launch.',
   },
 ];
 

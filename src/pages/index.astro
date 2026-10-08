@@ -1,24 +1,28 @@
 ---
+// Homepage: Astro development + client-benefit positioning (merged from the former /astro page).
 import Base from '../layouts/Base.astro';
 import Hero from '../components/sections/Hero.astro';
 import Value from '../components/sections/Value.astro';
 import Intro from '../components/sections/Intro.astro';
-import Custom from '../components/sections/Custom.astro';
 import Workflow from '../components/sections/Workflow.astro';
 import Timelines from '../components/sections/Timelines.astro';
 import Cost from '../components/sections/Cost.astro';
-import Process from '../components/sections/Process.astro';
+import Platforms from '../components/sections/Platforms.astro';
+import Compare from '../components/sections/Compare.astro';
+import Custom from '../components/sections/Custom.astro';
+import Stack from '../components/sections/Stack.astro';
+import WebApp from '../components/sections/WebApp.astro';
 import AiWorkflow from '../components/sections/AiWorkflow.astro';
-import Editing from '../components/sections/Editing.astro';
-import Services from '../components/sections/Services.astro';
-import Work from '../components/sections/Work.astro';
+import SeoAeo from '../components/sections/SeoAeo.astro';
+import Process from '../components/sections/Process.astro';
+import AstroProjects from '../components/sections/AstroProjects.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
-import Tools from '../components/sections/Tools.astro';
 import Experience from '../components/sections/Experience.astro';
 import Faq from '../components/sections/Faq.astro';
 import Cta from '../components/sections/Cta.astro';
 import { process, faqs } from '../data/home';
 const schema = [
+  { '@type': 'Service', name: 'Custom Astro websites and migrations', serviceType: 'Website design and development', description: 'Custom websites built in Astro with Sanity for content editing, plus migrations from Webflow, Framer, WordPress or Wix, using AI-assisted workflows with hands-on design, development and testing.', areaServed: 'Worldwide' },
   { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
 ];
 ---
@@ -26,17 +30,19 @@ const schema = [
   <Hero />
   <Value />
   <Intro />
-  <Custom />
   <Workflow />
   <Timelines />
   <Cost />
-  <Process steps={process.steps} title={process.title as [string, string]} eyebrow="" intro={process.intro} />
+  <Platforms />
+  <Compare />
+  <Custom />
+  <Stack />
+  <WebApp />
   <AiWorkflow />
-  <Editing />
-  <Services />
-  <Work eyebrow="Real projects" lede="Websites I’ve built, developed or maintained professionally, across Astro, Webflow and Framer." />
+  <SeoAeo />
+  <Process steps={process.steps} title={process.title as [string, string]} eyebrow="" intro={process.intro} />
+  <AstroProjects />
   <Testimonials />
-  <Tools />
   <Experience />
   <Faq faqs={faqs} title="Questions, answered." />
   <Cta />

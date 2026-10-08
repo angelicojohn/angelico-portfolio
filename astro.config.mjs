@@ -7,5 +7,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://angelicojohn.github.io',
   base: '/angelico-portfolio',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/astro') })],
+  // The Astro page was merged into the homepage; keep old links working.
+  redirects: { '/astro': '/angelico-portfolio/' },
 });

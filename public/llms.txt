@@ -1,17 +1,16 @@
-# AJ: Custom Website Design & Development
+# AJ: Custom Astro Websites, Built Faster
 
-> AJ is a web designer and developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds custom websites using AI-assisted workflows (Claude Code, Codex) alongside hands-on design and development experience, in Webflow, Framer or Astro depending on the client's needs. Design decisions, implementation review, testing and delivery are done by AJ.
+> AJ is a web designer and Astro developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds custom websites in Astro, with Sanity for content editing, using AI-assisted workflows (Claude Code, Codex) to move faster than a traditional agency process, while design decisions, implementation review, testing and delivery are done by AJ.
 
 ## Pages
-- [Home](https://angelicojohn.github.io/angelico-portfolio/): Custom websites, faster delivery and cost-effective development; workflow, target timelines, process, content editing and ownership, services, projects, testimonials and FAQ.
-- [Astro Development & Migrations](https://angelicojohn.github.io/angelico-portfolio/astro/): Astro + Sanity builds and migrations from Webflow, Framer, WordPress and Wix; platform comparison; web app features and automations; SEO and AEO setup.
-- [Projects](https://angelicojohn.github.io/angelico-portfolio/projects/): Websites built in Astro, Webflow and Framer.
+- [Home](https://angelicojohn.github.io/angelico-portfolio/): Custom Astro websites and migrations; agency process vs. working with AJ; target timelines; cost; migrations from Webflow, Framer, WordPress and Wix; platform comparison; Astro + Sanity; web app features and automations; SEO and AEO; process; projects; testimonials; FAQ.
+- [Projects](https://angelicojohn.github.io/angelico-portfolio/projects/): Websites built in Astro, plus earlier Webflow and Framer work.
 
 ## Services
-- Custom website design and development
-- Website redesign and modernisation
-- Website automation and integrations (newer service): forms, CRMs, bookings, n8n workflows
-- Ongoing optimisation and support
+- Custom Astro websites with Sanity CMS
+- Migrations to Astro from Webflow, Framer, WordPress and Wix
+- Web app features and automations (newer service): forms, CRMs, bookings, payments, n8n workflows
+- Technical SEO and Answer Engine Optimisation (AEO)
 
 ## Target timelines (not guarantees; counted from when content and access are ready)
 - Landing pages: 3-5 business days

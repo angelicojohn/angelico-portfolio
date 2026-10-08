@@ -9,4 +9,4 @@ export const showcase = projects.map((p) => ({
   href: `/projects/${p.slug}`,
 }));
 
-export const showcaseLabels = ['Web design', 'Web development', 'Redesigns', 'Integrations & automation', 'Ongoing support'];
+export const showcaseLabels = ['Astro websites', 'Migrations', 'Sanity CMS', 'Integrations & automation', 'SEO & AEO'];
