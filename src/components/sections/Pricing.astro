@@ -1,0 +1,73 @@
+---
+// BYQ: butterfly-pricing-1 (three cards, featured centre card), re-skinned to tokens; logo marquee dropped.
+// Monthly option below: BYQ babka-pricing-1 split (copy left, plan card right). Osmo: Masked Text Reveal.
+import PillButton from '../ui/PillButton.astro';
+import { pricing } from '../../data/pricing';
+const { monthly } = pricing;
+---
+<section class="pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <div class="pricing__head">
+      <h2 class="pricing__title section-title" id="pricing-title" data-split="heading">{pricing.title}</h2>
+      <p class="pricing__intro">{pricing.intro}</p>
+    </div>
+
+    <ul class="pricing__grid" role="list">
+      {pricing.packages.map((p, i) => (
+        <li class:list={['price-card', { 'is--featured': p.featured }]} style={`--i:${i}`}>
+          <div class="price-card__head">
+            <div class="price-card__name-row">
+              <h3 class="price-card__name">{p.name}</h3>
+              {p.badge && <span class="price-card__badge">{p.badge}</span>}
+            </div>
+            <p class="price-card__best">{p.bestFor}</p>
+          </div>
+          <div class="price-card__rule" aria-hidden="true"></div>
+          <div class="price-card__price-block">
+            <p class="price-card__note">{p.priceNote}</p>
+            <p class="price-card__price">{p.price}<span class="price-card__currency">USD</span></p>
+          </div>
+          <PillButton href="#contact" label={p.cta} pkg={p.id} block variant={p.featured ? 'light' : 'brand'} />
+          <div class="price-card__rule" aria-hidden="true"></div>
+          <div class="price-card__body">
+            <p class="price-card__list-label">{p.listLabel}</p>
+            <ul class="price-card__list" role="list">
+              {p.items.map((item) => (
+                <li>
+                  <span class="price-card__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p class="price-card__timeline"><span>Timeline</span> {p.timeline}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="pricing__note">{pricing.note}</p>
+
+    <div class="monthly">
+      <div class="monthly__copy">
+        <h3 class="monthly__title">{monthly.title}</h3>
+        <p class="monthly__intro">{monthly.intro}</p>
+        <p class="monthly__note">{monthly.note}</p>
+      </div>
+      <div class="monthly__card">
+        <p class="monthly__label">12-month website subscription</p>
+        {monthly.plans.map((plan) => (
+          <div class="monthly__plan">
+            <div class="monthly__plan-head">
+              <h4 class="monthly__plan-name">{plan.name}</h4>
+              <p class="monthly__price">{plan.price}<span>/ month</span></p>
+              <p class="monthly__setup">+ {plan.setup}</p>
+            </div>
+            <ul class="monthly__list" role="list">
+              {plan.items.map((item) => <li>{item}</li>)}
+            </ul>
+            <PillButton href="#contact" label={monthly.cta} pkg={plan.id} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

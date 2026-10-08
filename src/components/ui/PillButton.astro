@@ -1,9 +1,10 @@
 ---
 // CTA button: 16px radius; on hover/focus the arrow tile grows to fill the whole button.
-interface Props { href: string; label: string; variant?: 'brand' | 'light'; }
-const { href, label, variant = 'brand' } = Astro.props;
+// `pkg` preselects that option in the contact form (main.js); `block` makes it full width.
+interface Props { href: string; label: string; variant?: 'brand' | 'light'; pkg?: string; block?: boolean; }
+const { href, label, variant = 'brand', pkg, block = false } = Astro.props;
 ---
-<a href={href} class:list={['btn-pill', { 'is--light': variant === 'light' }]}>
+<a href={href} class:list={['btn-pill', { 'is--light': variant === 'light', 'is--block': block }]} data-package={pkg}>
   <span class="btn-pill__label">{label}</span>
   <span class="btn-pill__icon" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

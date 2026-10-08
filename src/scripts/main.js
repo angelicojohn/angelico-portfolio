@@ -120,6 +120,60 @@ function initShowcase() {
     .catch(() => stage.classList.add('is--fallback'));
 }
 
+// ------------------------------- Contact form: package preselect + submit
+// Any [data-package] link (pricing/care CTAs) preselects that option; ?package=… works too.
+// Submit: POST JSON to data-endpoint if set, otherwise open a pre-filled email to data-email.
+function initContactForm() {
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+  const select = form.querySelector('[data-contact-interest]');
+  const status = form.querySelector('[data-contact-status]');
+  const choose = (value) => {
+    if (!select || !value) return;
+    const option = [...select.options].find((o) => o.value === value);
+    if (option) select.value = option.value;
+  };
+  document.querySelectorAll('[data-package]').forEach((link) => {
+    link.addEventListener('click', () => choose(link.dataset.package));
+  });
+  choose(new URLSearchParams(window.location.search).get('package'));
+
+  const fields = ['name', 'email', 'message'].map((name) => form.elements[name]);
+  const check = (field) => {
+    const ok = field.checkValidity();
+    field.setAttribute('aria-invalid', String(!ok));
+    const error = form.querySelector(`#${field.id}-error`);
+    if (error) error.hidden = ok;
+    if (!ok) field.setAttribute('aria-describedby', [field.getAttribute('aria-describedby'), error?.id].filter(Boolean).join(' '));
+    return ok;
+  };
+  fields.forEach((field) => field.addEventListener('blur', () => field.value && check(field)));
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const invalid = fields.filter((field) => !check(field));
+    if (invalid.length) { invalid[0].focus(); return; }
+    const data = Object.fromEntries(new FormData(form));
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.textContent = 'Thanks, your message is on its way.';
+      } catch {
+        status.textContent = `Something went wrong. Please email ${form.dataset.email} directly.`;
+      }
+      return;
+    }
+    const subject = `Project enquiry: ${data.interest}`;
+    const body = `Name: ${data.name}\nEmail: ${data.email}\nBusiness or website: ${data.company || '-'}\nInterested in: ${data.interest}\n\n${data.message}`;
+    window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    status.textContent = 'Your email app should open with your message ready to send.';
+  });
+}
+
 // ------------------------------------------------ CTA: sphere zoom on scroll
 function initCtaBall() {
   const ball = document.querySelector('[data-cta-ball]');
@@ -162,6 +216,7 @@ initWorkFilters();
 initWorkCursor();
 initTestimonials();
 initShowcase();
+initContactForm();
 initCtaBall();
 initProcessLine();
 

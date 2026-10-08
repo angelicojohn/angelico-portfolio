@@ -57,8 +57,8 @@ Copy: `src/data/home.ts` (benefits, workflow + agency comparison, target timelin
 | Value (4 benefits) | open 4-col list | Masked Text Reveal |
 | Intro / About (philosophy) | seven-nine-intro-text-1 | Highlight Marker, Highlight Text on Scroll |
 | Workflow + agency comparison | two flow rows + 3-col compare table | Masked Text Reveal |
-| Timelines (targets + stages) | 4 cards + 3-stage line | Masked Text Reveal |
 | Cost | AiSpeed split styles | Masked Text Reveal |
+| Roi (where the return comes from) | 6-cell bento, links to proof sections | Masked Text Reveal |
 | Platforms (migrate from) | offthegrid-value-features-4 cards, 2×2 | Masked Text Reveal |
 | Compare + Why now | kelvin-value-features-6 table; facts only from Astro/Cloudflare sources | Masked Text Reveal |
 | Custom | 7/5 split + blue checklist | Highlight Marker |
@@ -66,12 +66,14 @@ Copy: `src/data/home.ts` (benefits, workflow + agency comparison, target timelin
 | WebApp | card grid + automations; Recraft SVGs (`public/images/webapp/*.svg`, style `d1c43333-7aee-4562-8eab-beb7403423e4`) | Masked Text Reveal |
 | AI-Assisted | nextwell-intro-text-5 + principles row | Highlight Text on Scroll |
 | SeoAeo | consult-ai blue checklists | Masked Text Reveal |
-| Process (5 steps) | kelvin-process-1 (`Process` props) | line fill |
 | AstroProjects | bento of Recraft mockup variations per Astro project | Masked Text Reveal |
 | Testimonials | BYQ nextwell-testimonials-3 slider (`src/data/testimonials.ts`) | Masked Text Reveal |
+| Pricing (+ monthly option) | BYQ butterfly-pricing-1 cards (Growth featured, picked by Jev 0.96) + BYQ babka-pricing-1 split for the 12-month subscriptions; copy in `src/data/pricing.ts` | Masked Text Reveal, hover lift |
+| Care (monthly plans) | BYQ sound-stories-pricing-1 tier rows, hover fill | Masked Text Reveal |
+| Process (6 steps) | kelvin-process-1 (`Process` props, `process--six`) | line fill |
 | Experience | consult-ai-hero-4 (Astro-first tool list) | Masked Text Reveal (chars) |
 | FAQ | babka-faq-1 (`Faq` props) + FAQPage schema | — |
-| Final CTA | consult-ai-cta-section-1 | scroll zoom |
+| Final CTA + contact form | consult-ai-cta-section-1 + form. Pricing/care CTAs carry `data-package` (PillButton `pkg`) to preselect “Interested in”; `?package=` works too. No backend: opens a pre-filled email unless `site.formEndpoint` is set (POST JSON, e.g. Formspree) | scroll zoom |
 
 Logos: `src/components/ui/Logo.astro` (Simple Icons, currentColor). Nav links are root-relative (`/#process`) so they work from any page.
 

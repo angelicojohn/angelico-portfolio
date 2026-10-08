@@ -1,0 +1,39 @@
+---
+// BYQ: sound-stories-pricing-1 (tier rows: top tile = price + CTA, bottom tile = name + benefits;
+// background expands on hover). Custom cursor follower dropped. Osmo: Masked Text Reveal.
+import PillButton from '../ui/PillButton.astro';
+import { care } from '../../data/pricing';
+---
+<section class="care" id="care" aria-labelledby="care-title">
+  <div class="container">
+    <div class="care__head">
+      <h2 class="care__title section-title" id="care-title" data-split="heading">{care.title}</h2>
+      <p class="care__intro">{care.intro}</p>
+    </div>
+  </div>
+  <ul class="care__list" role="list">
+    {care.plans.map((plan) => (
+      <li class:list={['care-row', { 'is--featured': plan.featured }]}>
+        <span class="care-row__fill" aria-hidden="true"></span>
+        <div class="container">
+          <div class="care-row__inner">
+            <div class="care-row__top">
+              <p class="care-row__price"><strong>From {plan.price}</strong> / month {plan.badge && <span class="care-row__badge">{plan.badge}</span>}</p>
+              <PillButton href="#contact" label={plan.cta} pkg={plan.id} />
+            </div>
+            <div class="care-row__bottom">
+              <h3 class="care-row__name">{plan.name}</h3>
+              <div>
+                {plan.lead && <p class="care-row__lead">{plan.lead}</p>}
+                <ul class="care-row__items" role="list">
+                  {plan.items.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <div class="container"><p class="care__note">{care.note}</p></div>
+</section>

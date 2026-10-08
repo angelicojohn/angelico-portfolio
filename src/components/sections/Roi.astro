@@ -1,0 +1,25 @@
+---
+// Where the return comes from: 6-cell bento (5 return sources + a measurement note). Osmo: Masked Text Reveal.
+import { roi } from '../../data/pricing';
+---
+<section class="roi" id="roi" aria-labelledby="roi-title">
+  <div class="container">
+    <div class="roi__head">
+      <h2 class="roi__title section-title" id="roi-title" data-split="heading">{roi.title}</h2>
+      <p class="roi__intro">{roi.intro}</p>
+    </div>
+    <ul class="roi__grid" role="list">
+      {roi.items.map((item, i) => (
+        <li class:list={['roi-cell', { 'is--wide': i === 0 }]}>
+          <span class="roi-cell__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="roi-cell__title">{item.title}</h3>
+          <p class="roi-cell__text">{item.text}</p>
+          <a class="roi-cell__link" href={item.href}>{item.link} <span aria-hidden="true">↓</span></a>
+        </li>
+      ))}
+      <li class="roi-cell is--note">
+        <p>{roi.note}</p>
+      </li>
+    </ul>
+  </div>
+</section>

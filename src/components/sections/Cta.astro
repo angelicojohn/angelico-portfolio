@@ -1,9 +1,12 @@
 ---
 import { url } from '../../lib/url';
 // BYQ: consult-ai-cta-section-1  ·  Osmo: Masked Text Reveal
-import PillButton from '../ui/PillButton.astro';
+// Contact form: pricing CTAs (data-package) preselect "Interested in" (main.js).
+// No backend on GitHub Pages: without site.formEndpoint the form opens a pre-filled email;
+// with an endpoint (e.g. Formspree) it POSTs JSON and shows an inline success state.
 import { site } from '../../data/site';
 import { cta } from '../../data/home';
+import { interestOptions } from '../../data/pricing';
 interface Props { title?: string; text?: string; label?: string; }
 const { title = cta.title, text = cta.text, label = cta.label } = Astro.props;
 ---
@@ -14,9 +17,44 @@ const { title = cta.title, text = cta.text, label = cta.label } = Astro.props;
       <div class="cta__content">
         <h2 class="cta__title section-title" data-split="heading">{title}</h2>
         <p class="cta__text">{text}</p>
-        <div class="cta__actions">
-          <PillButton href={`mailto:${site.email}`} label={label} variant="light" />
-        </div>
+
+        <form class="contact-form" data-contact-form data-email={site.email} data-endpoint={site.formEndpoint || undefined} novalidate>
+          <div class="contact-form__grid">
+            <div class="field">
+              <label class="field__label" for="cf-name">Name</label>
+              <input class="field__input" id="cf-name" name="name" type="text" autocomplete="name" required />
+              <p class="field__error" id="cf-name-error" hidden>Please add your name.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-email">Email</label>
+              <input class="field__input" id="cf-email" name="email" type="email" autocomplete="email" required />
+              <p class="field__error" id="cf-email-error" hidden>Please add a valid email address.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-company">Business or website <span>(optional)</span></label>
+              <input class="field__input" id="cf-company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-interest">Interested in</label>
+              <select class="field__input" id="cf-interest" name="interest" data-contact-interest>
+                {interestOptions.map((o) => <option value={o} selected={o === 'Not sure yet'}>{o}</option>)}
+              </select>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cf-message">About your project</label>
+              <textarea class="field__input" id="cf-message" name="message" rows="4" required aria-describedby="cf-message-help"></textarea>
+              <p class="field__help" id="cf-message-help">Your business, what the website needs to do, and any timeline or budget in mind.</p>
+              <p class="field__error" id="cf-message-error" hidden>Please tell me a little about your project.</p>
+            </div>
+          </div>
+          <div class="contact-form__actions">
+            <button type="submit" class="btn-pill is--light contact-form__submit">
+              <span class="btn-pill__label">{label}</span>
+              <span class="btn-pill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
+            <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </div>
   </div>

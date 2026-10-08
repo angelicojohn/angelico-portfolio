@@ -154,7 +154,7 @@ export const aiSpeed = {
 // --------------------------------------------------------------- SEO + AEO
 export const seo = {
   title: ['Found on Google.', 'Cited by AI.'],
-  intro: 'More people now get answers from Google’s AI Overviews, ChatGPT and Perplexity before they ever click a link. Every build includes the setup that helps your business show up in classic search results and in AI answers.',
+  intro: 'More people now get answers from Google’s AI Overviews, ChatGPT and Perplexity before they ever click a link. Growth Websites and custom projects include the setup that helps your business show up in classic search results and in AI answers, and every site gets the technical SEO foundations.',
   seo: ['Titles, meta descriptions and Open Graph', 'Clean URLs, canonicals and 301 redirect map', 'XML sitemap and robots.txt', 'Fast pages and strong Core Web Vitals', 'Semantic HTML, headings and alt text'],
   aeo: ['Structured data: Organization, Service, FAQ, Breadcrumbs', 'Question-led content with clear, direct answers', 'llms.txt so AI tools can read your key pages', 'Consistent business details across your site', 'Content structured for AI Overviews, ChatGPT and Perplexity'],
   note: 'This site uses the same setup.',

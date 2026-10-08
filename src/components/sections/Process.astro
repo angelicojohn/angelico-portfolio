@@ -16,7 +16,7 @@ const {
   intro,
 } = Astro.props;
 ---
-<section class:list={['process', { 'process--five': steps.length === 5 }]} id="process">
+<section class:list={['process', { 'process--five': steps.length === 5, 'process--six': steps.length === 6 }]} id="process">
   <div class="container">
     <div class="process__head">
       {eyebrow && <div class="process__eyebrow"><Logo name="astro" class="process__logo" />{eyebrow}</div>}

@@ -65,7 +65,7 @@ export const workflow = {
     oldLabel: 'Typical agency process',
     newLabel: 'Working with me',
     rows: [
-      { label: 'First look at your site', old: 'Often weeks in, after proposals and design rounds', now: 'An early working preview, often within days' },
+      { label: 'First look at your site', old: 'Often weeks in, after proposals and design rounds', now: 'A design direction before you commit, then an early working preview' },
       { label: 'Who you work with', old: 'Account managers passing messages to a team', now: 'The person designing and building your site' },
       { label: 'Handoffs', old: 'Strategy, design and development teams, one after another', now: 'One person from first call to launch' },
       { label: 'What you pay for', old: 'Team overhead, meetings and time in a queue', now: 'Design, development and testing' },
@@ -74,23 +74,6 @@ export const workflow = {
     ],
   },
   footnote: 'Good planning, design and testing still matter. The difference is everything that used to slow them down.',
-};
-
-export const timelines = {
-  title: ['Know what to expect.', 'From day one.'],
-  intro: 'Target timelines for common projects. They start once requirements, content and access are ready, and you get a confirmed timeline before any work begins.',
-  items: [
-    { name: 'Landing pages', time: '3-5 business days', text: 'A focused page built to convert, with responsive development and essential integrations.' },
-    { name: 'Small business websites', time: '1-2 weeks', text: 'A professional multi-page site with clear navigation, SEO basics and content management where needed.' },
-    { name: 'Larger custom websites', time: '2-4 weeks', text: 'More pages, custom layouts and a deeper CMS, depending on complexity.' },
-    { name: 'Advanced projects & integrations', time: 'Scoped together', text: 'Custom functionality, integrations, automations or large content moves, with a timeline based on scope.' },
-  ],
-  stages: [
-    { title: 'Working preview', text: 'An early, clickable version on a private link, so you can react to something real.' },
-    { title: 'Completed website', text: 'Content, features and responsive layouts in place, ready for your review.' },
-    { title: 'Approved launch', text: 'Final checks and your sign-off, then your site goes live.' },
-  ],
-  factors: 'Delivery depends on requirements, content readiness, number of pages, integrations, feedback and approval times, and technical complexity.',
 };
 
 export const cost = {
@@ -108,14 +91,15 @@ export const cost = {
 };
 
 export const process = {
-  title: ['Your ideas. My expertise.', 'A better process.'],
-  intro: 'You don’t need to understand AI, code or web development. Tell me about your business and what you want to achieve, and I’ll handle the rest with you.',
+  title: ['From first conversation', 'to launch.'],
+  intro: 'You don’t need to understand AI, code or web development. Tell me about your business and what you want to achieve, and I’ll guide you through the rest.',
   steps: [
-    { num: '01', title: 'Tell me about your business', copy: 'We talk through your goals, audience, content and design preferences.' },
-    { num: '02', title: 'See your website take shape', copy: 'I build an early working version, so you can see real progress quickly.' },
-    { num: '03', title: 'Make it yours', copy: 'We review the design together and refine the details based on your feedback.' },
-    { num: '04', title: 'Launch with confidence', copy: 'I test across devices, check every feature and prepare your site for launch.' },
-    { num: '05', title: 'Stay in control', copy: 'You get easy content editing and handoff guidance, with optional ongoing support.' },
+    { num: '01', title: 'Discover', copy: 'We talk through your business, goals, customers and what your website needs to achieve.' },
+    { num: '02', title: 'Explore', copy: 'I prepare a personalised design direction or concept based on your business needs.' },
+    { num: '03', title: 'Propose', copy: 'You get a clear proposal with the deliverables, timeline and investment.' },
+    { num: '04', title: 'Build', copy: 'After approval and deposit, I design and build your site with an efficient, AI-assisted workflow and human oversight.' },
+    { num: '05', title: 'Refine & launch', copy: 'We review the site together, complete testing and prepare it for launch.' },
+    { num: '06', title: 'Grow', copy: 'Optional ongoing support keeps your site maintained, improving and growing over time.' },
   ],
 };
 
@@ -132,12 +116,36 @@ export const ai = {
 
 export const faqs = [
   {
-    question: 'How long will my website take?',
-    answer: 'It depends on scope. As a guide, landing pages target 3-5 business days, small business websites 1-2 weeks and larger custom websites 2-4 weeks, counted from when requirements, content and access are ready. You get a confirmed timeline before work starts, and an early working preview along the way.',
+    question: 'How much does a website cost?',
+    answer: 'Custom Websites start at $1,500 USD, Growth Websites at $3,000 and custom digital solutions at $5,000. If you’d rather pay monthly, 12-month website subscriptions start at $199/month plus a setup fee. These are starting prices: you get a clear proposal based on your scope before any work begins.',
   },
   {
-    question: 'How much does a website cost?',
-    answer: 'Pricing is based on scope and deliverables: the number of pages, features, integrations and content work involved. Because AI-assisted workflows reduce repetitive build time, you’re not paying for hours that don’t add to the result. Tell me about your project and I’ll send a clear quote.',
+    question: 'Why are your websites more cost-effective?',
+    answer: 'I use a streamlined development process and AI-assisted tools to reduce repetitive production work. That lets me spend more time on design, customisation, quality and your business requirements.',
+  },
+  {
+    question: 'Are your websites custom-designed?',
+    answer: 'Yes. Each project is designed around your business, brand, audience and goals, rather than a generic one-size-fits-all result.',
+  },
+  {
+    question: 'How long does a website take?',
+    answer: 'Smaller websites can typically be completed in 1-2 weeks, while more complex projects may need 2-4 weeks or longer. Timelines depend on scope, feedback and content readiness.',
+  },
+  {
+    question: 'Do I need a monthly subscription?',
+    answer: 'No. Website development is available as a one-time project. Monthly website subscriptions, and the care, growth and automation plans, are optional.',
+  },
+  {
+    question: 'Can you improve my existing website?',
+    answer: 'Yes. Not every business needs a complete redesign. I can improve performance, conversion paths, SEO foundations, integrations and existing functionality.',
+  },
+  {
+    question: 'Do I own my website?',
+    answer: 'Ownership and handover terms are set out in the project agreement. Upon full payment, you receive the agreed deliverables and ownership rights. Third-party services remain subject to their own licences and terms.',
+  },
+  {
+    question: 'Do you work with international clients?',
+    answer: 'Yes. I work remotely with businesses across different countries and time zones, and pricing is in USD.',
   },
   {
     question: 'Why do you build with Astro?',
@@ -152,20 +160,12 @@ export const faqs = [
     answer: 'Yes. Everyday content like text, images, services, pricing and blog posts is edited in Sanity Studio, a visual editor set up around your content. Bigger structural changes are available as optional support.',
   },
   {
-    question: 'Will my site look the same after a migration?',
-    answer: 'Exactly the same, or better: your choice. A migration is a good moment to fix design and structure issues, and nothing goes live until you’ve approved it on staging.',
-  },
-  {
-    question: 'What happens to my SEO?',
+    question: 'What happens to my SEO if I move my site?',
     answer: 'It comes with you. URLs stay the same wherever possible, every changed URL gets a 301 redirect, and titles, descriptions, alt text and structured data are checked before launch.',
   },
   {
     question: 'What is AEO, and do I need it?',
-    answer: 'Answer Engine Optimisation helps AI tools like ChatGPT, Perplexity and Google’s AI Overviews understand and cite your business. It builds on good SEO, and it’s included in every build.',
-  },
-  {
-    question: 'Who owns the website?',
-    answer: 'You do. The code, content, domain and hosting accounts are set up in your name, so you know exactly what you own and what any ongoing costs are.',
+    answer: 'Answer Engine Optimisation helps AI tools like ChatGPT, Perplexity and Google’s AI Overviews understand and cite your business. It builds on good SEO, and its foundations are included from the Growth Website up.',
   },
   {
     question: 'Do you work with agencies?',
