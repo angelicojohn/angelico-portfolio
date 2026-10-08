@@ -2,18 +2,19 @@
 // BYQ: seven-nine-hero-1  ·  Osmo: Masked Text Reveal, Text Scramble (load)
 import PillButton from '../ui/PillButton.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
+import { hero } from '../../data/home';
 ---
 <section class="hero" id="top">
   <div class="container">
     <div class="hero__inner">
       <div class="hero__top">
         <div class="hero__display" aria-hidden="true">
-          <span class="hero__word is--center" data-split="heading" data-split-start="top bottom">Figma.</span>
-          <span class="hero__word" data-split="heading" data-split-start="top bottom">Webflow.</span>
-          <span class="hero__word is--end" data-split="heading" data-split-start="top bottom">Shipped.</span>
+          <span class="hero__word is--center" data-split="heading" data-split-start="top bottom">{hero.words[0]}</span>
+          <span class="hero__word" data-split="heading" data-split-start="top bottom">{hero.words[1]}</span>
+          <span class="hero__word is--end" data-split="heading" data-split-start="top bottom">{hero.words[2]}</span>
         </div>
         <div class="hero__media">
-          <!-- TODO(AJ): replace with <img class="media-cover" src="/images/aj.webp" alt="AJ, Webflow Developer" /> -->
+          <!-- TODO(AJ): replace with <img class="media-cover" src="/images/aj.webp" alt="AJ, web designer and developer" /> -->
           <div class="media-placeholder">Your photo here</div>
           <div class="hero__media-overlay" aria-hidden="true"></div>
         </div>
@@ -23,15 +24,15 @@ import LinkArrow from '../ui/LinkArrow.astro';
         <div class="divider"></div>
         <div class="hero__bottom-grid">
           <div class="hero__copy">
-            <span class="pill-label">Hi, I'm AJ</span>
-            <h1 class="hero__title">Webflow Developer building polished, production-ready websites.</h1>
-            <p class="hero__lede">I turn Figma designs into responsive, scalable Webflow builds with clean CMS architecture, custom code, motion, integrations and thoughtful attention to every breakpoint.</p>
+            <span class="pill-label">{hero.label}</span>
+            <h1 class="hero__title">{hero.title}</h1>
+            <p class="hero__lede">{hero.lede}</p>
           </div>
           <div class="hero__aside">
-            <p class="hero__meta" data-scramble="load">3+ years of professional experience · 40+ websites worked on · Webflow, Framer, JavaScript &amp; AI-assisted development</p>
+            <p class="hero__meta" data-scramble="load">{hero.strip}</p>
             <div class="hero__ctas">
-              <PillButton href="#work" label="View Selected Work" />
-              <LinkArrow href="#contact" label="Get In Touch" />
+              <PillButton href="#contact" label="Let’s Build Your Website" />
+              <LinkArrow href="#work" label="Explore My Work" />
             </div>
           </div>
         </div>

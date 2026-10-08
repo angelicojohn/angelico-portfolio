@@ -1,0 +1,25 @@
+---
+// Cost-effectiveness: reuses the /astro AiSpeed split ("what changes / what doesn't").  ·  Osmo: Masked Text Reveal
+import { cost } from '../../data/home';
+---
+<section class="aispeed cost" id="cost">
+  <div class="container">
+    <div class="aispeed__head">
+      <h2 class="aispeed__title cost__title">
+        {cost.title.map((line) => <span data-split="heading">{line}</span>)}
+      </h2>
+      <p class="aispeed__intro">{cost.intro}</p>
+    </div>
+    <div class="aispeed__split">
+      <div class="aispeed__col">
+        <h3 class="aispeed__col-title">{cost.faster.label}</h3>
+        <ul class="aispeed__list">{cost.faster.items.map((t) => <li>{t}</li>)}</ul>
+      </div>
+      <div class="aispeed__col is--me">
+        <h3 class="aispeed__col-title">{cost.same.label}</h3>
+        <ul class="aispeed__list">{cost.same.items.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    </div>
+    <p class="cost__note">{cost.note}</p>
+  </div>
+</section>

@@ -11,6 +11,7 @@
 @import "./sections/astro-page.css";
 @import "./sections/projects.css";
 @import "./sections/testimonials.css";
+@import "./sections/home.css";
 
 /* ---------------------------------- Reset ---------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }

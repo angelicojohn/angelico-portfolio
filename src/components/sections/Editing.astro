@@ -1,0 +1,22 @@
+---
+// Easy editing + ownership: reuses the blue SeoAeo two-card layout.  ·  Osmo: Masked Text Reveal
+import { editing } from '../../data/home';
+const cols = [editing.you, editing.me];
+---
+<section class="experience seoaeo editing" id="editing">
+  <div class="container">
+    <div class="seoaeo__head">
+      <h2 class="experience__title seoaeo__title">{editing.title.map((line) => <span class="seoaeo__line" data-split="heading" data-split-reveal="words">{line}</span>)}</h2>
+      <p class="seoaeo__intro">{editing.intro}</p>
+    </div>
+    <div class="seoaeo__grid">
+      {cols.map((c) => (
+        <div class="seoaeo__card">
+          <h3 class="seoaeo__card-title">{c.title} <span>{c.tag}</span></h3>
+          <ul class="seoaeo__list">{c.items.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <p class="editing__note">{editing.note}</p>
+  </div>
+</section>

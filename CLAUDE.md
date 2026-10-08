@@ -1,6 +1,6 @@
 # AJ Portfolio
 
-Personal portfolio for AJ, a Webflow Developer. Built in **Astro** with plain CSS. Layouts come from **BYQ Supply** sections, motion comes from **Osmo Supply** resources, and everything is re-skinned to one **blue** brand.
+Personal portfolio for AJ, a web designer & developer (Webflow, Framer, Astro). Built in **Astro** with plain CSS. Layouts come from **BYQ Supply** sections, motion comes from **Osmo Supply** resources, and everything is re-skinned to one **blue** brand.
 
 The markup and class naming are kept Webflow-friendly (flat BEM-style global classes, no scoped styles, no Tailwind) so sections can later be moved into the Webflow Designer.
 
@@ -43,19 +43,31 @@ osmo/                         # RAW Osmo resources exactly as pasted (reference 
 public/images/                # local images (BYQ decorative assets, your photos)
 ```
 
-## Section → source map
+## Section → source map (homepage)
 
-| Section | BYQ layout | Osmo motion |
+Positioning (Oct 2026): client benefits first ("Custom websites. Faster delivery. Smarter costs."), tools second. All homepage copy lives in `src/data/home.ts` (DRAFT by Claude from AJ's repositioning brief; Jev-checked for over-promises). Timelines there are proposed **targets**, not guarantees.
+
+| Section | Layout source | Motion |
 |---|---|---|
 | Loader | — | Welcoming Words Loader |
 | Nav | — | Bold Full Screen Navigation + Burger Menu Button |
 | Hero | seven-nine-hero-1 | Masked Text Reveal, Text Scramble (load) |
-| About | seven-nine-intro-text-1 | Highlight Marker Text Reveal, Highlight Text on Scroll |
-| What I Do | offthegrid-value-features-4 | Masked Text Reveal |
-| AI-Assisted | nextwell-intro-text-5 | Highlight Text on Scroll |
-| Selected Work | strobe-cms-grid-5 (2-col, 16:10 for site screenshots) | Masked Text Reveal + cursor follower |
+| Value (4 benefits) | open 4-col list | Masked Text Reveal |
+| Intro / About (philosophy) | seven-nine-intro-text-1 | Highlight Marker, Highlight Text on Scroll |
+| Custom | 7/5 split + blue checklist | Highlight Marker |
+| Workflow (traditional vs modern) | two flow rows | Masked Text Reveal |
+| Timelines (targets + stages) | 4 cards + 3-stage line | Masked Text Reveal |
+| Cost | reuses /astro AiSpeed split | Masked Text Reveal |
+| Process (5 steps) | kelvin-process-1 (`Process` props) | line fill |
+| AI-Assisted | nextwell-intro-text-5 + principles row | Highlight Text on Scroll |
+| Editing & ownership | reuses blue SeoAeo cards | Masked Text Reveal |
+| Services (4 outcome services) | offthegrid-value-features-4 | Masked Text Reveal |
+| Selected Work | strobe-cms-grid-5 | Masked Text Reveal + cursor follower |
+| Testimonials | BYQ nextwell-testimonials-3 slider (scroll-snap + buttons in main.js; photo or brand-colour fallback) | Masked Text Reveal |
+| Tools | Platforms card grid | Masked Text Reveal |
 | Experience | consult-ai-hero-4 | Masked Text Reveal (chars) |
-| Final CTA | consult-ai-cta-section-1 | Masked Text Reveal + scroll zoom |
+| FAQ | babka-faq-1 (`Faq` props) + FAQPage schema | — |
+| Final CTA | consult-ai-cta-section-1 (defaults from home.ts) | scroll zoom |
 
 ### /astro — Astro Development & Migrations (Webflow, Framer, WordPress, Wix)
 Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approval; Jev-checked for invented claims and over-promises).
@@ -73,7 +85,7 @@ Content lives in `src/data/astro.ts` (DRAFT copy by Claude, awaiting AJ's approv
 | Process | kelvin-process-1 (picked by Claude; Jev leaned Sparkles at 0.52) | line fill + Masked Text Reveal |
 | AboutAstro | seven-nine-intro-text-1 | Highlight Marker |
 | AstroProjects | Astro builds only (`platform: 'Astro'`), bento of 3 Recraft mockup variations per project (`mockup-1..3.webp`, nano_banana_pro from live 2x screenshots, on-brand blue scenes), sides alternate | Masked Text Reveal |
-| Testimonials | featured quote + 2-col grid (`src/data/testimonials.ts`, shared with home; `limit={4}` here) | Masked Text Reveal |
+| Testimonials | BYQ nextwell-testimonials-3 slider (`src/data/testimonials.ts`, shared with home) | Masked Text Reveal |
 | Faq | babka-faq-1 layout as native `<details name="faq">` accordion (one open at a time) | Masked Text Reveal |
 | Cta | consult-ai-cta-section-1 (props: title/text/label) | scroll zoom |
 

@@ -1,0 +1,20 @@
+---
+// Custom design differentiator: statement + copy left, highlights list right.  ·  Osmo: Highlight Marker
+import { custom } from '../../data/home';
+---
+<section class="custom" id="custom">
+  <div class="container">
+    <div class="custom__grid">
+      <div class="custom__copy">
+        <h2 class="custom__title">
+          <span>{custom.title[0]}</span>
+          <span data-highlight-marker-reveal data-marker-theme="--marker-color" data-marker-direction="right">{custom.title[1]}</span>
+        </h2>
+        {custom.paragraphs.map((p) => <p class="custom__text">{p}</p>)}
+      </div>
+      <ul class="custom__list" role="list">
+        {custom.highlights.map((h) => <li>{h}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

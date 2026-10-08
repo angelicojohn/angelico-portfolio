@@ -8,8 +8,8 @@ import { site as siteData } from '../data/site';
 
 interface Props { title?: string; description?: string; schema?: Record<string, unknown>[]; }
 const {
-  title = 'AJ | Webflow Developer',
-  description = 'Webflow Developer building polished, production-ready websites: Figma → Webflow, CMS architecture, custom code, motion and integrations.',
+  title = 'AJ | Custom Website Design & Development',
+  description = 'Custom websites designed around your business, built faster with AI-assisted workflows and hands-on experience in Webflow, Framer and Astro. Easy to manage after launch.',
   schema = [],
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -17,7 +17,7 @@ const siteSchema = {
   '@type': 'ProfessionalService',
   name: `${siteData.name}, ${siteData.role}`,
   url: new URL(import.meta.env.BASE_URL, Astro.site).href,
-  description: 'Webflow, Framer and Astro development: Figma → Webflow builds, CMS architecture, custom code, migrations to Astro + Sanity, and SEO/AEO setup.',
+  description: 'Custom website design and development using AI-assisted workflows: new websites, redesigns, integrations and ongoing support, built in Webflow, Framer or Astro.',
   founder: { '@type': 'Person', name: siteData.name, jobTitle: siteData.role },
   areaServed: 'Worldwide',
   knowsAbout: ['Webflow', 'Framer', 'Astro', 'Sanity', 'GSAP', 'Technical SEO', 'Answer Engine Optimization'],

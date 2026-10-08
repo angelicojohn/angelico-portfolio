@@ -54,6 +54,14 @@ export const faqs = [
     answer: 'Answer Engine Optimisation helps AI tools like ChatGPT, Perplexity and Google’s AI Overviews understand and cite your business. It builds on good SEO, and it’s included in every Astro build.',
   },
   {
+    question: 'Is Astro always the right choice?',
+    answer: 'No. If your team wants to change layouts visually without a developer, Webflow or Framer may suit you better. Astro shines when speed, flexible integrations, code ownership and lower platform costs matter most. I’ll recommend what fits your business, even if that isn’t Astro.',
+  },
+  {
+    question: 'How long does a migration take?',
+    answer: 'It depends on the number of pages, how much CMS content needs to move, integrations and how quickly feedback comes back. You get a scoped timeline after the audit, and a working preview on staging early in the build.',
+  },
+  {
     question: 'Do you still build in Webflow?',
     answer: 'Yes. If Webflow is the better fit for your goals, I’ll tell you and build it there. The aim is the right site for your business, not a particular tool.',
   },

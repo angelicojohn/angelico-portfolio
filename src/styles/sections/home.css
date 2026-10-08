@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Homepage positioning sections (client-benefit repositioning)
+   Value · Custom · Workflow · Timelines · Cost · Editing · Tools
+   + small additions to reused components (services, process, ai).
+   ========================================================================== */
+
+/* Shared heading scale for the new sections */
+.value__title,
+.custom__title,
+.workflow__title,
+.timelines__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+.value__title > span,
+.workflow__title > span,
+.timelines__title > span,
+.cost__title > span,
+.custom__title > span { display: block; }
+
+.value__intro,
+.workflow__intro,
+.timelines__intro {
+  max-width: 40rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.45;
+}
+
+/* ---------- Value (four benefits) ---------- */
+.value { padding-block: var(--section-pad); background: var(--white); }
+.value__head { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.value__line.is--accent { color: var(--color-accent); }
+
+.value__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.value__item { display: flex; flex-direction: column; gap: .875rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+.value__num { font-family: var(--font-mono); font-size: .75rem; color: var(--color-accent); }
+.value__item-title { font-family: var(--font-display); font-size: clamp(1.375rem, 1.9vw, 1.75rem); font-weight: 500; letter-spacing: -.03em; line-height: 1.1; }
+.value__item-text { color: var(--color-text-muted); line-height: 1.5; }
+
+@media (max-width: 991px) { .value__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 479px) { .value__grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+/* ---------- Custom design ---------- */
+.custom { padding-block: var(--section-pad); background: var(--color-bg); }
+.custom__grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+.custom__title { margin-bottom: 2rem; }
+.custom__text { max-width: 38rem; font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.5; color: var(--color-text-muted); }
+.custom__text + .custom__text { margin-top: 1rem; }
+
+.custom__list {
+  margin: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  list-style: none;
+  border-radius: var(--radius-lg);
+  background: var(--blue-500);
+  color: var(--white);
+}
+.custom__list li {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  padding-block: .875rem;
+  font-size: 1.0625rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--white) 18%, transparent);
+}
+.custom__list li:last-child { border-bottom: 0; }
+.custom__list li::before { content: '✓'; color: var(--blue-200); font-size: .875rem; }
+
+@media (max-width: 991px) { .custom__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Workflow (traditional vs modern) ---------- */
+.workflow { padding-block: var(--section-pad); background: var(--white); }
+.workflow__head { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.workflow__rows { display: grid; gap: 1rem; }
+.workflow__row { padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--radius-lg); background: var(--color-bg); }
+.workflow__row--modern { background: var(--blue-50); }
+
+.workflow__label { margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-muted); }
+.workflow__row--modern .workflow__label { color: var(--color-accent); }
+
+.workflow__flow { display: flex; flex-wrap: wrap; align-items: center; gap: .625rem; margin: 0; padding: 0; list-style: none; }
+.workflow__step {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  padding: .625rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  border: 1px solid var(--color-border);
+  font-size: .9375rem;
+  white-space: nowrap;
+}
+.workflow__step:not(:last-child)::after { content: '→'; margin-right: -.25rem; color: var(--color-text-muted); }
+.workflow__row--modern .workflow__step { background: var(--blue-500); border-color: transparent; color: var(--white); }
+.workflow__row--modern .workflow__step:not(:last-child)::after { color: var(--blue-200); }
+
+.workflow__note { margin-top: 1.25rem; color: var(--color-text-muted); }
+.workflow__footnote { max-width: 46rem; margin-top: 1.5rem; font-size: .9375rem; color: var(--color-text-muted); }
+
+@media (max-width: 479px) { .workflow__step { white-space: normal; } }
+
+/* ---------- Timelines (targets) ---------- */
+.timelines { padding-block: var(--section-pad); background: var(--color-bg); }
+.timelines__head { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.timelines__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.timeline-card { display: flex; flex-direction: column; gap: .5rem; padding: 1.75rem; border-radius: var(--radius-lg); background: var(--white); }
+.timeline-card.is--accent { background: var(--blue-500); color: var(--white); }
+.timeline-card__kicker { font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-accent); }
+.timeline-card.is--accent .timeline-card__kicker { color: var(--blue-200); }
+.timeline-card__time { font-family: var(--font-display); font-size: clamp(1.75rem, 2.6vw, 2.5rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.05; }
+.timeline-card__name { margin-top: auto; padding-top: 2.5rem; font-size: 1.0625rem; font-weight: 600; }
+.timeline-card__text { color: var(--color-text-muted); font-size: .9375rem; line-height: 1.45; }
+.timeline-card.is--accent .timeline-card__text { color: color-mix(in srgb, var(--white) 78%, transparent); }
+
+.timelines__stages {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: clamp(3rem, 6vw, 4.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.timelines__stages::before { content: ''; position: absolute; top: .4375rem; left: 0; right: 0; height: 1px; background: var(--blue-200); }
+.timelines__stage { position: relative; display: flex; flex-direction: column; gap: .5rem; padding-top: 2rem; }
+.timelines__stage-node { position: absolute; top: 0; left: 0; width: .875rem; height: .875rem; border-radius: 50%; background: var(--blue-500); box-shadow: 0 0 0 4px var(--color-bg); }
+.timelines__stage-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; letter-spacing: -.02em; }
+.timelines__stage-text { color: var(--color-text-muted); max-width: 22rem; }
+.timelines__factors { max-width: 46rem; margin-top: 2.5rem; font-size: .9375rem; color: var(--color-text-muted); }
+
+@media (max-width: 991px) { .timelines__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .timelines__stages { grid-template-columns: 1fr; gap: 1.5rem; }
+  .timelines__stages::before { top: 0; bottom: 0; left: .4375rem; right: auto; width: 1px; height: auto; }
+  .timelines__stage { padding: 0 0 0 2rem; }
+}
+@media (max-width: 479px) { .timelines__grid { grid-template-columns: 1fr; } .timeline-card__name { padding-top: 1.5rem; } }
+
+/* ---------- Cost (reuses .aispeed) ---------- */
+.cost__title { font-size: clamp(2.25rem, 4.6vw, 4rem); line-height: 1.05; }
+.cost__note { max-width: 46rem; margin-top: 2rem; color: var(--color-text-muted); }
+
+/* ---------- Editing (reuses blue .seoaeo) ---------- */
+.editing__note { max-width: 50rem; margin-top: 2rem; color: color-mix(in srgb, var(--white) 82%, transparent); line-height: 1.5; }
+
+/* ---------- Tools (reuses .platforms) ---------- */
+.tools { background: var(--color-bg); }
+.tools__head .services__intro { max-width: 40rem; }
+.tools__card { min-height: 15rem; }
+.tools__body { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
+/* ---------- Additions to reused components ---------- */
+.service-card__num { font-family: var(--font-mono); font-size: .875rem; color: var(--color-accent); transition: color .3s ease; }
+.service-card:hover .service-card__num { color: var(--white); }
+.service-card__tag {
+  margin-left: auto;
+  padding: .25rem .625rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+}
+.service-card__title + .service-card__desc { margin-top: 1rem; margin-left: 0; }
+
+.process__intro { max-width: 40rem; color: var(--color-text-muted); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.45; }
+@media (min-width: 992px) {
+  .process--five .process__track { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2rem; }
+  .process--five .process__step-title { font-size: clamp(1.375rem, 1.9vw, 1.75rem); }
+}
+
+.ai__principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 3rem 0 0;
+  padding: 2rem 0 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 20%, transparent);
+}
+.ai__principles li { font-family: var(--font-display); font-size: clamp(1.25rem, 1.8vw, 1.625rem); font-weight: 500; letter-spacing: -.02em; line-height: 1.15; }
+@media (max-width: 767px) { .ai__principles { grid-template-columns: 1fr; } }
+
+/* Hero: the longer positioning label sits on its own line above the headline (no inline indent) */
+.hero__copy .pill-label { margin-bottom: 1rem; }
+.hero__title { margin-top: 0; text-indent: 0; }
+
+/* Tools: white cards on the paper section, copy left-aligned */
+.tools .service-card { background-color: var(--white); }
+.tools .service-card:hover { background-color: var(--color-accent); }
+.tools .platform-card__desc { margin-left: 0; }

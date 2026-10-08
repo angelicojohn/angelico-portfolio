@@ -87,6 +87,30 @@ function initWorkCursor() {
   });
 }
 
+// ------------------------------------- Testimonials slider (BYQ nextwell-testimonials-3)
+// Buttons scroll the native snap track by one card; they disable at either end.
+function initTestimonials() {
+  document.querySelectorAll('[data-testimonials]').forEach((root) => {
+    const track = root.querySelector('[data-testimonials-track]');
+    const prev = root.querySelector('[data-testimonials-prev]');
+    const next = root.querySelector('[data-testimonials-next]');
+    if (!track || !prev || !next) return;
+    const step = () => {
+      const card = track.firstElementChild;
+      return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : track.clientWidth;
+    };
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+}
+
 // ------------------------------------------------ CTA: sphere zoom on scroll
 function initCtaBall() {
   const ball = document.querySelector('[data-cta-ball]');
@@ -127,6 +151,7 @@ initNavigation();
 initWorkScreenshots();
 initWorkFilters();
 initWorkCursor();
+initTestimonials();
 initCtaBall();
 initProcessLine();
 

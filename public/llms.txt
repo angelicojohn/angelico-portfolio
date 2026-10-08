@@ -1,14 +1,20 @@
-# AJ: Webflow & Astro Developer
+# AJ: Custom Website Design & Development
 
-> AJ is a Webflow Developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds polished, production-ready websites in Webflow, Framer and Astro, and migrates sites from Webflow, Framer, WordPress and Wix to Astro + Sanity.
+> AJ is a web designer and developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds custom websites using AI-assisted workflows (Claude Code, Codex) alongside hands-on design and development experience, in Webflow, Framer or Astro depending on the client's needs. Design decisions, implementation review, testing and delivery are done by AJ.
 
 ## Pages
-- [Home](https://angelicojohn.github.io/angelico-portfolio/): Services, AI-assisted development, selected work and experience.
-- [Astro Development & Migrations](https://angelicojohn.github.io/angelico-portfolio/astro/): Migrating from Webflow, Framer, WordPress and Wix to Astro + Sanity; platform comparison; web app features and automations; SEO and AEO setup; process and FAQ.
-- [Projects](https://angelicojohn.github.io/angelico-portfolio/projects/): Production Webflow and Framer websites.
+- [Home](https://angelicojohn.github.io/angelico-portfolio/): Custom websites, faster delivery and cost-effective development; workflow, target timelines, process, content editing and ownership, services, projects, testimonials and FAQ.
+- [Astro Development & Migrations](https://angelicojohn.github.io/angelico-portfolio/astro/): Astro + Sanity builds and migrations from Webflow, Framer, WordPress and Wix; platform comparison; web app features and automations; SEO and AEO setup.
+- [Projects](https://angelicojohn.github.io/angelico-portfolio/projects/): Websites built in Astro, Webflow and Framer.
 
 ## Services
-- Figma → Webflow builds, CMS architecture, custom code, motion and interactions
-- Astro development and migrations, with Sanity as the content editor
-- Web app features (portals, booking, payments, calculators) and automations (CRM, notifications, n8n/Zapier/Make)
-- Technical SEO and Answer Engine Optimisation (AEO)
+- Custom website design and development
+- Website redesign and modernisation
+- Website automation and integrations (newer service): forms, CRMs, bookings, n8n workflows
+- Ongoing optimisation and support
+
+## Target timelines (not guarantees; counted from when content and access are ready)
+- Landing pages: 3-5 business days
+- Small business websites: 1-2 weeks
+- Larger custom websites: 2-4 weeks
+- Advanced projects and integrations: scoped per project

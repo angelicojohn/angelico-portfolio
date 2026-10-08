@@ -1,0 +1,30 @@
+---
+// Speed: traditional vs modern workflow, two flow rows (balanced, factual).  ·  Osmo: Masked Text Reveal
+import { workflow } from '../../data/home';
+const rows = [
+  { ...workflow.traditional, kind: 'traditional' },
+  { ...workflow.modern, kind: 'modern' },
+];
+---
+<section class="workflow" id="timeline">
+  <div class="container">
+    <div class="workflow__head">
+      <h2 class="workflow__title">
+        {workflow.title.map((line) => <span data-split="heading">{line}</span>)}
+      </h2>
+      <p class="workflow__intro">{workflow.intro}</p>
+    </div>
+    <div class="workflow__rows">
+      {rows.map((row) => (
+        <div class:list={['workflow__row', `workflow__row--${row.kind}`]}>
+          <h3 class="workflow__label">{row.label}</h3>
+          <ol class="workflow__flow" role="list">
+            {row.steps.map((step) => <li class="workflow__step">{step}</li>)}
+          </ol>
+          <p class="workflow__note">{row.note}</p>
+        </div>
+      ))}
+    </div>
+    <p class="workflow__footnote">{workflow.footnote}</p>
+  </div>
+</section>

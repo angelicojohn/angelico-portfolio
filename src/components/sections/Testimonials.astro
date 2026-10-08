@@ -1,50 +1,61 @@
 ---
-// BYQ: featured-quote + grid testimonials (layout picked by Claude; Jev split D 0.56 / marquee 0.44)
-// Osmo: Masked Text Reveal on the heading
+// BYQ: nextwell-testimonials-3 (portrait-card slider). Native scroll-snap track + prev/next buttons (main.js).
+// A card uses its person's photo as the portrait background once public/images/testimonials/<photo>.* exists;
+// until then it falls back to a brand-blue card with initials.
+// Osmo: Masked Text Reveal on the heading.
 import fs from 'node:fs';
-import { featuredTestimonial as featured, testimonials, type Testimonial } from '../../data/testimonials';
+import { featuredTestimonial, testimonials, type Testimonial } from '../../data/testimonials';
 import { url } from '../../lib/url';
+interface Props { limit?: number; heading?: [string, string] }
+const { limit = testimonials.length, heading = ['Trusted by the teams and clients', 'I’ve worked with'] } = Astro.props;
 const photoOf = (t: Testimonial) => {
   const ext = ['webp', 'jpg', 'png'].find((e) => fs.existsSync(`public/images/testimonials/${t.photo}.${e}`));
   return ext ? url(`/images/testimonials/${t.photo}.${ext}`) : null;
 };
 const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 2);
-interface Props { limit?: number; heading?: string[] }
-const { limit = testimonials.length, heading = ['Teams and clients', 'on working with me.'] } = Astro.props;
-const items = testimonials.slice(0, limit);
+const slides = [featuredTestimonial, ...testimonials.slice(0, limit)].map((t, i) => ({ ...t, img: photoOf(t), tone: i === 0 ? 'brand' : i % 2 ? 'light' : 'soft' }));
 ---
-<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title" data-testimonials>
   <div class="container">
-    <h2 class="testimonials__title" id="testimonials-title">
-      {heading.map((line) => <span data-split="heading">{line}</span>)}
-    </h2>
-    <div class="testimonials__grid">
-      <figure class="testimonial testimonial--featured">
-        <blockquote class="testimonial__quote">“{featured.quote}”</blockquote>
-        <figcaption class="testimonial__by">
-          <span class="testimonial__avatar" aria-hidden="true">{photoOf(featured) ? <img src={photoOf(featured)} alt="" width="48" height="48" loading="lazy" /> : initials(featured.name)}</span>
-          <span class="testimonial__who">
-            <span class="testimonial__name">{featured.name}</span>
-            <span class="testimonial__role">{featured.role}</span>
-          </span>
-        </figcaption>
-      </figure>
-      <ul class="testimonials__list" role="list">
-        {items.map((t) => (
-          <li>
-            <figure class="testimonial">
-              <blockquote class="testimonial__quote">“{t.quote}”</blockquote>
-              <figcaption class="testimonial__by">
-                <span class="testimonial__avatar" aria-hidden="true">{photoOf(t) ? <img src={photoOf(t)} alt="" width="48" height="48" loading="lazy" /> : initials(t.name)}</span>
-                <span class="testimonial__who">
-                  <span class="testimonial__name">{t.name}</span>
-                  <span class="testimonial__role">{t.role} <span class="testimonial__relation">{t.relation}</span></span>
-                </span>
-              </figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
+    <div class="testimonials__head">
+      <h2 class="testimonials__title" id="testimonials-title" data-split="heading" data-split-reveal="words">
+        {heading[0]} <span class="testimonials__title-dim">{heading[1]}</span>
+      </h2>
+      <div class="testimonials__nav">
+        <button type="button" class="testimonials__btn" data-testimonials-prev aria-label="Previous testimonial">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="transform:rotate(180deg)"><path d="M4.167 10h11.666M10 4.167 15.833 10 10 15.833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="testimonials__btn" data-testimonials-next aria-label="Next testimonial">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.167 10h11.666M10 4.167 15.833 10 10 15.833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
+
+    <ul class="testimonials__track" data-testimonials-track role="list" tabindex="0" aria-label="Testimonials">
+      {slides.map((t) => (
+        <li class:list={['testimonial', `testimonial--${t.img ? 'photo' : t.tone}`]}>
+          <figure class="testimonial__inner">
+            <div class="testimonial__top">
+              <svg class="testimonial__mark" viewBox="0 0 24 19" fill="currentColor" aria-hidden="true"><path d="M0 11.4C0 14.88 2.52 18 6.12 18c3 0 5.16-2.04 5.16-4.92 0-2.64-1.92-4.56-4.44-4.56-.48 0-1.08.12-1.32.24.36-2.28 2.4-4.56 4.92-5.76L8.16 1C3.6 3.12 0 7.08 0 11.4Zm12.72 0c0 3.48 2.52 6.6 6.12 6.6 3 0 5.16-2.04 5.16-4.92 0-2.64-1.92-4.56-4.44-4.56-.48 0-1.08.12-1.32.24.36-2.28 2.4-4.56 4.92-5.76L20.88 1c-4.56 2.12-8.16 6.08-8.16 10.4Z"/></svg>
+              <span class="testimonial__label">{t.relation}</span>
+            </div>
+            {!t.img && <span class="testimonial__initials" aria-hidden="true">{initials(t.name)}</span>}
+            <div class="testimonial__bottom">
+              <blockquote class="testimonial__quote">“{t.quote}”</blockquote>
+              <figcaption class="testimonial__info">
+                <span>{t.name}</span>
+                <span class="testimonial__dot" aria-hidden="true"></span>
+                <span>{t.role}</span>
+              </figcaption>
+            </div>
+          </figure>
+          {t.img && (
+            <div class="testimonial__media" aria-hidden="true">
+              <img src={t.img} alt="" loading="lazy" />
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
   </div>
 </section>

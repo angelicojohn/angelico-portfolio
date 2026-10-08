@@ -1,13 +1,27 @@
 ---
 // BYQ: kelvin-process-1  ·  Osmo: Masked Text Reveal  ·  line fill on scroll (main.js)
-import { steps } from '../../data/astro';
+// Defaults = /astro migration process; the homepage passes its 5-step client process.
+import { steps as astroSteps } from '../../data/astro';
 import Logo from '../ui/Logo.astro';
+interface Props {
+  steps?: { num: string; title: string; copy: string }[];
+  title?: [string, string];
+  eyebrow?: string;
+  intro?: string;
+}
+const {
+  steps = astroSteps,
+  title = ['Four steps,', 'zero surprises.'],
+  eyebrow = 'How a migration works',
+  intro,
+} = Astro.props;
 ---
-<section class="process" id="process">
+<section class:list={['process', { 'process--five': steps.length === 5 }]} id="process">
   <div class="container">
     <div class="process__head">
-      <div class="process__eyebrow"><Logo name="astro" class="process__logo" />How a migration works</div>
-      <h2 class="process__title" data-split="heading" data-split-reveal="words"><span class="process__title-dim">Four steps,</span> zero surprises.</h2>
+      {eyebrow && <div class="process__eyebrow"><Logo name="astro" class="process__logo" />{eyebrow}</div>}
+      <h2 class="process__title" data-split="heading" data-split-reveal="words"><span class="process__title-dim">{title[0]}</span> {title[1]}</h2>
+      {intro && <p class="process__intro">{intro}</p>}
     </div>
     <div class="process__rail">
       <div class="process__line" aria-hidden="true"><div class="process__line-fill" data-process-line></div></div>

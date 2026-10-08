@@ -1,0 +1,25 @@
+---
+// Tools as supporting choices, not the headline.  ·  BYQ offthegrid card grid (Platforms variant)  ·  Osmo: Masked Text Reveal
+import { tools } from '../../data/home';
+import { url } from '../../lib/url';
+import LinkArrow from '../ui/LinkArrow.astro';
+---
+<section class="services platforms tools" id="tools">
+  <div class="container">
+    <div class="platforms__head tools__head">
+      <h2 class="services__title" data-split="heading" data-split-reveal="words">{tools.title[0]} <span class="services__title-accent">{tools.title[1]}</span></h2>
+      <p class="services__intro">{tools.intro}</p>
+    </div>
+    <ul class="platforms__grid">
+      {tools.items.map((t) => (
+        <li class="service-card platform-card tools__card">
+          <h3 class="platform-card__name">{t.name}</h3>
+          <div class="tools__body">
+            <p class="service-card__desc platform-card__desc">{t.text}</p>
+            {t.href && <LinkArrow href={url(t.href)} label="Astro & migrations" />}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

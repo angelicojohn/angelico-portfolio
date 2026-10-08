@@ -1,0 +1,23 @@
+---
+// Core value proposition (four benefits). Open 4-column layout, no cards.  ·  Osmo: Masked Text Reveal
+import { value } from '../../data/home';
+---
+<section class="value" id="why">
+  <div class="container">
+    <div class="value__head">
+      <h2 class="value__title">
+        {value.title.map((line, i) => <span class:list={['value__line', { 'is--accent': i === 0 }]} data-split="heading">{line}</span>)}
+      </h2>
+      <p class="value__intro">{value.intro}</p>
+    </div>
+    <ol class="value__grid" role="list">
+      {value.items.map((item, i) => (
+        <li class="value__item">
+          <span class="value__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="value__item-title">{item.title}</h3>
+          <p class="value__item-text">{item.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
