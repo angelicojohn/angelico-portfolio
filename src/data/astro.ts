@@ -3,22 +3,22 @@ export const platforms = [
   {
     name: 'Webflow',
     from: 'Webflow → Astro',
-    description: 'Keep the design your team loves and drop the plan fees and editor limits. Your pages, CMS and interactions come across to a site that loads faster and is cheaper to host.',
+    description: 'Keep your current design without the plan fees and editor limits. Your pages, CMS content and interactions move to a site that loads faster and costs less to host.',
   },
   {
     name: 'Framer',
     from: 'Framer → Astro',
-    description: 'Keep your layouts and animations, and gain clean code you can take anywhere, on a site search engines can read with ease.',
+    description: 'Keep your layouts and animations, and get clean code you can host anywhere, on a site search engines can read easily.',
   },
   {
     name: 'WordPress',
     from: 'WordPress → Astro',
-    description: 'Say goodbye to plugin updates, security patches and slow page builders. Your posts and pages move to a fast, low-maintenance site.',
+    description: 'No more plugin updates, security patches or slow page builders. Your posts and pages move to a fast site that needs little maintenance.',
   },
   {
     name: 'Wix',
     from: 'Wix → Astro',
-    description: 'Grow beyond templates and platform limits with a site you fully own: faster pages, portable code and the freedom to host anywhere.',
+    description: 'Move past templates and platform limits to a site you own, with faster pages and code you can host anywhere.',
   },
 ];
 
@@ -70,11 +70,11 @@ export const faqs = [
 export const stack = {
   title: 'Your team updates the site. Your site stays fast.',
   intro: [
-    'Astro gives you a fast, lightweight front end. Sanity gives your team a clean, flexible place to manage content. Together, marketing can publish on its own schedule without waiting on a developer.',
+    'Astro runs a fast, lightweight front end, and Sanity gives your team one place to manage content. Marketing can publish when it suits them, without waiting on a developer.',
   ],
   items: [
-    { title: 'Publish without a developer', text: 'Your team edits pages, posts and products in Sanity Studio, an editor shaped around your content, so updates go live in minutes, not tickets.' },
-    { title: 'Write once, use everywhere', text: 'Content is stored as structured data, so the same case study, product or FAQ can power your website, landing pages and future channels.' },
+    { title: 'Publish without a developer', text: 'Your team edits pages, posts and products in Sanity Studio, an editor set up around your content, and changes go live in minutes without a support ticket.' },
+    { title: 'Write once, use everywhere', text: 'Content is stored as structured data, so the same case study, product or FAQ can appear on your website, your landing pages and any channel you add later.' },
     { title: 'Collaborate in real time', text: 'Several people can work in Sanity at once and see each other’s changes live, so reviews and launches move faster.' },
     { title: 'Images handled for you', text: 'Sanity’s image pipeline resizes and crops images on demand, so your pages stay light without anyone resizing files by hand.' },
   ],
@@ -107,9 +107,9 @@ export const compareRows: { label: string; cells: [Mark, string][] }[] = [
 export const whyNow = {
   title: 'Why businesses are moving to Astro now.',
   points: [
-    { stat: 'Cloudflare', text: 'Astro joined Cloudflare in January 2026 and remains open source under the MIT licence, so it has long-term backing and stays free to use.', source: 'https://astro.build/blog/joining-cloudflare/' },
-    { stat: '2× a year', text: 'Cloudflare reports that Astro adoption doubles every year, a fast-growing community of developers and tools behind your site.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
-    { stat: 'Built for AI', text: 'Astro runs an official docs server for AI coding agents like Claude Code, Cursor and GitHub Copilot, so AI-assisted work on your site follows current Astro practice, not outdated examples.', source: 'https://docs.astro.build/en/guides/build-with-ai/' },
+    { stat: 'Cloudflare', text: 'Astro joined Cloudflare in January 2026. It’s still open source under the MIT licence and free to use, now with a large company behind it.', source: 'https://astro.build/blog/joining-cloudflare/' },
+    { stat: '2× a year', text: 'Cloudflare reports that Astro adoption doubles every year, which means more developers and tools to support your site.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
+    { stat: 'Built for AI', text: 'Astro runs an official docs server for AI coding agents like Claude Code, Cursor and GitHub Copilot, which keeps AI-assisted work on your site in line with current Astro docs.', source: 'https://docs.astro.build/en/guides/build-with-ai/' },
     { stat: 'Big brands', text: 'Your site gets the same fast foundation that Unilever, Visa and NBC News use for their content-driven websites.', source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-acquires-astro-to-accelerate-the-future-of-high-performance-web-development/' },
   ],
 };
@@ -117,7 +117,7 @@ export const whyNow = {
 // ------------------------------------------------- Web app + automations
 export const webApp = {
   features: [
-    { image: 'portal', title: 'Client portals & logins', text: 'Give customers a private area for documents, orders or project updates, reducing back-and-forth emails.' },
+    { image: 'portal', title: 'Client portals & logins', text: 'Give customers a private area for documents, orders or project updates, so there’s less back-and-forth by email.' },
     { image: 'booking', title: 'Booking & scheduling', text: 'Let visitors book calls, appointments or demos straight from the page they’re reading.' },
     { image: 'calculator', title: 'Quote calculators & smart forms', text: 'Turn pricing questions into qualified leads with forms that adapt to each answer.' },
     { image: 'payments', title: 'Payments & checkout', text: 'Take deposits, sell products or run subscriptions with Stripe built into your site.' },
@@ -129,7 +129,7 @@ export const webApp = {
     { title: 'Instant notifications', text: 'New leads, bookings and payments ping your team in Slack or email the moment they happen.' },
     { title: 'AI lead triage', text: 'Incoming enquiries are scored and sorted automatically, so the best opportunities reach you first.' },
     { title: 'Content that publishes itself', text: 'Publish in Sanity and your site rebuilds and goes live, with no developer in the loop.' },
-    { title: 'Workflows with n8n, Zapier or Make', text: 'Connect your site to the tools you already use and remove repetitive admin.' },
+    { title: 'Workflows with n8n, Zapier or Make', text: 'Connect your site to the tools you already use and cut repetitive admin.' },
   ],
 };
 
@@ -154,7 +154,7 @@ export const aiSpeed = {
 // --------------------------------------------------------------- SEO + AEO
 export const seo = {
   title: ['Found on Google.', 'Cited by AI.'],
-  intro: 'More people now get answers from Google’s AI Overviews, ChatGPT and Perplexity before they ever click a link. Growth Websites and custom projects include the setup that helps your business show up in classic search results and in AI answers, and every site gets the technical SEO foundations.',
+  intro: 'A lot of people now get answers from Google’s AI Overviews, ChatGPT or Perplexity before they click a link. Growth Websites and custom projects include the setup that helps your business appear in regular search results and in AI answers. Every site gets the technical SEO basics.',
   seo: ['Titles, meta descriptions and Open Graph', 'Clean URLs, canonicals and 301 redirect map', 'XML sitemap and robots.txt', 'Fast pages and strong Core Web Vitals', 'Semantic HTML, headings and alt text'],
   aeo: ['Structured data: Organization, Service, FAQ, Breadcrumbs', 'Question-led content with clear, direct answers', 'llms.txt so AI tools can read your key pages', 'Consistent business details across your site', 'Content structured for AI Overviews, ChatGPT and Perplexity'],
   note: 'This site uses the same setup.',

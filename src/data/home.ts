@@ -12,12 +12,12 @@ export const hero = {
 
 export const value = {
   title: ['Custom websites.', 'Faster delivery.', 'Smarter costs.'],
-  intro: 'The traditional agency model often means long proposals, slow handoffs and paying for overhead. A modern, AI-assisted workflow removes the waiting, without cutting the quality.',
+  intro: 'Agency projects often come with long proposals, slow handoffs and overhead you end up paying for. An AI-assisted workflow cuts out that waiting, and the design and testing get the same care.',
   items: [
     { title: 'Custom by design', text: 'Every website is shaped around your brand, your audience and what you need it to do.' },
     { title: 'Faster delivery', text: 'AI-assisted workflows cut repetitive build work, so you see a working preview sooner and revisions move faster.' },
-    { title: 'Cost-effective', text: 'Less time on repetitive tasks means you pay for decisions and quality, not unnecessary development hours.' },
-    { title: 'Human-led quality', text: 'Design, accessibility, performance and testing are handled by me, with your feedback at every step.' },
+    { title: 'Cost-effective', text: 'Repetitive tasks take less time, so you pay for fewer development hours and more of the budget goes to design and quality.' },
+    { title: 'Human-led quality', text: 'I handle design, accessibility, performance and testing myself, and ask for your feedback at every step.' },
   ],
 };
 
@@ -25,16 +25,16 @@ export const about = {
   title: 'The way we build websites has changed. The principles of good design haven’t.',
   lead: 'I’m AJ, a web designer and developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses.',
   paragraphs: [
-    'Modern tools have changed how efficiently a website can be designed, built, tested and delivered. I use them to remove unnecessary delays, while giving layout, typography, responsiveness and quality the same care every good website needs.',
-    'A website should build credibility, explain your services clearly, make it easy for customers to get in touch and show you what’s working. That’s what I build towards.',
+    'Newer tools make it quicker to design, build, test and ship a website. I use them to cut delays, and I still give layout, typography, responsiveness and QA the care they always needed.',
+    'I build websites that earn trust, explain your services clearly, make it easy for customers to get in touch and show you what’s working.',
   ],
 };
 
 export const custom = {
   title: ['Your business isn’t generic.', 'Your website shouldn’t be either.'],
   paragraphs: [
-    'AI has made it easier than ever to generate a website. But generating a website and building the right website for a business are two different things.',
-    'I use AI to speed up the technical work, not to replace design thinking or professional judgment. Proven patterns and components are used where they help, and every decision is made for your brand, your customers and your goals, then refined with your feedback.',
+    'AI has made it easy to generate a website. Getting one that actually suits your business is still a separate job.',
+    'I use AI to speed up the technical work. The design thinking and judgment calls stay with me. I reuse proven patterns and components where they help, make each decision with your brand, customers and goals in mind, and refine it with your feedback.',
   ],
   highlights: [
     'Custom layouts and visual direction',
@@ -49,16 +49,16 @@ export const custom = {
 
 export const workflow = {
   title: ['Weeks of waiting?', 'There’s a better way.'],
-  intro: 'Website projects can involve long proposals, design handoffs, development queues and weeks before you see real progress. AI-assisted development lets many of those steps move more efficiently, so you see a working version sooner and we spend more time on the details that matter.',
+  intro: 'A typical website project can mean long proposals, design handoffs, development queues and weeks before you see real progress. AI-assisted development speeds up many of those steps, so you see a working version sooner and we have more time for the details.',
   traditional: {
     label: 'A typical traditional workflow',
     steps: ['Discovery', 'Proposal', 'Design', 'Development', 'Revisions', 'Testing', 'Launch'],
-    note: 'Potentially several weeks or months, depending on the agency and scope.',
+    note: 'Can take several weeks or months, depending on the agency and scope.',
   },
   modern: {
     label: 'My workflow',
     steps: ['Focused discovery', 'Early working preview', 'Refine together', 'QA', 'Launch'],
-    note: 'Built to cut the waiting. Strategy, design, feedback and testing all stay in.',
+    note: 'Less waiting between steps. Strategy, design, feedback and testing are all still part of it.',
   },
   compare: {
     title: 'The agency way vs. working with me',
@@ -73,12 +73,12 @@ export const workflow = {
       { label: 'Ownership', old: 'Often tied to a platform plan or retainer', now: 'Code, content and accounts set up in your name' },
     ],
   },
-  footnote: 'Good planning, design and testing still matter. The difference is everything that used to slow them down.',
+  footnote: 'Planning, design and testing still happen at every stage. There’s just less waiting between them.',
 };
 
 export const cost = {
   title: ['Less development overhead.', 'More value for your investment.'],
-  intro: 'A lot of traditional build time goes into repetitive implementation. AI-assisted workflows let me handle that part more efficiently, so more of your budget goes into design, functionality and your business goals.',
+  intro: 'A lot of build time goes into repetitive implementation. AI-assisted tools let me get through that part faster, so more of your budget goes into design and the features your business needs.',
   faster: {
     label: 'What gets more efficient',
     items: ['Repetitive layout and component work', 'Moving and restructuring content', 'Debugging and routine fixes', 'Getting a first working version ready'],
@@ -87,7 +87,7 @@ export const cost = {
     label: 'What doesn’t change',
     items: ['Pricing based on scope and deliverables', 'Professional design and development', 'Full testing before launch', 'Customisation and quality come first'],
   },
-  note: 'Cost-effective doesn’t mean the cheapest possible website. It means not paying for time that adds nothing to the result.',
+  note: 'The aim is to stop you paying for hours that add nothing to the result. That won’t always make it the cheapest quote you get.',
 };
 
 export const process = {
@@ -95,11 +95,11 @@ export const process = {
   intro: 'You don’t need to understand AI, code or web development. Tell me about your business and what you want to achieve, and I’ll guide you through the rest.',
   steps: [
     { num: '01', title: 'Discover', copy: 'We talk through your business, goals, customers and what your website needs to achieve.' },
-    { num: '02', title: 'Explore', copy: 'I prepare a personalised design direction or concept based on your business needs.' },
+    { num: '02', title: 'Explore', copy: 'I prepare a design direction or concept based on what your business needs.' },
     { num: '03', title: 'Propose', copy: 'You get a clear proposal with the deliverables, timeline and investment.' },
-    { num: '04', title: 'Build', copy: 'After approval and deposit, I design and build your site with an efficient, AI-assisted workflow and human oversight.' },
+    { num: '04', title: 'Build', copy: 'Once you approve and pay the deposit, I design and build the site, using AI tools for the repetitive parts and reviewing everything myself.' },
     { num: '05', title: 'Refine & launch', copy: 'We review the site together, complete testing and prepare it for launch.' },
-    { num: '06', title: 'Grow', copy: 'Optional ongoing support keeps your site maintained, improving and growing over time.' },
+    { num: '06', title: 'Grow', copy: 'If you want it, ongoing support keeps the site maintained and improving after launch.' },
   ],
 };
 
@@ -108,7 +108,7 @@ export const ai = {
   title: 'AI-assisted. Professionally crafted.',
   paragraphs: [
     'I use AI development tools such as Claude Code and Codex to speed up coding, debugging, repetitive tasks and technical problem-solving.',
-    'But every website still needs someone who understands design, development, user experience and your business. I guide the decisions, review the implementation, test the functionality and work with you until the site reflects your business.',
+    'Every website still needs someone who understands design, development, user experience and your business. I make the decisions, review the code, test that everything works and keep working with you until the site fits your business.',
   ],
   principles: ['AI helps me build faster.', 'Experience helps me build better.', 'Your feedback makes it yours.'],
   tools: ['Claude Code', 'Codex'],
@@ -121,15 +121,15 @@ export const faqs = [
   },
   {
     question: 'Why are your websites more cost-effective?',
-    answer: 'I use a streamlined development process and AI-assisted tools to reduce repetitive production work. That lets me spend more time on design, customisation, quality and your business requirements.',
+    answer: 'AI-assisted tools take care of a lot of the repetitive production work, so more of the hours you pay for go into design, customisation and what your business actually needs.',
   },
   {
     question: 'Are your websites custom-designed?',
-    answer: 'Yes. Each project is designed around your business, brand, audience and goals, rather than a generic one-size-fits-all result.',
+    answer: 'Yes. Each project is designed around your business, brand, audience and goals.',
   },
   {
     question: 'How long does a website take?',
-    answer: 'Smaller websites can typically be completed in 1-2 weeks, while more complex projects may need 2-4 weeks or longer. Timelines depend on scope, feedback and content readiness.',
+    answer: 'A smaller website usually takes 1-2 weeks. Bigger projects can take 2-4 weeks or longer, depending on scope, how quickly feedback comes back and whether the content is ready.',
   },
   {
     question: 'Do I need a monthly subscription?',
@@ -175,6 +175,6 @@ export const faqs = [
 
 export const cta = {
   title: 'Have a website in mind?',
-  text: 'Whether you’re starting from scratch, rebuilding an outdated site or looking for a more efficient development partner, I’d love to hear what you’re working on. Let’s talk about what your business needs, what’s realistic for your timeline and the best way to bring it to life.',
+  text: 'Starting from scratch, rebuilding an old site, or looking for a developer who works faster? Tell me what you’re working on, and we’ll work out what your business needs and what’s realistic for your timeline.',
   label: 'Let’s Build Your Website',
 };

@@ -17,8 +17,8 @@ export interface Package {
 }
 
 export const pricing = {
-  title: 'Websites built for your business, not just your budget.',
-  intro: 'From a professional online presence to a complete digital growth system, choose the option that fits your business. Every website is custom-designed, responsive, secure by design and built with performance in mind.',
+  title: 'Website packages, priced by scope.',
+  intro: 'Options range from a professional starter site to a full setup with lead capture, integrations and automation. Every website is custom designed, responsive, secure by design and built to load fast.',
   note: 'Prices in USD. These are starting prices, not fixed quotes: final pricing depends on requirements, integrations, complexity and scope. You get a clear written proposal before any work begins.',
   packages: [
     {
@@ -38,7 +38,7 @@ export const pricing = {
       badge: 'Most popular',
       price: '$3,000',
       priceNote: 'One-time project, starting at',
-      bestFor: 'Established businesses that want a website designed to attract visitors and convert enquiries.',
+      bestFor: 'Established businesses that want more visitors, and more of them turning into enquiries.',
       listLabel: 'Includes',
       items: ['Custom website design', 'Up to 5 pages', 'Conversion-focused page structure', 'Responsive, mobile-first development', 'Performance optimisation', 'Technical SEO and AEO foundations', 'Lead capture and qualification forms', 'Analytics and conversion tracking', 'One defined third-party integration', '2 revision rounds', 'Launch assistance'],
       timeline: '2-4 weeks, depending on complexity and content readiness.',
@@ -59,7 +59,7 @@ export const pricing = {
   ] as Package[],
   monthly: {
     title: 'Prefer to pay monthly?',
-    intro: 'Spread the investment with a 12-month website subscription: your custom website plus ongoing care, with a one-time setup fee.',
+    intro: 'Spread the cost over a 12-month website subscription. It covers your custom website and ongoing care, plus a one-time setup fee.',
     plans: [
       { id: 'Essential Subscription', name: 'Essential Subscription', price: '$199', setup: '$499 setup', items: ['Custom website, up to 3 pages', 'SEO foundations and contact form', 'Hosting arranged for you', 'Minor monthly updates'] },
       { id: 'Growth Subscription', name: 'Growth Subscription', price: '$399', setup: '$999 setup', items: ['Custom website, up to 5 pages', 'Conversion-focused structure and lead capture', 'Analytics plus one simple automation', 'A defined monthly improvement allowance'] },
@@ -71,7 +71,7 @@ export const pricing = {
 
 export const care = {
   title: 'Your website should keep working after launch.',
-  intro: 'Launching your website is just the beginning. Keep it maintained, improve its performance and make it more useful to your business with optional monthly support.',
+  intro: 'Optional monthly support keeps your site maintained after launch, improves its performance and makes it more useful to your business.',
   plans: [
     { id: 'Website Care', name: 'Website Care', price: '$99', items: ['Website health monitoring', 'Basic technical maintenance', 'Minor content updates within agreed limits', 'Broken-link checks', 'Basic performance monitoring', 'Technical support within agreed scope'], cta: 'Get Website Care' },
     { id: 'Website Growth', name: 'Website Growth', badge: 'Recommended', price: '$299', lead: 'Everything in Website Care, plus:', items: ['Monthly analytics review', 'Conversion improvement recommendations', 'Performance optimisation checks', 'Limited landing page and content improvements', 'SEO technical monitoring', 'Monthly performance summary', 'Priority support within agreed scope'], cta: 'Keep Growing', featured: true },
@@ -82,11 +82,11 @@ export const care = {
 
 export const roi = {
   title: 'Where the return comes from.',
-  intro: 'A website is an investment. This is how the approach is designed to pay you back, without promising numbers nobody can guarantee.',
+  intro: 'These are the ways the website is meant to pay you back. Nobody can promise specific numbers, so none are given here.',
   items: [
     { title: 'A lower build cost', text: 'AI-assisted production cuts repetitive hours, so more of your budget goes into design, features and testing.', href: '#cost', link: 'How the cost comes down' },
     { title: 'Lower running costs', text: 'Astro sites don’t need a per-site builder plan, and the code is yours to host where it costs least.', href: '#compare', link: 'Compare platforms' },
-    { title: 'More visitors who get in touch', text: 'Fast pages, search and AI visibility foundations and clear paths to contact are built to help more visitors become enquiries.', href: '#seo', link: 'SEO and AEO setup' },
+    { title: 'More visitors who get in touch', text: 'Fast pages, search and AI visibility setup, and clear ways to get in touch are all meant to turn more visitors into enquiries.', href: '#seo', link: 'SEO and AEO setup' },
     { title: 'Time back for your team', text: 'Your team updates content in Sanity, and automations route leads and notifications, so less time goes on admin.', href: '#web-apps', link: 'Features and automations' },
     { title: 'No forced rebuilds', text: 'You own the code and content, so a platform changing its plans or prices never forces you to start again.', href: '#sanity', link: 'Astro + Sanity' },
   ],
