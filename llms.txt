@@ -1,0 +1,21 @@
+# AJ: Custom Astro Websites, Built Faster
+
+> AJ is a web designer and Astro developer with 3+ years of professional agency experience and 40+ websites worked on for agencies and international businesses. AJ builds custom websites in Astro, with Sanity for content editing, using AI-assisted workflows (Claude Code, Codex) to move faster than a traditional agency process, while design decisions, implementation review, testing and delivery are done by AJ.
+
+## Pages
+- [Home](https://angelicojohn.github.io/angelico-portfolio/): Custom Astro websites and migrations; agency process vs. working with AJ; target timelines; cost; migrations from Webflow, Framer, WordPress and Wix; platform comparison; Astro + Sanity; web app features and automations; SEO and AEO; process; projects; testimonials; FAQ.
+- [Projects](https://angelicojohn.github.io/angelico-portfolio/projects/): Websites built in Astro, plus earlier Webflow and Framer work.
+
+## Services
+- Custom Astro websites with Sanity CMS
+- Migrations to Astro from Webflow, Framer, WordPress and Wix
+- Web app features and automations (newer service): forms, CRMs, bookings, payments, n8n workflows
+- Technical SEO and Answer Engine Optimisation (AEO)
+
+## Pricing (USD, starting prices, not quotes)
+- Custom Website: from $1,500 one-time (1-3 pages, 1-2 weeks after requirements and assets are confirmed)
+- Growth Website: from $3,000 one-time (up to 5 pages, SEO and AEO foundations, lead capture, 2-4 weeks)
+- Custom Digital Solutions: from $5,000, custom quotation (web apps, portals, integrations, automation)
+- Monthly alternative: 12-month website subscriptions from $199/month + $499 setup, or $399/month + $999 setup
+- Optional care plans: Website Care from $99/month, Website Growth from $299/month, Growth & Automation from $599/month
+- No guaranteed rankings, leads or sales. Clients work remotely with AJ across time zones.
